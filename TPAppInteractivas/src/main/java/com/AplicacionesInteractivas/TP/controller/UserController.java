@@ -39,18 +39,23 @@ public class UserController {
 	
 	//login
 	@GetMapping("/login")
-	public boolean login(@RequestBody User user) {
+	public long login(@RequestBody User user) {
 		List<User> allUsers = this.userRepository.findAll();
-		boolean LoginExitoso = false;
+		boolean userEncontrado = false;
+		long LoginExitosoId = -1;
 		if (allUsers.size() > 0) {
 			int contador = 0;
-			while ((contador < allUsers.size()) && !LoginExitoso) {
-				if ((allUsers.get(contador).getUsername() == user.getUsername()) && (allUsers.get(contador).getPassword() == user.getPassword())) {
-					LoginExitoso = true;
+			while ((contador < allUsers.size()) && !userEncontrado) {
+				if ( allUsers.get(contador).getUsername().equals(user.getUsername())  ) {
+					userEncontrado = true;
+					if (	allUsers.get(contador).getPassword().toString().equals(user.getPassword().toString())	) {
+						LoginExitosoId = allUsers.get(contador).getId();
+					}
 				}
+				contador++;
 			}
 		}
-		return LoginExitoso;
+		return LoginExitosoId;
 	}
 	
 	//create user
