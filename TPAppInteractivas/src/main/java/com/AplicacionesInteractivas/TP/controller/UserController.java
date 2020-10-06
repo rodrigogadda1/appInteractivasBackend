@@ -43,11 +43,12 @@ public class UserController {
 		List<User> allUsers = this.userRepository.findAll();
 		boolean LoginExitoso = false;
 		if (allUsers.size() > 0) {
-			for ( int i=0; i<allUsers.size();i++){
-				 if ( (allUsers.get(i).getUsername() == user.getUsername()) && (allUsers.get(i).getPassword() == user.getPassword())) {
-					 LoginExitoso = true;
-				 }
-		    }
+			int contador = 0;
+			while ((contador < allUsers.size()) && !LoginExitoso) {
+				if ((allUsers.get(contador).getUsername() == user.getUsername()) && (allUsers.get(contador).getPassword() == user.getPassword())) {
+					LoginExitoso = true;
+				}
+			}
 		}
 		return LoginExitoso;
 	}
