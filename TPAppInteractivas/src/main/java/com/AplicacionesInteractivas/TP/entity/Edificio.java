@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,6 +19,9 @@ public class Edificio {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@Column(name="nombre")
+	private String nombre;
+	
 	@Column(name="direccion")
 	private String direccion;
 	
@@ -27,21 +31,22 @@ public class Edificio {
 	@Column(name="CantUnidades")
 	private long cantUnidades;
 	
-	@Column(name="unidades")
-	@OneToMany(mappedBy="id")
+	@OneToMany
+	@JoinColumn(name="edif_unidades", nullable = true)
 	private List<Unidad> unidades;
 		
-	@Column(name="espaciosComunes")
-	@OneToMany(mappedBy="id")
+	@OneToMany
+	@JoinColumn(name="edif_espcomun", nullable = true)
 	private List<EspacioComun> espaciosComunes;
 
 	public Edificio() {
 		super ();
 	}
-	public Edificio(long id, String direccion, String telefono, long cantUnidades, List<Unidad> unidades,
+	public Edificio(long id,String nombre, String direccion, String telefono, long cantUnidades, List<Unidad> unidades,
 			List<EspacioComun> espaciosComunes) {
 		super();
 		this.id = id;
+		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.cantUnidades = cantUnidades;
@@ -83,6 +88,12 @@ public class Edificio {
 	}
 	public void setEspaciosComunes(List<EspacioComun> espaciosComunes) {
 		this.espaciosComunes = espaciosComunes;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 		
 }

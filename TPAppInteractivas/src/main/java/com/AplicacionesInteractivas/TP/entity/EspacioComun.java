@@ -21,6 +21,7 @@ public class EspacioComun {
 	@Column(name="descripcion")
 	private String descripcion;
 	
+	
 	public EspacioComun() {
 		super();
 	}
