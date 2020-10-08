@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.User;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.UserRepository;
+import com.AplicacionesInteractivas.TP.responseEntities.ResponseLogin;
 
 @RestController 
 @RequestMapping("api/users")
@@ -35,7 +36,7 @@ public class UserController {
 	
 	//login
 	@GetMapping("/login")
-	public long login(@RequestBody User user) {
+	public ResponseLogin login(@RequestBody User user) {
 		List<User> allUsers = this.userRepository.findAll();
 		boolean userEncontrado = false;
 		long LoginExitosoId = -1;
@@ -51,7 +52,7 @@ public class UserController {
 				contador++;
 			}
 		}
-		return LoginExitosoId;
+		return new ResponseLogin(LoginExitosoId);
 	}
 	
 	//create user
