@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.User;
@@ -38,16 +39,16 @@ public class UserController {
 	
 	//login
 	@GetMapping("/login")
-	public ResponseLogin login(@RequestBody User user) {
+	public ResponseLogin login(@RequestParam("username") String username , @RequestParam("password") String password ) {
 		List<User> allUsers = this.userRepository.findAll();
 		boolean userEncontrado = false;
 		long LoginExitosoId = -1;
 		if (allUsers.size() > 0) {
 			int contador = 0;
 			while ((contador < allUsers.size()) && !userEncontrado) {
-				if ( allUsers.get(contador).getUsername().equals(user.getUsername())  ) {
+				if ( allUsers.get(contador).getUsername().equals(username)  ) {
 					userEncontrado = true;
-					if (	allUsers.get(contador).getPassword().toString().equals(user.getPassword().toString())	) {
+					if (	allUsers.get(contador).getPassword().toString().equals(password)	) {
 						LoginExitosoId = allUsers.get(contador).getId();
 					}
 				}
