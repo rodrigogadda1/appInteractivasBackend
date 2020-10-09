@@ -37,6 +37,8 @@ public class UserController {
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ userId));
 	}
 	
+	//public ResponseLogin login(@RequestBody User user) {
+	
 	//login
 	@GetMapping("/login")
 	public ResponseLogin login(@RequestBody User user) {
