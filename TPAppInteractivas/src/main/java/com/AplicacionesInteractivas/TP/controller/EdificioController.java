@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EdificioRepository;
 
@@ -27,6 +28,13 @@ public class EdificioController {
 	//create Edificio
 	@PostMapping
 	public Edificio createEdificio(@RequestBody Edificio edificio) {
+		if(edificio.getUnidades().size() > 0) {
+			UnidadController uc = new UnidadController();
+			for (int i = 0; i < edificio.getUnidades().size(); i++) {
+				Unidad newUnidad = uc.createUnidad(edificio.getUnidades().get(i));
+				edificio.getUnidades().set(i, newUnidad);
+			}
+		}
 		return this.edificioRepository.save(edificio);
 	}
 	
