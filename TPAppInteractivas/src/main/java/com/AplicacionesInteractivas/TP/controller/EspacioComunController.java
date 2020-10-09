@@ -17,7 +17,7 @@ import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EspacioComunRepository;
 
 @RestController 
-@RequestMapping("api/espaciocomunes")
+@RequestMapping("api/espacioscomunes")
 public class EspacioComunController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class EspacioComunController {
 	
 	//create espacioComun
 	@PostMapping
-	public EspacioComun createEspecialidad(@RequestBody EspacioComun espaciocomun) {
+	public EspacioComun createEspacioComun(@RequestBody EspacioComun espaciocomun) {
 		return this.espaciocomunRepository.save(espaciocomun);
 	}
 	
