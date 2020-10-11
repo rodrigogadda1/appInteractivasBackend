@@ -15,6 +15,7 @@ import com.AplicacionesInteractivas.TP.entity.User;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.UserRepository;
 import com.AplicacionesInteractivas.TP.responseEntities.ResponseLogin;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @RestController 
 @RequestMapping("api/users")
@@ -32,8 +33,10 @@ public class UserController {
 	//get user by id
 	@GetMapping("/{id}")
 	public User getUserById(@PathVariable (value = "id") long userId) {
-		return this.userRepository.findById(userId)
+		User user = this.userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ userId));
+		user.setFirstTime("true");
+		return user;
 	}
 	
 	//public ResponseLogin login(@RequestBody User user) {

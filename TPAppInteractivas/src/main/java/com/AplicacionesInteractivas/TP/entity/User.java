@@ -31,19 +31,39 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
+	@Column(name = "first_time")
+	private String firstTime;
+	
+	@Column(name = "pregunta_seguridad")
+	private String preguntaSeguridad;
+	
+	@Column(name = "respuesta_seguridad")
+	private String respuestaSeguridad;
+	
 	public User() {
 		super();
 	}
 	
-	public User(String firstName, String lastName, String email, String username, String password) {
+	public User(String firstName, String lastName, String email, String username, String password,String firstTime, String preguntaSeguridad, String respuestaSeguridad) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.firstTime = firstTime;
+		this.preguntaSeguridad = preguntaSeguridad;
+		this.respuestaSeguridad = respuestaSeguridad;
 	}
 	
+	public String isFirstTime() {
+		return firstTime;
+	}
+
+	public void setFirstTime(String firstTime) {
+		this.firstTime = firstTime;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -85,5 +105,23 @@ public class User {
 		this.email = email;
 	}
 	
-	
+	public String getPreguntaSeguridad() {
+		return preguntaSeguridad;
+	}
+
+	public void setPreguntaSeguridad(String preguntaSeguridad) {
+		this.preguntaSeguridad = preguntaSeguridad;
+	}
+
+	public String getRespuestaSeguridad() {
+		return respuestaSeguridad;
+	}
+
+	public void setRespuestaSeguridad(String respuestaSeguridad) {
+		this.respuestaSeguridad = respuestaSeguridad;
+	}
+
+	public String getFirstTime() {
+		return firstTime;
+	}
 }
