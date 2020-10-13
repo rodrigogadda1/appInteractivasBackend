@@ -40,11 +40,79 @@ public class User {
 	@Column(name = "respuesta_seguridad")
 	private String respuestaSeguridad;
 	
+	@Column(name = "sexo")
+	private String sexo;
+	
+	@Column(name = "tipo_identificacion")
+	private String tipoIdentificacion;
+	
+	@Column(name = "numero_identificacion")
+	private String numeroIdentificacion;
+
+	public String getTipoUser() {
+		return tipoUser;
+	}
+
+	public void setTipoUser(String tipoUser) {
+		this.tipoUser = tipoUser;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public void setTipoIdentificacion(String tipoIdentificacion) {
+		this.tipoIdentificacion = tipoIdentificacion;
+	}
+
+	public void setNumeroIdentificacion(String numeroIdentificacion) {
+		this.numeroIdentificacion = numeroIdentificacion;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	@Column(name = "celular")
+	private String celular;
+	
+	@Column(name = "tipoUser")
+	private String tipoUser;
+	
+	public String getSexo() {
+		return sexo;
+	}
+
+	public String getTipoIdentificacion() {
+		return tipoIdentificacion;
+	}
+
+	public String getNumeroIdentificacion() {
+		return numeroIdentificacion;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
 	public User() {
 		super();
 	}
 	
-	public User(String firstName, String lastName, String email, String username, String password,String firstTime, String preguntaSeguridad, String respuestaSeguridad) {
+
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", username=" + username + ", password=" + password + ", firstTime=" + firstTime
+				+ ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad + ", sexo="
+				+ sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion
+				+ ", celular=" + celular + "]";
+	}
+
+	public User(String firstName, String lastName, String email, String username, String password, String firstTime,
+			String preguntaSeguridad, String respuestaSeguridad, String sexo, String tipoIdentificacion,
+			String numeroIdentificacion, String celular, String tipoUser) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -54,8 +122,13 @@ public class User {
 		this.firstTime = firstTime;
 		this.preguntaSeguridad = preguntaSeguridad;
 		this.respuestaSeguridad = respuestaSeguridad;
+		this.sexo = sexo;
+		this.tipoIdentificacion = tipoIdentificacion;
+		this.numeroIdentificacion = numeroIdentificacion;
+		this.celular = celular;
+		this.tipoUser = tipoUser;
 	}
-	
+
 	public String isFirstTime() {
 		return firstTime;
 	}
