@@ -95,5 +95,14 @@ public class Edificio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	@Override
+	public String toString() {
+		return "Edificio [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", cantUnidades=" + cantUnidades + ", unidades=" + unidades + ", espaciosComunes=" + espaciosComunes.toString()
+				+ "]";
+	}
+	
+	
 		
 }

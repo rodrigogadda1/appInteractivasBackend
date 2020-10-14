@@ -14,6 +14,9 @@ public class Unidad {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@Column(name="idEdificio")
+	private long idEdificio;
+	
 	@Column(name="piso")
 	private String piso;
 	
@@ -23,11 +26,13 @@ public class Unidad {
 	public Unidad() {
 		super();
 	}
-	public Unidad(long id, long edificioId, String piso, String unidad) {
+	
+	public Unidad(long id, long idEdificio, String piso, String unidad) {
 		super();
 		this.id = id;
 		this.piso = piso;
 		this.unidad = unidad;
+		this.idEdificio = idEdificio;
 	}
 
 	public long getId() {
@@ -43,11 +48,24 @@ public class Unidad {
 	public void setPiso(String piso) {
 		this.piso = piso;
 	}
+	@Override
+	public String toString() {
+		return "Unidad [id=" + id + ", idEdificio=" + idEdificio + ", piso=" + piso + ", unidad=" + unidad + "]";
+	}
+
 	public String getUnidad() {
 		return unidad;
 	}
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
+	}
+	
+	public long getIdEdificio() {
+		return idEdificio;
+	}
+
+	public void setIdEdificio(long idEdificio) {
+		this.idEdificio = idEdificio;
 	}
 
 }

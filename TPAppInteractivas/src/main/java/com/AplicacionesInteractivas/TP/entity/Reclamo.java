@@ -130,4 +130,13 @@ public class Reclamo {
 			this.idAgrupador = idAgrupador;
 			this.descripcion = descripcion;
 		}
+
+		@Override
+		public String toString() {
+			return "Reclamo [idReclamo=" + idReclamo + ", Nombre=" + Nombre + ", username=" + username + ", idEdificio="
+					+ idEdificio + ", idEspecialidad=" + idEspecialidad + ", fecha=" + fecha + ", idEstado=" + idEstado
+					+ ", idAgrupador=" + idAgrupador + ", descripcion=" + descripcion + "]";
+		}
+		
+		
 }

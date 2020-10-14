@@ -16,6 +16,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@Column(name = "tipoUser")
+	private String tipoUser;
+	
 	@Column(name = "first_name")
 	private String firstName;
 	
@@ -48,6 +51,9 @@ public class User {
 	
 	@Column(name = "numero_identificacion")
 	private String numeroIdentificacion;
+	
+	@Column(name = "celular")
+	private String celular;
 
 	public String getTipoUser() {
 		return tipoUser;
@@ -72,12 +78,6 @@ public class User {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-
-	@Column(name = "celular")
-	private String celular;
-	
-	@Column(name = "tipoUser")
-	private String tipoUser;
 	
 	public String getSexo() {
 		return sexo;
@@ -98,8 +98,6 @@ public class User {
 	public User() {
 		super();
 	}
-	
-
 	
 	@Override
 	public String toString() {
