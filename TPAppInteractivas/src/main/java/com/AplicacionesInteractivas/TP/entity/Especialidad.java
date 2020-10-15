@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Especialidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long id_especialidad;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -26,15 +26,15 @@ public class Especialidad {
 	}
 	public Especialidad(long id, String nombre, String descripcion) {
 		super();
-		this.id = id;
+		this.id_especialidad = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
 	public long getId() {
-		return id;
+		return id_especialidad;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.id_especialidad = id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -51,7 +51,7 @@ public class Especialidad {
 	
 	@Override
 	public String toString() {
-		return "Especialidad [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+		return "Especialidad [id=" + id_especialidad + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
 	}
 	
 	

@@ -13,41 +13,37 @@ public class Administrado {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long id_administrado;
 	
-	@Column(name = "idUser")
+	@Column(name = "id_user")
 	private String idUser;
 	
 	@Column(name = "tipo_administriado")
 	private String tipo_administriado;
-	
-	@Column(name = "id_unidad")
-	private String idUnidad;
 
 	public Administrado() {
 		super();
 	}
 
-	public Administrado(long id, String idUser, String tipo_administriado, String idUnidad) {
+	public Administrado(long id, String idUser, String tipo_administriado) {
 		super();
-		this.id = id;
+		this.id_administrado = id;
 		this.idUser = idUser;
 		this.tipo_administriado = tipo_administriado;
-		this.idUnidad = idUnidad;
 	}
 
 	@Override
 	public String toString() {
-		return "Administrado [id=" + id + ", idUser=" + idUser + ", tipo_administriado=" + tipo_administriado
-				+ ", idUnidad=" + idUnidad + "]";
+		return "Administrado [id=" + id_administrado + ", idUser=" + idUser + ", tipo_administriado=" + tipo_administriado
+				+  "]";
 	}
 
 	public long getId() {
-		return id;
+		return id_administrado;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.id_administrado = id;
 	}
 
 	public String getIdUser() {
@@ -65,14 +61,5 @@ public class Administrado {
 	public void setTipo_administriado(String tipo_administriado) {
 		this.tipo_administriado = tipo_administriado;
 	}
-
-	public String getIdUnidad() {
-		return idUnidad;
-	}
-
-	public void setIdUnidad(String idUnidad) {
-		this.idUnidad = idUnidad;
-	}
-	
 	
 }

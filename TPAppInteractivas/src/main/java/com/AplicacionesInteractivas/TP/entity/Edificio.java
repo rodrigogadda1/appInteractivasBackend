@@ -17,7 +17,7 @@ public class Edificio {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long id_edificio;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -45,7 +45,7 @@ public class Edificio {
 	public Edificio(long id,String nombre, String direccion, String telefono, long cantUnidades, List<Unidad> unidades,
 			List<EspacioComun> espaciosComunes) {
 		super();
-		this.id = id;
+		this.id_edificio = id;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
@@ -54,10 +54,10 @@ public class Edificio {
 		this.espaciosComunes = espaciosComunes;
 	}
 	public long getId() {
-		return id;
+		return id_edificio;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.id_edificio = id;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -98,7 +98,7 @@ public class Edificio {
 	
 	@Override
 	public String toString() {
-		return "Edificio [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
+		return "Edificio [id=" + id_edificio + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
 				+ ", cantUnidades=" + cantUnidades + ", unidades=" + unidades + ", espaciosComunes=" + espaciosComunes.toString()
 				+ "]";
 	}

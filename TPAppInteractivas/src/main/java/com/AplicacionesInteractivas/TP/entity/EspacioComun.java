@@ -13,7 +13,7 @@ public class EspacioComun {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long id_espaciocomun;
 		
 	@Column(name="nombre")
 	private String nombre;
@@ -27,15 +27,15 @@ public class EspacioComun {
 	}
 	public EspacioComun(long id, String nombre, String descripcion) {
 		super();
-		this.id = id;
+		this.id_espaciocomun = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
 	public long getId() {
-		return id;
+		return id_espaciocomun;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.id_espaciocomun = id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -52,7 +52,7 @@ public class EspacioComun {
 	
 	@Override
 	public String toString() {
-		return "EspacioComun [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+		return "EspacioComun [id=" + id_espaciocomun + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
 	}
 	
 	

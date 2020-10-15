@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,14 +16,15 @@ public class Unidad {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-//	@Column(name="idEdificio")
-//	private long idEdificio;
-	
 	@Column(name="piso")
 	private String piso;
 	
 	@Column(name="unidad")
 	private String unidad;
+	
+	@ManyToOne
+	@JoinColumn(name="id_edificio", nullable = true)
+	private Edificio edificio;
 	
 	public Unidad() {
 		super();
