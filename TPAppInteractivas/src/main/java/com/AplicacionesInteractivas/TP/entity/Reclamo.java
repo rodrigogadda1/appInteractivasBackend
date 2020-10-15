@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Reclamo {
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		private long idReclamo;
+		private long id_reclamo;
 		
 		@Column(name = "nombre")
 		private String Nombre;
@@ -23,19 +23,19 @@ public class Reclamo {
 		@Column(name="username")
 		private String username;
 		
-		@Column(name="idedificio")
+		@Column(name="id_edificio")
 		private long idEdificio;
 		
-		@Column(name="idespecialidad")
+		@Column(name="id_especialidad")
 		private long idEspecialidad;
 		
 		@Column(name="fecha")
 		private Date fecha;
 		
-		@Column(name="idestado")
+		@Column(name="id_estado")
 		private long idEstado;
 		
-		@Column(name="idagrupador")
+		@Column(name="id_agrupador")
 		private long idAgrupador;
 		
 		@Column(name="descripcion")
@@ -46,11 +46,11 @@ public class Reclamo {
 		}
 
 		public long getIdReclamo() {
-			return idReclamo;
+			return id_reclamo;
 		}
 
-		public void setIdReclamo(long idReclamo) {
-			this.idReclamo = idReclamo;
+		public void setIdReclamo(long id_reclamo) {
+			this.id_reclamo = id_reclamo;
 		}
 
 		public String getNombre() {
@@ -117,10 +117,10 @@ public class Reclamo {
 			this.descripcion = descripcion;
 		}
 
-		public Reclamo(long idReclamo, String nombre, String username, long idEdificio, long idEspecialidad, Date fecha,
+		public Reclamo(long id_reclamo, String nombre, String username, long idEdificio, long idEspecialidad, Date fecha,
 				long idEstado, long idAgrupador, String descripcion) {
 			super();
-			this.idReclamo = idReclamo;
+			this.id_reclamo = id_reclamo;
 			Nombre = nombre;
 			this.username = username;
 			this.idEdificio = idEdificio;
@@ -133,7 +133,7 @@ public class Reclamo {
 
 		@Override
 		public String toString() {
-			return "Reclamo [idReclamo=" + idReclamo + ", Nombre=" + Nombre + ", username=" + username + ", idEdificio="
+			return "Reclamo [idReclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username + ", idEdificio="
 					+ idEdificio + ", idEspecialidad=" + idEspecialidad + ", fecha=" + fecha + ", idEstado=" + idEstado
 					+ ", idAgrupador=" + idAgrupador + ", descripcion=" + descripcion + "]";
 		}
