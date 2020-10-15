@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Unidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long id_unidad;
 	
 //	@Column(name="idEdificio")
 //	private long idEdificio;
@@ -28,19 +28,19 @@ public class Unidad {
 	}
 	
 //	long idEdificio
-	public Unidad(long id,  String piso, String unidad) {
+	public Unidad(long id_unidad,  String piso, String unidad) {
 		super();
-		this.id = id;
+		this.id_unidad = id_unidad;
 		this.piso = piso;
 		this.unidad = unidad;
 //		this.idEdificio = idEdificio;
 	}
 
 	public long getId() {
-		return id;
+		return id_unidad;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long id_unidad) {
+		this.id_unidad = id_unidad;
 	}
 
 	public String getPiso() {
@@ -51,7 +51,7 @@ public class Unidad {
 	}
 	@Override
 	public String toString() {
-		return "Unidad [id=" + id + ", idEdificio="  + ", piso=" + piso + ", unidad=" + unidad + "]";
+		return "Unidad [id=" + id_unidad + ", idEdificio="  + ", piso=" + piso + ", unidad=" + unidad + "]";
 	}
 
 	public String getUnidad() {

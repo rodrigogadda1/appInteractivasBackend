@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long id_user;
 	
 	@Column(name = "tipoUser")
 	private String tipoUser;
@@ -101,7 +101,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "User [id=" + id_user + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", username=" + username + ", password=" + password + ", firstTime=" + firstTime
 				+ ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad + ", sexo="
 				+ sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion
@@ -152,10 +152,10 @@ public class User {
 	}
 
 	public long getId() {
-		return id;
+		return id_user;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long id_user) {
+		this.id_user = id_user;
 	}
 	public String getFirstName() {
 		return firstName;
