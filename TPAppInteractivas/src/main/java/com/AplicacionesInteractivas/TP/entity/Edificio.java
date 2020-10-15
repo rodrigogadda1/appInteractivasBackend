@@ -32,11 +32,11 @@ public class Edificio {
 	private long cantUnidades;
 	
 	@OneToMany
-	@JoinColumn(name="edif_unidades", nullable = true)
+	@JoinColumn(name="id_edificio", nullable = true)
 	private List<Unidad> unidades;
 		
 	@OneToMany
-	@JoinColumn(name="edif_espcomun", nullable = true)
+	@JoinColumn(name="id_edificio", nullable = true)
 	private List<EspacioComun> espaciosComunes;
 
 	public Edificio() {
