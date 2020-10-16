@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.UnidadRepository;
@@ -31,15 +32,29 @@ public class UnidadController {
 	//get All unidades
 	@GetMapping
 	public List<Unidad> getAllUnidades(){
-		return this.unidadRepository.findAll();
+		List<Unidad> unidades = this.unidadRepository.findAll();
+		for (int i = 0; i < unidades.size(); i++) {
+			Unidad unidad = unidades.get(i);
+			Edificio edificio = unidad.getEdificio();
+			edificio.setUnidades(null);
+			edificio.setEspaciosComunes(null);
+			unidad.setEdificio(edificio);
+			unidades.set(i, unidad);
+		}
+		return unidades;
 	}
 	//get unidad By ID
 	@GetMapping("/{id}")
 	public Unidad getUnidadById(@PathVariable (value="id") long unidadId) {
-		
-		return this.unidadRepository.findById(unidadId)
+		Unidad unidad = this.unidadRepository.findById(unidadId)
 				.orElseThrow(() -> new ResourceNotFoundException("Unidad not fount whth ID" + unidadId));
+		Edificio edificio = unidad.getEdificio();
+		edificio.setUnidades(null);
+		edificio.setEspaciosComunes(null);
+		unidad.setEdificio(edificio);
+		return unidad;
 	}
+	
 	//delete unidad by ID
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Unidad>  deleteUnidadById(@PathVariable (value="id") long unidadId) {

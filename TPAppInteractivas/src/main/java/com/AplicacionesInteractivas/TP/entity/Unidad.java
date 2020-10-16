@@ -30,7 +30,23 @@ public class Unidad {
 		super();
 	}
 	
-//	long idEdificio
+	public long getId_unidad() {
+		return id_unidad;
+	}
+
+	public void setId_unidad(long id_unidad) {
+		this.id_unidad = id_unidad;
+	}
+
+	public Edificio getEdificio() {
+		return edificio;
+	}
+
+	public void setEdificio(Edificio edificio) {
+		this.edificio = edificio;
+	}
+
+	//	long idEdificio
 	public Unidad(long id_unidad,  String piso, String unidad) {
 		super();
 		this.id_unidad = id_unidad;

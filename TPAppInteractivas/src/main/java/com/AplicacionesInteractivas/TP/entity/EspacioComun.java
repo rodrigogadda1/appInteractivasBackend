@@ -27,6 +27,18 @@ public class EspacioComun {
 	@JoinColumn(name="id_edificio", nullable = true)
 	private Edificio edificio;
 	
+	public long getId_espaciocomun() {
+		return id_espaciocomun;
+	}
+	public void setId_espaciocomun(long id_espaciocomun) {
+		this.id_espaciocomun = id_espaciocomun;
+	}
+	public Edificio getEdificio() {
+		return edificio;
+	}
+	public void setEdificio(Edificio edificio) {
+		this.edificio = edificio;
+	}
 	public EspacioComun() {
 		super();
 	}
