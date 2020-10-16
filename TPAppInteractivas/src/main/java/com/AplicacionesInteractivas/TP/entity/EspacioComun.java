@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="EspaciosComunes")
 public class EspacioComun {
@@ -24,6 +26,7 @@ public class EspacioComun {
 	private String descripcion;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="id_edificio", nullable = true)
 	private Edificio edificio;
 	
