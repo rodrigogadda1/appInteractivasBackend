@@ -31,18 +31,10 @@ public class Edificio {
 	@Column(name="CantUnidades")
 	private long cantUnidades;
 	
-	public long getId_edificio() {
-		return id_edificio;
-	}
-	public void setId_edificio(long id_edificio) {
-		this.id_edificio = id_edificio;
-	}
-
 	@OneToMany
 	@JoinColumn(name="id_edificio", nullable = true)
 	private List<Unidad> unidades;
- 
-		
+ 		
 	@OneToMany
 	@JoinColumn(name="id_edificio", nullable = true)
 	private List<EspacioComun> espaciosComunes;
@@ -102,6 +94,12 @@ public class Edificio {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public long getId_edificio() {
+		return id_edificio;
+	}
+	public void setId_edificio(long id_edificio) {
+		this.id_edificio = id_edificio;
 	}
 	
 	@Override
