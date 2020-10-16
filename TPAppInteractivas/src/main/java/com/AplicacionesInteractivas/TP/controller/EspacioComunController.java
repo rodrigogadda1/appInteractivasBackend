@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
+import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EspacioComunRepository;
 
@@ -32,15 +34,29 @@ public class EspacioComunController {
 	//get all EspacioComun
 	@GetMapping
 	public List<EspacioComun> getAllEspacioComun(){
-		return this.espaciocomunRepository.findAll();
+		List<EspacioComun> espacios = this.espaciocomunRepository.findAll();
+		for (int i = 0; i < espacios.size(); i++) {
+			EspacioComun espaciocomun = espacios.get(i);
+			Edificio edificio = espaciocomun.getEdificio();
+			edificio.setUnidades(null);
+			edificio.setEspaciosComunes(null);
+			espaciocomun.setEdificio(edificio);
+			espacios.set(i, espaciocomun);
+		}
+		return espacios;
 	}
 	
 	//get EspacioComun by id
 	@GetMapping("/{id}")
 	public EspacioComun getEspacioComunById(@PathVariable (value="id") long espaciocomunId) {
 		
-		return this.espaciocomunRepository.findById(espaciocomunId)
+		EspacioComun espaciocomun = this.espaciocomunRepository.findById(espaciocomunId)
 				.orElseThrow(() -> new ResourceNotFoundException("Especialiad not fount whth ID" + espaciocomunId));
+		Edificio edificio = espaciocomun.getEdificio();
+		edificio.setUnidades(null);
+		edificio.setEspaciosComunes(null);
+		espaciocomun.setEdificio(edificio);
+		return espaciocomun;
 	}
 	//delete EspacioComun by id
 	@DeleteMapping("/{id}")
