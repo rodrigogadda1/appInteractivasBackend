@@ -35,7 +35,6 @@ public class UserController {
 	public User getUserById(@PathVariable (value = "id") long userId) {
 		User user = this.userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ userId));
-		user.setFirstTime("true");
 		return user;
 	}
 	

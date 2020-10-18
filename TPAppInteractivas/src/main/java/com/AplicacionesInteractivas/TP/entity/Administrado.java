@@ -20,7 +20,7 @@ public class Administrado {
 	private long id_administrado;
 	
 	@Column(name = "id_user")
-	private String idUser;
+	private long id_user;
 	
 	@Column(name = "tipo_administriado")
 	private String tipo_administriado;
@@ -33,10 +33,10 @@ public class Administrado {
 		super();
 	}
 
-	public Administrado(long id_administrado, String idUser, String tipo_administriado, List<Unidad> unidades) {
+	public Administrado(long id_administrado, long id_user, String tipo_administriado, List<Unidad> unidades) {
 		super();
 		this.id_administrado = id_administrado;
-		this.idUser = idUser;
+		this.id_user = id_user;
 		this.tipo_administriado = tipo_administriado;
 		this.unidades = unidades;
 	}
@@ -51,12 +51,12 @@ public class Administrado {
 		this.id_administrado = id_administrado;
 	}
 
-	public String getIdUser() {
-		return idUser;
+	public long getIdUser() {
+		return id_user;
 	}
 
-	public void setIdUser(String idUser) {
-		this.idUser = idUser;
+	public void setIdUser(long id_user) {
+		this.id_user = id_user;
 	}
 
 	public String getTipo_administriado() {
@@ -77,7 +77,7 @@ public class Administrado {
 
 	@Override
 	public String toString() {
-		return "Administrado [id=" + id_administrado + ", idUser=" + idUser + ", tipo_administriado=" + tipo_administriado
+		return "Administrado [id=" + id_administrado + ", idUser=" + id_user + ", tipo_administriado=" + tipo_administriado
 				+  "]";
 	}
 

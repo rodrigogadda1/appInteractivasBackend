@@ -34,11 +34,11 @@ public class EdificioController {
 	}
 	
 	//get all Edificios
-		@GetMapping
+//		@GetMapping
+//		public List<Edificio> getAllEdificio(){
+//			return this.edificioRepository.findAll();
+//		}
 		public List<Edificio> getAllEdificio(){
-			return this.edificioRepository.findAll();
-		}
-		/*public List<Edificio> getAllEdificio(){
 			List<Edificio> edificios =  this.edificioRepository.findAll();
 			for (int i = 0; i < edificios.size(); i++) {
 				Edificio edificio = edificios.get(i);
@@ -59,16 +59,16 @@ public class EdificioController {
 				edificios.set(i, edificio);
 			}
 			return edificios;
-		}
-*/		
+		}	
 		
-		@GetMapping("/{id}")
-		public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
-			
-			return this.edificioRepository.findById(edificioId)
-					.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
-		}
-	/*public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
+//		@GetMapping("/{id}")
+//		public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
+//			
+//			return this.edificioRepository.findById(edificioId)
+//					.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
+//		}
+		
+	public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
 		Edificio edificio =
 		 this.edificioRepository.findById(edificioId)
 				.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
@@ -89,7 +89,8 @@ public class EdificioController {
 		return edificio;
 		}
 	
-	*/
+	
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Edificio>  deleteEdificioById(@PathVariable (value="id") long edificioId) {
 		Edificio edifExisting = this.edificioRepository.findById(edificioId)
@@ -97,4 +98,6 @@ public class EdificioController {
 		this.edificioRepository.delete(edifExisting);
 		return ResponseEntity.ok().build();
 	}
+	
+	
 }

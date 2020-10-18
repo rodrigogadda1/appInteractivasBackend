@@ -54,6 +54,15 @@ public class User {
 	
 	@Column(name = "celular")
 	private String celular;
+	
+
+	public long getId_user() {
+		return id_user;
+	}
+
+	public void setId_user(long id_user) {
+		this.id_user = id_user;
+	}
 
 	public String getTipoUser() {
 		return tipoUser;
@@ -101,17 +110,19 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id_user + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", firstTime=" + firstTime
-				+ ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad + ", sexo="
-				+ sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion
-				+ ", celular=" + celular + "]";
+		return "User [id_user=" + id_user + ", tipoUser=" + tipoUser + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", username=" + username + ", password=" + password + ", firstTime="
+				+ firstTime + ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad
+				+ ", sexo=" + sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion="
+				+ numeroIdentificacion + ", celular=" + celular  + "]";
 	}
 
-	public User(String firstName, String lastName, String email, String username, String password, String firstTime,
-			String preguntaSeguridad, String respuestaSeguridad, String sexo, String tipoIdentificacion,
-			String numeroIdentificacion, String celular, String tipoUser) {
+	public User(long id_user, String tipoUser, String firstName, String lastName, String email, String username,
+			String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
+			String tipoIdentificacion, String numeroIdentificacion, String celular) {
 		super();
+		this.id_user = id_user;
+		this.tipoUser = tipoUser;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -124,8 +135,9 @@ public class User {
 		this.tipoIdentificacion = tipoIdentificacion;
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.celular = celular;
-		this.tipoUser = tipoUser;
 	}
+
+
 
 	public String isFirstTime() {
 		return firstTime;
