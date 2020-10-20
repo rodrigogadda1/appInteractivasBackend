@@ -25,7 +25,6 @@ public class Unidad {
 	private String unidad;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="id_edificio", nullable = true)
 	private Edificio edificio;
 	
@@ -82,13 +81,5 @@ public class Unidad {
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
 	}
-	
-//	public long getIdEdificio() {
-//		return idEdificio;
-//	}
-//
-//	public void setIdEdificio(long idEdificio) {
-//		this.idEdificio = idEdificio;
-//	}
 
 }

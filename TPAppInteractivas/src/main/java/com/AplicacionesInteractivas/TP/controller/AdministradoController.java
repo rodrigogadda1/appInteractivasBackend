@@ -1,5 +1,6 @@
 package com.AplicacionesInteractivas.TP.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
+import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.entity.User;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.AdministradoRepository;
@@ -45,8 +48,18 @@ public class AdministradoController {
 		if (seleccionado == -1) {
 			return null;
 		} else {
-			return administradoRepository.findById(seleccionado)
+			Administrado administrado = administradoRepository.findById(seleccionado)
 					.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ id_user));
+			List<Unidad> unidades = administrado.getUnidades();
+			for (int i = 0; i < unidades.size(); i++) {
+				Unidad unidad = unidades.get(i);
+				Edificio edificio = unidad.getEdificio();
+				edificio.setUnidades(null);
+				edificio.setEspaciosComunes(null);
+				unidad.setEdificio(edificio);
+			}
+			administrado.setUnidades(unidades);
+			return administrado;
 		}
 	}
 	
