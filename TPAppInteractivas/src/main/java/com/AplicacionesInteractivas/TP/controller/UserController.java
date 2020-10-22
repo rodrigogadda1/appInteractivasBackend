@@ -72,19 +72,45 @@ public class UserController {
 	public User updateUser(@RequestBody User user, @PathVariable ("id") long userId) {
 		User existing = this.userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ userId));
-	    existing.setFirstName(user.getFirstName());
-	    existing.setLastName(user.getLastName());
-	    existing.setEmail(user.getEmail());
-	    existing.setUsername(user.getUsername());
-	    existing.setPassword(user.getPassword());
-	    existing.setCelular(user.getCelular());
-	    existing.setFirstTime(user.getFirstTime());
+		if(user.getFirstName() != null) {
+			existing.setFirstName(user.getFirstName());
+		}
+		if(user.getLastName() != null) {
+			existing.setLastName(user.getLastName());
+		}
+		if(user.getEmail() != null) {
+			existing.setEmail(user.getEmail());
+		}
+		if(user.getUsername() != null) {
+			existing.setUsername(user.getUsername());
+		}
+		if(user.getPassword() != null) {
+			existing.setPassword(user.getPassword());
+		}
+		if(user.getCelular() != null) {
+			existing.setCelular(user.getCelular());
+		}
+		if(user.getFirstTime() != null) {
+			existing.setFirstTime(user.getFirstTime());
+		}
+		if(user.getPreguntaSeguridad() != null) {
 	    existing.setPreguntaSeguridad(user.getPreguntaSeguridad());
-	    existing.setRespuestaSeguridad(user.getRespuestaSeguridad());
-	    existing.setNumeroIdentificacion(user.getNumeroIdentificacion());
-	    existing.setSexo(user.getSexo());
-	    existing.setTipoIdentificacion(user.getTipoIdentificacion());
-	    existing.setTipoUser(user.getTipoUser());
+		}
+		if(user.getRespuestaSeguridad() != null) {
+			existing.setRespuestaSeguridad(user.getRespuestaSeguridad());
+		}
+	    if(user.getNumeroIdentificacion() != null) {
+	    	existing.setNumeroIdentificacion(user.getNumeroIdentificacion());
+	    }
+	    if(user.getSexo() != null) {
+	    	existing.setSexo(user.getSexo());
+	    }
+	    if(user.getTipoIdentificacion() != null) {
+	    	existing.setTipoIdentificacion(user.getTipoIdentificacion());
+	    }
+	    if(user.getTipoUser() != null) {
+	    	existing.setTipoUser(user.getTipoUser());
+	    }
 		return this.userRepository.save(existing);
 	}
 	
