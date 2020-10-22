@@ -52,7 +52,7 @@ public class UserController {
 				if ( allUsers.get(contador).getUsername().equals(username)  ) {
 					userEncontrado = true;
 					if (	allUsers.get(contador).getPassword().toString().equals(password)	) {
-						LoginExitosoId = allUsers.get(contador).getId();
+						LoginExitosoId = allUsers.get(contador).getid();
 					}
 				}
 				contador++;
@@ -77,6 +77,14 @@ public class UserController {
 	    existing.setEmail(user.getEmail());
 	    existing.setUsername(user.getUsername());
 	    existing.setPassword(user.getPassword());
+	    existing.setCelular(user.getCelular());
+	    existing.setFirstTime(user.getFirstTime());
+	    existing.setPreguntaSeguridad(user.getPreguntaSeguridad());
+	    existing.setRespuestaSeguridad(user.getRespuestaSeguridad());
+	    existing.setNumeroIdentificacion(user.getNumeroIdentificacion());
+	    existing.setSexo(user.getSexo());
+	    existing.setTipoIdentificacion(user.getTipoIdentificacion());
+	    existing.setTipoUser(user.getTipoUser());
 		return this.userRepository.save(existing);
 	}
 	

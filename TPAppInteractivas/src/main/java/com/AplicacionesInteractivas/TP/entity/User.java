@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id_user;
+	private long id;
 	
 	@Column(name = "tipoUser")
 	private String tipoUser;
@@ -56,12 +56,12 @@ public class User {
 	private String celular;
 	
 
-	public long getId_user() {
-		return id_user;
+	public long getid() {
+		return id;
 	}
 
-	public void setId_user(long id_user) {
-		this.id_user = id_user;
+	public void setid(long id) {
+		this.id = id;
 	}
 
 	public String getTipoUser() {
@@ -110,18 +110,18 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id_user=" + id_user + ", tipoUser=" + tipoUser + ", firstName=" + firstName + ", lastName="
+		return "User [id=" + id + ", tipoUser=" + tipoUser + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", email=" + email + ", username=" + username + ", password=" + password + ", firstTime="
 				+ firstTime + ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad
 				+ ", sexo=" + sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion="
 				+ numeroIdentificacion + ", celular=" + celular  + "]";
 	}
 
-	public User(long id_user, String tipoUser, String firstName, String lastName, String email, String username,
+	public User(long id, String tipoUser, String firstName, String lastName, String email, String username,
 			String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
 			String tipoIdentificacion, String numeroIdentificacion, String celular) {
 		super();
-		this.id_user = id_user;
+		this.id = id;
 		this.tipoUser = tipoUser;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -136,8 +136,29 @@ public class User {
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.celular = celular;
 	}
+	
+	
 
 
+
+	public User(String tipoUser, String firstName, String lastName, String email, String username, String password,
+			String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
+			String tipoIdentificacion, String numeroIdentificacion, String celular) {
+		super();
+		this.tipoUser = tipoUser;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.firstTime = firstTime;
+		this.preguntaSeguridad = preguntaSeguridad;
+		this.respuestaSeguridad = respuestaSeguridad;
+		this.sexo = sexo;
+		this.tipoIdentificacion = tipoIdentificacion;
+		this.numeroIdentificacion = numeroIdentificacion;
+		this.celular = celular;
+	}
 
 	public String isFirstTime() {
 		return firstTime;
@@ -163,12 +184,6 @@ public class User {
 		this.password = password;
 	}
 
-	public long getId() {
-		return id_user;
-	}
-	public void setId(long id_user) {
-		this.id_user = id_user;
-	}
 	public String getFirstName() {
 		return firstName;
 	}
