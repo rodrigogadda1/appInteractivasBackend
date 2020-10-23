@@ -1,5 +1,7 @@
 package com.AplicacionesInteractivas.TP.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,10 +31,37 @@ public class Unidad {
 	@JoinColumn(name="id_edificio", nullable = true)
 	private Edificio edificio;
 	
+	@OneToMany
+	@JoinColumn(name="id_administradounidad")
+	private List<AdministradoUnidad> administradoUnidades;
+	
 	public Unidad() {
 		super();
 	}
 	
+	
+	
+	public Unidad(long id_unidad, String piso, String unidad, Edificio edificio,
+			List<AdministradoUnidad> administradoUnidades) {
+		super();
+		this.id_unidad = id_unidad;
+		this.piso = piso;
+		this.unidad = unidad;
+		this.edificio = edificio;
+		this.administradoUnidades = administradoUnidades;
+	}
+
+
+	
+
+	@Override
+	public String toString() {
+		return "Unidad [id_unidad=" + id_unidad + ", piso=" + piso + ", unidad=" + unidad + ", edificio=" + edificio
+				+ ", administradoUnidades=" + administradoUnidades + "]";
+	}
+
+
+
 	public long getId_unidad() {
 		return id_unidad;
 	}
@@ -48,14 +78,6 @@ public class Unidad {
 		this.edificio = edificio;
 	}
 
-	//	long idEdificio
-	public Unidad(long id_unidad,  String piso, String unidad) {
-		super();
-		this.id_unidad = id_unidad;
-		this.piso = piso;
-		this.unidad = unidad;
-//		this.idEdificio = idEdificio;
-	}
 
 	public long getId() {
 		return id_unidad;
@@ -70,10 +92,6 @@ public class Unidad {
 	public void setPiso(String piso) {
 		this.piso = piso;
 	}
-	@Override
-	public String toString() {
-		return "Unidad [id=" + id_unidad + ", idEdificio="  + ", piso=" + piso + ", unidad=" + unidad + "]";
-	}
 
 	public String getUnidad() {
 		return unidad;
@@ -81,5 +99,19 @@ public class Unidad {
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
 	}
+
+
+
+	public List<AdministradoUnidad> getAdministradoUnidades() {
+		return administradoUnidades;
+	}
+
+
+
+	public void setAdministradoUnidades(List<AdministradoUnidad> administradoUnidades) {
+		this.administradoUnidades = administradoUnidades;
+	}
+	
+	
 
 }

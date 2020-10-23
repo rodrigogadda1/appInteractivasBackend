@@ -22,25 +22,29 @@ public class Administrado {
 	@Column(name = "id_user")
 	private long id_user;
 	
-	@Column(name = "tipo_administriado")
-	private String tipo_administriado;
-	
 	@OneToMany
-	@JoinColumn(name="id_administrado", nullable = true)
-	private List<Unidad> unidades;
-
+	@JoinColumn(name="id_administradounidad")
+	private List<AdministradoUnidad> administradoUnidades;
+	
 	public Administrado() {
 		super();
 	}
 
-	public Administrado(long id_administrado, long id_user, String tipo_administriado, List<Unidad> unidades) {
+
+	public Administrado(long id_administrado, long id_user, List<AdministradoUnidad> administradoUnidades) {
 		super();
 		this.id_administrado = id_administrado;
 		this.id_user = id_user;
-		this.tipo_administriado = tipo_administriado;
-		this.unidades = unidades;
+		this.administradoUnidades = administradoUnidades;
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return "Administrado [id_administrado=" + id_administrado + ", id_user=" + id_user + ", administradoUnidades="
+				+ administradoUnidades + "]";
+	}
 
 
 	public long getId_administrado() {
@@ -59,28 +63,28 @@ public class Administrado {
 		this.id_user = id_user;
 	}
 
-	public String getTipo_administriado() {
-		return tipo_administriado;
+
+	public long getId_user() {
+		return id_user;
 	}
 
-	public void setTipo_administriado(String tipo_administriado) {
-		this.tipo_administriado = tipo_administriado;
+
+	public void setId_user(long id_user) {
+		this.id_user = id_user;
 	}
 
-	public List<Unidad> getUnidades() {
-		return unidades;
+
+	public List<AdministradoUnidad> getAdministradoUnidades() {
+		return administradoUnidades;
 	}
 
-	public void setUnidades(List<Unidad> unidades) {
-		this.unidades = unidades;
+
+	public void setAdministradoUnidades(List<AdministradoUnidad> administradoUnidades) {
+		this.administradoUnidades = administradoUnidades;
 	}
 
-	@Override
-	public String toString() {
-		return "Administrado [id=" + id_administrado + ", idUser=" + id_user + ", tipo_administriado=" + tipo_administriado
-				+  "]";
-	}
 
+	
 	
 	
 }
