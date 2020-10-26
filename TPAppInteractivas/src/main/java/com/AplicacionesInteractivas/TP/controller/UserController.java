@@ -61,6 +61,25 @@ public class UserController {
 		return new ResponseLogin(LoginExitosoId);
 	}
 	
+	//login
+		@GetMapping("/getByUser")
+		public User login(@RequestParam("username") String username ) {
+			List<User> allUsers = this.userRepository.findAll();
+			boolean userEncontrado = false;
+			User user = new User();
+			if (allUsers.size() > 0) {
+				int contador = 0;
+				while ((contador < allUsers.size()) && !userEncontrado) {
+					if ( allUsers.get(contador).getUsername().equals(username)  ) {
+						userEncontrado = true;
+						user = allUsers.get(contador);
+					}
+					contador++;
+				}
+			}
+			return user;
+		}
+	
 	//create user
 	@PostMapping
 	public User createUser(@RequestBody User user) {
