@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,26 +39,39 @@ public class Edificio {
 	@OneToMany
 	@JoinColumn(name="id_edificio", nullable = true)
 	private List<EspacioComun> espaciosComunes;
+	
+	@ManyToMany
+	@JoinColumn(name="id_edificio", nullable = true)
+	private List<Inspector> inspectores;
 
 	public Edificio() {
 		super ();
 	}
-	public Edificio(long id,String nombre, String direccion, String telefono, long cantUnidades, List<Unidad> unidades,
-			List<EspacioComun> espaciosComunes) {
+	public Edificio(long id_edificio, String nombre, String direccion, String telefono, long cantUnidades,
+			List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<Inspector> inspectores) {
 		super();
-		this.id_edificio = id;
+		this.id_edificio = id_edificio;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.cantUnidades = cantUnidades;
 		this.unidades = unidades;
 		this.espaciosComunes = espaciosComunes;
+		this.inspectores = inspectores;
 	}
-	public long getId() {
+
+	
+	public long getId_edificio() {
 		return id_edificio;
 	}
-	public void setId(long id) {
-		this.id_edificio = id;
+	public void setId_edificio(long id_edificio) {
+		this.id_edificio = id_edificio;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -89,25 +103,19 @@ public class Edificio {
 	public void setEspaciosComunes(List<EspacioComun> espaciosComunes) {
 		this.espaciosComunes = espaciosComunes;
 	}
-	public String getNombre() {
-		return nombre;
+	public List<Inspector> getInspectores() {
+		return inspectores;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setInspectores(List<Inspector> inspectores) {
+		this.inspectores = inspectores;
 	}
-	public long getId_edificio() {
-		return id_edificio;
-	}
-	public void setId_edificio(long id_edificio) {
-		this.id_edificio = id_edificio;
-	}
-	
 	@Override
 	public String toString() {
-		return "Edificio [id=" + id_edificio + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
-				+ ", cantUnidades=" + cantUnidades + ", unidades=" + unidades + ", espaciosComunes=" + espaciosComunes.toString()
-				+ "]";
+		return "Edificio [id_edificio=" + id_edificio + ", nombre=" + nombre + ", direccion=" + direccion
+				+ ", telefono=" + telefono + ", cantUnidades=" + cantUnidades + ", unidades=" + unidades
+				+ ", espaciosComunes=" + espaciosComunes + ", inspectores=" + inspectores + "]";
 	}
+	
 	
 	
 		

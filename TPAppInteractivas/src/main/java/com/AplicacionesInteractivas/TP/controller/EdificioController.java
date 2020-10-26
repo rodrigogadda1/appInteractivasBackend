@@ -34,10 +34,11 @@ public class EdificioController {
 	}
 	
 	//get all Edificios
-//		@GetMapping
-//		public List<Edificio> getAllEdificio(){
-//			return this.edificioRepository.findAll();
-//		}
+	/*
+	 * @GetMapping public List<Edificio> getAllEdificio(){ return
+	 * this.edificioRepository.findAll(); }
+	 */
+		@GetMapping
 		public List<Edificio> getAllEdificio(){
 			List<Edificio> edificios =  this.edificioRepository.findAll();
 			for (int i = 0; i < edificios.size(); i++) {
