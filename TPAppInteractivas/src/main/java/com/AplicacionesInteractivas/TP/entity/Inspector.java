@@ -26,7 +26,7 @@ public class Inspector {
 	private String apellido;
 	
 	@ManyToMany
-	@JoinColumn(name="id_edificio", nullable = true)
+	//@JoinColumn(name="id_edificio", nullable = true)
 	private List<Edificio> edificios;
 
 	public Inspector() {

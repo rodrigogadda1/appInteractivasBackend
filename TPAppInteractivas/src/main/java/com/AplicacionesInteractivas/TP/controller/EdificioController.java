@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Especialidad;
+import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EdificioRepository;

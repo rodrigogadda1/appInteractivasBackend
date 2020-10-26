@@ -10,12 +10,12 @@ INSERT INTO tpdatabase.inspectores(id_inspector,apellido,nombre)VALUES(2,"Gadda"
 INSERT INTO tpdatabase.inspectores(id_inspector,apellido,nombre)VALUES(3,"Gonzalez","Alejandro");
 select * from tpdatabase.inspectores;
 /*INSERTAR RELACION EDIFICIOS-INSPECTORES*/
-INSERT INTO tpdatabase.edificios_inspectores(edificio_id_edificio,inspectores_id_inspector) values(1,1);
-INSERT INTO tpdatabase.edificios_inspectores(edificio_id_edificio,inspectores_id_inspector) values(1,2);
-INSERT INTO tpdatabase.edificios_inspectores(edificio_id_edificio,inspectores_id_inspector) values(1,3);
-INSERT INTO tpdatabase.edificios_inspectores(edificio_id_edificio,inspectores_id_inspector) values(2,1);
-INSERT INTO tpdatabase.edificios_inspectores(edificio_id_edificio,inspectores_id_inspector) values(2,2);
-select * from tpdatabase.edificios_inspectores;
+INSERT INTO tpdatabase.inspectores_edificios(inspector_id_inspector,edificios_id_edificio) values(1,1);
+INSERT INTO tpdatabase.inspectores_edificios(inspector_id_inspector,edificios_id_edificio) values(2,1);
+INSERT INTO tpdatabase.inspectores_edificios(inspector_id_inspector,edificios_id_edificio) values(3,1);
+INSERT INTO tpdatabase.inspectores_edificios(inspector_id_inspector,edificios_id_edificio) values(1,2);
+INSERT INTO tpdatabase.inspectores_edificios(inspector_id_inspector,edificios_id_edificio) values(2,2);
+select * from tpdatabase.inspectores_edificios;
 /*INSERTAR UNIDADES*/
 INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (1,5,"B",1);
 INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (2,1,"C",2);
