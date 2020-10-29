@@ -84,7 +84,8 @@ public class EdificioController {
 //			return this.edificioRepository.findById(edificioId)
 //					.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
 //		}
-		
+	
+	@GetMapping("/{id}")
 	public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
 		Edificio edificio =
 		 this.edificioRepository.findById(edificioId)
@@ -102,6 +103,19 @@ public class EdificioController {
 			unidad.setEdificio(null);
 			unidades.set(i, unidad);
 		}
+		
+		List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
+		for (int j = 0; j < inspectoredificios.size(); j++) {
+			InspectorEdificio inspectoredificio=inspectoredificios.get(j);
+			inspectoredificio.setEdificio(null);
+			Inspector inspector=inspectoredificio.getInspector();
+			inspector.setInspectoredificio(null);
+			inspectoredificio.setInspector(inspector);
+			inspectoredificios.set(j, inspectoredificio);
+		}
+		
+		edificio.setInspectoredificio(inspectoredificios);
+		
 		edificio.setUnidades(unidades);
 		return edificio;
 		}

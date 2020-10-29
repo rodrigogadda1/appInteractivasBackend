@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
+import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.InspectorRepository;
 
@@ -29,10 +32,37 @@ public class InspectorController {
 	}
 	
 	//get all Inspectores
+//	@GetMapping
+//	public List<Inspector> getAllInspectores(){
+//		return this.inspectorRepository.findAll();
+//	}
+
 	@GetMapping
 	public List<Inspector> getAllInspectores(){
-		return this.inspectorRepository.findAll();
+		List<Inspector> inspectores = this.inspectorRepository.findAll();
+		for (int i = 0; i < inspectores.size(); i++) {
+			Inspector inspector= inspectores.get(i);
+			List<InspectorEdificio> inspectoresEdificios= inspector.getInspectoredificio();
+			for (int j = 0; j < inspectoresEdificios.size(); j++) {
+				InspectorEdificio inspectorEdificio=inspectoresEdificios.get(j);
+				inspectorEdificio.setInspector(null);
+				
+				Edificio edificio = inspectorEdificio.getEdificio();
+				edificio.setUnidades(null);
+				edificio.setInspectoredificio(null);
+				edificio.setEspaciosComunes(null);
+				inspectorEdificio.setEdificio(edificio);
+				
+				inspectoresEdificios.set(j, inspectorEdificio);
+			}
+			
+		
+			inspector.setInspectoredificio(inspectoresEdificios);
+		}
+		
+		return inspectores;
 	}
+
 	
 	//get Inspector by id
 	@GetMapping("/{id}")
