@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="edificios")
 public class Edificio {
@@ -40,16 +41,28 @@ public class Edificio {
 	@JoinColumn(name="id_edificio", nullable = true)
 	private List<EspacioComun> espaciosComunes;
 	
-	@ManyToMany
-	//@JoinColumn(name="id_inspector", nullable = true)
-	private List<Inspector> inspectores;
+//	@ManyToMany(mappedBy = "edificios")
+//	private List<Inspector> inspectores;
+
+	@OneToMany
+	@JoinColumn(name="id_inspectoredificio", nullable = true)
+	private List<InspectorEdificio> inspectoredificio ;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Edificio [id_edificio=" + id_edificio + ", nombre=" + nombre + ", direccion=" + direccion
+				+ ", telefono=" + telefono + ", cantUnidades=" + cantUnidades + ", unidades=" + unidades
+				+ ", espaciosComunes=" + espaciosComunes + ", inspectoredificio=" + inspectoredificio + "]";
+	}
 
 	public Edificio() {
 		super ();
 	}
 
 	public Edificio(long id_edificio, String nombre, String direccion, String telefono, long cantUnidades,
-			List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<Inspector> inspectores) {
+			List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<InspectorEdificio> inspectoredificio) {
 		super();
 		this.id_edificio = id_edificio;
 		this.nombre = nombre;
@@ -58,7 +71,7 @@ public class Edificio {
 		this.cantUnidades = cantUnidades;
 		this.unidades = unidades;
 		this.espaciosComunes = espaciosComunes;
-		this.inspectores = inspectores;
+		this.inspectoredificio = inspectoredificio;
 	}
 
 	public long getId_edificio() {
@@ -117,22 +130,12 @@ public class Edificio {
 		this.espaciosComunes = espaciosComunes;
 	}
 
-	public List<Inspector> getInspectores() {
-		return inspectores;
+	public List<InspectorEdificio> getInspectoredificio() {
+		return inspectoredificio;
 	}
 
-	public void setInspectores(List<Inspector> inspectores) {
-		this.inspectores = inspectores;
+	public void setInspectoredificio(List<InspectorEdificio> inspectoredificio) {
+		this.inspectoredificio = inspectoredificio;
 	}
-
-	@Override
-	public String toString() {
-		return "Edificio [id_edificio=" + id_edificio + ", nombre=" + nombre + ", direccion=" + direccion
-				+ ", telefono=" + telefono + ", cantUnidades=" + cantUnidades + ", unidades=" + unidades
-				+ ", espaciosComunes=" + espaciosComunes + ", inspectores=" + inspectores + "]";
-	}
-	
-	
-	
 		
 }

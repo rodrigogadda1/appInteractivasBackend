@@ -26,7 +26,6 @@ public class EspacioComun {
 	private String descripcion;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="id_edificio", nullable = true)
 	private Edificio edificio;
 	

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.AplicacionesInteractivas.TP.entity.Especialidad;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.InspectorRepository;
@@ -44,7 +42,7 @@ public class InspectorController {
 				.orElseThrow(() -> new ResourceNotFoundException("Inspector not fount whth ID" + inspectorID));
 	}
 	
-	//delete especialidad by id
+	//delete Inspector by id
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Inspector>  deleteInspectorById(@PathVariable (value="id") long inspectorID) {
 		Inspector inspExisting = this.inspectorRepository.findById(inspectorID)

@@ -1,8 +1,7 @@
 package com.AplicacionesInteractivas.TP.controller;
 
-import java.util.Iterator;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +15,6 @@ import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
-import com.AplicacionesInteractivas.TP.entity.User;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.AdministradoRepository;
 

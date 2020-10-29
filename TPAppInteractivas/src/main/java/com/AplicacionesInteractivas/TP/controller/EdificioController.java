@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
-import com.AplicacionesInteractivas.TP.entity.Especialidad;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
+import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EdificioRepository;
@@ -58,7 +58,22 @@ public class EdificioController {
 					espacios.set(j, espacio);
 				}
 				edificio.setEspaciosComunes(espacios);
+				
+				List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
+				for (int j = 0; j < inspectoredificios.size(); j++) {
+					InspectorEdificio inspectoredificio=inspectoredificios.get(j);
+					inspectoredificio.setEdificio(null);
+					Inspector inspector=inspectoredificio.getInspector();
+					inspector.setInspectoredificio(null);
+					inspectoredificio.setInspector(inspector);
+					inspectoredificios.set(j, inspectoredificio);
+				}
+				
+				edificio.setInspectoredificio(inspectoredificios);
 				edificios.set(i, edificio);
+				
+			
+				
 			}
 			return edificios;
 		}	
