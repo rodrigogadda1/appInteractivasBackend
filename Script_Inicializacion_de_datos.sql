@@ -4,6 +4,19 @@
  `tpdatabase`.`espacios_comunes`, `tpdatabase`.`especialidades`, `tpdatabase`.`hibernate_sequence`, `tpdatabase`.`inspectores`, 
  `tpdatabase`.`inspectores_edificios`, `tpdatabase`.`reclamos`, `tpdatabase`.`unidades`, `tpdatabase`.`users`;*/
  
+ /*INSERTAR USUARIOS*/
+ INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`)
+ VALUES (1, "celular1" , "mail1", "nombre1", "true", "apellido1", "identificacion1", "password1", "pregunta1", "respuesta1", "masculino", "DNI", "Administrado", "user1");
+ INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`)
+ VALUES (2, "celular2" , "mail2", "nombre2", "false", "apellido2", "identificacion2", "password2",
+ "pregunta2", "respuesta2", "masculino", "DNI", "Administrado", "user2");
+ INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`)
+ VALUES (3, "celular3" , "mail3", "nombre3", "false", "apellido3", "identificacion3", "password3",
+ "pregunta3", "respuesta3", "masculino", "DNI", "Administrado", "user3");
+ select * from tpdatabase.users;
+
 /*INSERTAR EDIFICIOS*/
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (1,40,"savedra 10","savedra 10", "2131342");
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (2,30,"catate 29","catate building", "23215412");
@@ -42,4 +55,14 @@ INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, i
 INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, id_edificio) VALUES (6,"ascensor","ascensor",3);
 select * from tpdatabase.espacios_comunes;
  
+/*INSERTAR ADMINISTRADO*/
+INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (1, 1);
+INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (2, 2);
+INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (3, 3);
+select * from tpdatabase.administrado;
+/*INSERTAR ADMINISTRADO UNIDAD*/
 
+INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`,`id_unidad`)VALUES(1,"Vividor",1,1);
+INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`,`id_unidad`)VALUES(2,"Inquilino",2,5);
+INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`,`id_unidad`)VALUES(3,"Dueño/Vividor",3,8);
+select * from tpdatabase.administrad_unidad;
