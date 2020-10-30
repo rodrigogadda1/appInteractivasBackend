@@ -41,20 +41,20 @@ public class Edificio {
 	@JoinColumn(name="id_edificio", nullable = true)
 	private List<EspacioComun> espaciosComunes;
 	
-//	@ManyToMany(mappedBy = "edificios")
-//	private List<Inspector> inspectores;
-
 	@OneToMany
 	@JoinColumn(name="id_inspectoredificio", nullable = true)
 	private List<InspectorEdificio> inspectoredificio ;
 	
-	
+	@OneToMany
+	@JoinColumn(name="id_inspectorespecialidad", nullable = true)
+	private List<InspectorEspecialidad> inspectorespecalidad ;
 	
 	@Override
 	public String toString() {
 		return "Edificio [id_edificio=" + id_edificio + ", nombre=" + nombre + ", direccion=" + direccion
 				+ ", telefono=" + telefono + ", cantUnidades=" + cantUnidades + ", unidades=" + unidades
-				+ ", espaciosComunes=" + espaciosComunes + ", inspectoredificio=" + inspectoredificio + "]";
+				+ ", espaciosComunes=" + espaciosComunes + ", inspectoredificio=" + inspectoredificio
+				+ ", inspectorespecalidad=" + inspectorespecalidad + "]";
 	}
 
 	public Edificio() {
@@ -62,7 +62,8 @@ public class Edificio {
 	}
 
 	public Edificio(long id_edificio, String nombre, String direccion, String telefono, long cantUnidades,
-			List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<InspectorEdificio> inspectoredificio) {
+			List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<InspectorEdificio> inspectoredificio,
+			List<InspectorEspecialidad> inspectorespecalidad) {
 		super();
 		this.id_edificio = id_edificio;
 		this.nombre = nombre;
@@ -72,6 +73,7 @@ public class Edificio {
 		this.unidades = unidades;
 		this.espaciosComunes = espaciosComunes;
 		this.inspectoredificio = inspectoredificio;
+		this.inspectorespecalidad = inspectorespecalidad;
 	}
 
 	public long getId_edificio() {
@@ -137,5 +139,12 @@ public class Edificio {
 	public void setInspectoredificio(List<InspectorEdificio> inspectoredificio) {
 		this.inspectoredificio = inspectoredificio;
 	}
-		
+
+	public List<InspectorEspecialidad> getInspectorespecalidad() {
+		return inspectorespecalidad;
+	}
+
+	public void setInspectorespecalidad(List<InspectorEspecialidad> inspectorespecalidad) {
+		this.inspectorespecalidad = inspectorespecalidad;
+	}		
 }

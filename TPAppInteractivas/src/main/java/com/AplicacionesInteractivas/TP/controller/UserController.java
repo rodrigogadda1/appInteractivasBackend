@@ -52,7 +52,7 @@ public class UserController {
 				if ( allUsers.get(contador).getUsername().equals(username)  ) {
 					userEncontrado = true;
 					if (	allUsers.get(contador).getPassword().toString().equals(password)	) {
-						LoginExitosoId = allUsers.get(contador).getid();
+						LoginExitosoId = allUsers.get(contador).getId();
 					}
 				}
 				contador++;
