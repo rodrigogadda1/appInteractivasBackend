@@ -22,11 +22,8 @@ public class Inspector {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_inspector;
 	
-	@Column(name="nombre")
-	private String nombre;
-	
-	@Column(name="apellido")
-	private String apellido;
+	@Column(name = "id_user")
+	private long id_user;
 	
 //	@ManyToMany
 //	@JoinTable(
@@ -44,21 +41,23 @@ public class Inspector {
 		super();
 	}
 
+	
 
 	@Override
 	public String toString() {
-		return "Inspector [id_inspector=" + id_inspector + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", inspectoredificio=" + inspectoredificio + "]";
+		return "Inspector [id_inspector=" + id_inspector + ", id_user=" + id_user + ", inspectoredificio="
+				+ inspectoredificio + "]";
 	}
 
 
-	public Inspector(long id_inspector, String nombre, String apellido, List<InspectorEdificio> inspectoredificio) {
+
+	public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio) {
 		super();
 		this.id_inspector = id_inspector;
-		this.nombre = nombre;
-		this.apellido = apellido;
+		this.id_user = id_user;
 		this.inspectoredificio = inspectoredificio;
 	}
+
 
 
 	public long getId_inspector() {
@@ -71,26 +70,6 @@ public class Inspector {
 	}
 
 
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
-	public String getApellido() {
-		return apellido;
-	}
-
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-
 	public List<InspectorEdificio> getInspectoredificio() {
 		return inspectoredificio;
 	}
@@ -100,6 +79,12 @@ public class Inspector {
 		this.inspectoredificio = inspectoredificio;
 	}
 
+	public long getId_user() {
+		return id_user;
+	}
 
+	public void setId_user(long id_user) {
+		this.id_user = id_user;
+	}
 
 }

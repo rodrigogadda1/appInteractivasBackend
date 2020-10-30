@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
@@ -64,12 +66,44 @@ public class InspectorController {
 	}
 
 	
+	@GetMapping("/getId")
+	public Inspector getInspectorByUserId(@RequestParam("id_user") long id_user) {
+		List<Inspector> inspectores = this.inspectorRepository.findAll();
+		int temp = 0;
+		Inspector seleccionado = null;
+		while ( (temp < inspectores.size()) && (seleccionado == null) ) {
+			Inspector inspector = inspectores.get(temp);
+			if (inspector.getId_user() == id_user) {
+				seleccionado = inspector;
+			}
+		}
+		if (seleccionado != null) {
+			List<InspectorEdificio> inspectoredificios =  seleccionado.getInspectoredificio();
+			for (int i = 0; i < inspectoredificios.size(); i++) {
+				InspectorEdificio inspectorEdificio = inspectoredificios.get(i);
+				
+				inspectorEdificio.setInspector(null);
+				
+				Edificio edificio = inspectorEdificio.getEdificio();
+				edificio.setEspaciosComunes(null);
+				edificio.setUnidades(null);
+				edificio.setInspectoredificio(null);
+				inspectorEdificio.setEdificio(edificio);
+				
+				inspectoredificios.set(i, inspectorEdificio);
+			}
+			seleccionado.setInspectoredificio(inspectoredificios);
+		}
+		
+		return seleccionado;
+	}
+	
 	//get Inspector by id
 	@GetMapping("/{id}")
 	public Inspector getInspectorById(@PathVariable (value="id") long inspectorID) {
-		
-		return this.inspectorRepository.findById(inspectorID)
+		Inspector inspector = this.inspectorRepository.findById(inspectorID)
 				.orElseThrow(() -> new ResourceNotFoundException("Inspector not fount whth ID" + inspectorID));
+		return inspector;
 	}
 	
 	//delete Inspector by id

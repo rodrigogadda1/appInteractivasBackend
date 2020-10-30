@@ -49,19 +49,25 @@ public class AdministradoController {
 		} else {
 			Administrado administrado = administradoRepository.findById(seleccionado)
 					.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ id_user));
-			List<AdministradoUnidad> listaAdminUnidades = administrado.getAdministradoUnidades();
-			for (int i = 0; i < listaAdminUnidades.size(); i++) {
-				AdministradoUnidad administradoUnidad = listaAdminUnidades.get(i);
+			List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
+			for (int i = 0; i < administradoUnidades.size(); i++) {
+				AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
 				administradoUnidad.setAdministrado(null);
+				
 				Unidad unidad = administradoUnidad.getUnidad();
-				unidad.setAdministradoUnidades(null);
+				
 				Edificio edificio = unidad.getEdificio();
 				edificio.setEspaciosComunes(null);
 				edificio.setUnidades(null);
+				edificio.setInspectoredificio(null);
+				
 				unidad.setEdificio(edificio);
+				unidad.setAdministradoUnidades(null);
 				administradoUnidad.setUnidad(unidad);
-				listaAdminUnidades.set(i, administradoUnidad);
+				
+				administradoUnidades.set(i, administradoUnidad);
 			}
+			administrado.setAdministradoUnidades(administradoUnidades);
 			return administrado;
 		}
 	}
@@ -69,8 +75,28 @@ public class AdministradoController {
 ////get user by id
 	@GetMapping("/{id}")
 	public Administrado getAdministradoId(@PathVariable (value = "id") long administradoId) {
-		return administradoRepository.findById(administradoId)
+		Administrado administrado = administradoRepository.findById(administradoId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ administradoId));
+		List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
+		for (int i = 0; i < administradoUnidades.size(); i++) {
+			AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
+			administradoUnidad.setAdministrado(null);
+			
+			Unidad unidad = administradoUnidad.getUnidad();
+			
+			Edificio edificio = unidad.getEdificio();
+			edificio.setEspaciosComunes(null);
+			edificio.setUnidades(null);
+			edificio.setInspectoredificio(null);
+			
+			unidad.setEdificio(edificio);
+			unidad.setAdministradoUnidades(null);
+			administradoUnidad.setUnidad(unidad);
+			
+			administradoUnidades.set(i, administradoUnidad);
+		}
+		administrado.setAdministradoUnidades(administradoUnidades);
+		return administrado;
 	}
 	
 	//create user
