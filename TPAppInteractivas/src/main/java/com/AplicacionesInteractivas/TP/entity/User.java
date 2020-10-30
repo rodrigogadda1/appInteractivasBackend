@@ -1,10 +1,14 @@
 package com.AplicacionesInteractivas.TP.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -55,12 +59,52 @@ public class User {
 	@Column(name = "celular")
 	private String celular;
 	
+	@OneToMany
+	@JoinColumn(name="id_configuracion")
+	private List<Configuracion> configuracion;	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", tipoUser=" + tipoUser + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", username=" + username + ", password=" + password + ", firstTime=" + firstTime
+				+ ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad + ", sexo="
+				+ sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion
+				+ ", celular=" + celular + ", configuracion=" + configuracion + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
 
-	public long getid() {
+	public User() {
+		super();
+	}
+	
+	public User(long id, String tipoUser, String firstName, String lastName, String email, String username,
+			String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
+			String tipoIdentificacion, String numeroIdentificacion, String celular, List<Configuracion> configuracion) {
+		super();
+		this.id = id;
+		this.tipoUser = tipoUser;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.firstTime = firstTime;
+		this.preguntaSeguridad = preguntaSeguridad;
+		this.respuestaSeguridad = respuestaSeguridad;
+		this.sexo = sexo;
+		this.tipoIdentificacion = tipoIdentificacion;
+		this.numeroIdentificacion = numeroIdentificacion;
+		this.celular = celular;
+		this.configuracion = configuracion;
+	}
+
+	public long getId() {
 		return id;
 	}
 
-	public void setid(long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -72,100 +116,28 @@ public class User {
 		this.tipoUser = tipoUser;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setTipoIdentificacion(String tipoIdentificacion) {
-		this.tipoIdentificacion = tipoIdentificacion;
-	}
-
-	public void setNumeroIdentificacion(String numeroIdentificacion) {
-		this.numeroIdentificacion = numeroIdentificacion;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-	
-	public String getSexo() {
-		return sexo;
-	}
-
-	public String getTipoIdentificacion() {
-		return tipoIdentificacion;
-	}
-
-	public String getNumeroIdentificacion() {
-		return numeroIdentificacion;
-	}
-
-	public String getCelular() {
-		return celular;
-	}
-
-	public User() {
-		super();
-	}
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", tipoUser=" + tipoUser + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", username=" + username + ", password=" + password + ", firstTime="
-				+ firstTime + ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad
-				+ ", sexo=" + sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion="
-				+ numeroIdentificacion + ", celular=" + celular  + "]";
-	}
-
-	public User(long id, String tipoUser, String firstName, String lastName, String email, String username,
-			String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
-			String tipoIdentificacion, String numeroIdentificacion, String celular) {
-		super();
-		this.id = id;
-		this.tipoUser = tipoUser;
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.firstTime = firstTime;
-		this.preguntaSeguridad = preguntaSeguridad;
-		this.respuestaSeguridad = respuestaSeguridad;
-		this.sexo = sexo;
-		this.tipoIdentificacion = tipoIdentificacion;
-		this.numeroIdentificacion = numeroIdentificacion;
-		this.celular = celular;
-	}
-	
-	
-
-
-
-	public User(String tipoUser, String firstName, String lastName, String email, String username, String password,
-			String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
-			String tipoIdentificacion, String numeroIdentificacion, String celular) {
-		super();
-		this.tipoUser = tipoUser;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.firstTime = firstTime;
-		this.preguntaSeguridad = preguntaSeguridad;
-		this.respuestaSeguridad = respuestaSeguridad;
-		this.sexo = sexo;
-		this.tipoIdentificacion = tipoIdentificacion;
-		this.numeroIdentificacion = numeroIdentificacion;
-		this.celular = celular;
-	}
-
-	public String isFirstTime() {
-		return firstTime;
-	}
-
-	public void setFirstTime(String firstTime) {
-		this.firstTime = firstTime;
 	}
 
 	public String getUsername() {
@@ -184,25 +156,14 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstTime() {
+		return firstTime;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setFirstTime(String firstTime) {
+		this.firstTime = firstTime;
 	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+
 	public String getPreguntaSeguridad() {
 		return preguntaSeguridad;
 	}
@@ -219,7 +180,44 @@ public class User {
 		this.respuestaSeguridad = respuestaSeguridad;
 	}
 
-	public String getFirstTime() {
-		return firstTime;
+	public String getSexo() {
+		return sexo;
 	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getTipoIdentificacion() {
+		return tipoIdentificacion;
+	}
+
+	public void setTipoIdentificacion(String tipoIdentificacion) {
+		this.tipoIdentificacion = tipoIdentificacion;
+	}
+
+	public String getNumeroIdentificacion() {
+		return numeroIdentificacion;
+	}
+
+	public void setNumeroIdentificacion(String numeroIdentificacion) {
+		this.numeroIdentificacion = numeroIdentificacion;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public List<Configuracion> getConfiguracion() {
+		return configuracion;
+	}
+
+	public void setConfiguracion(List<Configuracion> configuracion) {
+		this.configuracion = configuracion;
+	}
+	
 }

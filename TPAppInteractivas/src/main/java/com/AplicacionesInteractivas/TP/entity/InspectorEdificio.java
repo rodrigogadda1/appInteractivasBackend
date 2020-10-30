@@ -1,6 +1,6 @@
 package com.AplicacionesInteractivas.TP.entity;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,8 +32,6 @@ public class InspectorEdificio {
 		return "InspectorEdificio [id_inspectoredificio=" + id_inspectoredificio + ", inspector=" + inspector
 				+ ", edificio=" + edificio + "]";
 	}
-
-
 
 	public InspectorEdificio() {
 		super();
@@ -69,6 +67,5 @@ public class InspectorEdificio {
 	public void setEdificio(Edificio edificio) {
 		this.edificio = edificio;
 	}
-
 	
 }

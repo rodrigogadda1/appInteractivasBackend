@@ -53,6 +53,7 @@ public class InspectorController {
 				edificio.setUnidades(null);
 				edificio.setInspectoredificio(null);
 				edificio.setEspaciosComunes(null);
+				edificio.setInspectorespecalidad(null);
 				inspectorEdificio.setEdificio(edificio);
 				
 				inspectoresEdificios.set(j, inspectorEdificio);

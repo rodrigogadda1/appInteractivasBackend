@@ -7,13 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-
-
 
 @Entity
 @Table(name="inspectores")
@@ -25,23 +21,13 @@ public class Inspector {
 	@Column(name = "id_user")
 	private long id_user;
 	
-//	@ManyToMany
-//	@JoinTable(
-//			  name = "inspectores_edificios", 
-//			  joinColumns = @JoinColumn(name = "id_inspector"), 
-//			  inverseJoinColumns = @JoinColumn(name = "id_edificio"))
-//	private List<Edificio> edificios;
-
 	@OneToMany
 	@JoinColumn(name="id_inspectoredificio")
 	private List<InspectorEdificio> inspectoredificio;	
 
-	
 	public Inspector() {
 		super();
 	}
-
-	
 
 	@Override
 	public String toString() {
