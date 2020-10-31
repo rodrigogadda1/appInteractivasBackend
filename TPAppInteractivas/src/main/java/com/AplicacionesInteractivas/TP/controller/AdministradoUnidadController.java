@@ -25,26 +25,29 @@ public class AdministradoUnidadController {
 		List<AdministradoUnidad> lista=  this.administradoUnidadRepository.findAll();
 		for (int i = 0; i < lista.size(); i++) {
 			AdministradoUnidad administradoUnidad = lista.get(i);
-			
-			Administrado admin = administradoUnidad.getAdministrado();
-			admin.setAdministradoUnidades(null);
-			administradoUnidad.setAdministrado(admin);
-			
-			Unidad unidad = administradoUnidad.getUnidad();
-			unidad.setAdministradoUnidades(null);
-			
-			Edificio edificio = unidad.getEdificio();
-			edificio.setUnidades(null);
-			edificio.setEspaciosComunes(null);
-			
-			unidad.setEdificio(edificio);
-			
-			administradoUnidad.setUnidad(unidad);
-			
-			lista.set(i, administradoUnidad);
+			lista.set(i, cleanAdministradoUnidad(administradoUnidad));
 			
 		}
 		return lista;
+	}
+	
+	private AdministradoUnidad cleanAdministradoUnidad(AdministradoUnidad administradoUnidad) {
+		Administrado admin = administradoUnidad.getAdministrado();
+		admin.setAdministradoUnidades(null);
+		administradoUnidad.setAdministrado(admin);
+		
+		Unidad unidad = administradoUnidad.getUnidad();
+		unidad.setAdministradoUnidades(null);
+		
+		Edificio edificio = unidad.getEdificio();
+		edificio.setUnidades(null);
+		edificio.setEspaciosComunes(null);
+		
+		unidad.setEdificio(edificio);
+		
+		administradoUnidad.setUnidad(unidad);
+		
+		return administradoUnidad;
 	}
 	
 }

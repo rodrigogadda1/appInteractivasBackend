@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -59,29 +60,32 @@ public class User {
 	@Column(name = "celular")
 	private String celular;
 	
-	@OneToMany
-	@JoinColumn(name="id_configuracion")
-	private List<Configuracion> configuracion;	
+	@Column(name="datos_moviles")
+	private boolean datos_moviles;
+	
+	@Column(name="recibir_notificaciones")
+	private boolean recibir_notificaciones;
 	
 	
 	
+	
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", tipoUser=" + tipoUser + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", email=" + email + ", username=" + username + ", password=" + password + ", firstTime=" + firstTime
 				+ ", preguntaSeguridad=" + preguntaSeguridad + ", respuestaSeguridad=" + respuestaSeguridad + ", sexo="
 				+ sexo + ", tipoIdentificacion=" + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion
-				+ ", celular=" + celular + ", configuracion=" + configuracion + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", celular=" + celular + ", datos_moviles=" + datos_moviles + ", recibir_notificaciones="
+				+ recibir_notificaciones + "]";
 	}
 
-	public User() {
-		super();
-	}
-	
+
+
 	public User(long id, String tipoUser, String firstName, String lastName, String email, String username,
 			String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
-			String tipoIdentificacion, String numeroIdentificacion, String celular, List<Configuracion> configuracion) {
+			String tipoIdentificacion, String numeroIdentificacion, String celular, boolean datos_moviles,
+			boolean recibir_notificaciones) {
 		super();
 		this.id = id;
 		this.tipoUser = tipoUser;
@@ -97,8 +101,16 @@ public class User {
 		this.tipoIdentificacion = tipoIdentificacion;
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.celular = celular;
-		this.configuracion = configuracion;
+		this.datos_moviles = datos_moviles;
+		this.recibir_notificaciones = recibir_notificaciones;
 	}
+
+
+	public User() {
+		super();
+	}
+	
+	
 
 	public long getId() {
 		return id;
@@ -212,12 +224,30 @@ public class User {
 		this.celular = celular;
 	}
 
-	public List<Configuracion> getConfiguracion() {
-		return configuracion;
+
+
+	public boolean isDatos_moviles() {
+		return datos_moviles;
 	}
 
-	public void setConfiguracion(List<Configuracion> configuracion) {
-		this.configuracion = configuracion;
+
+
+	public void setDatos_moviles(boolean datos_moviles) {
+		this.datos_moviles = datos_moviles;
 	}
+
+
+
+	public boolean isRecibir_notificaciones() {
+		return recibir_notificaciones;
+	}
+
+
+
+	public void setRecibir_notificaciones(boolean recibir_notificaciones) {
+		this.recibir_notificaciones = recibir_notificaciones;
+	}
+
+	
 	
 }

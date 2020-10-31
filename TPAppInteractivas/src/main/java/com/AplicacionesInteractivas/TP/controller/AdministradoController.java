@@ -28,7 +28,12 @@ public class AdministradoController {
 	
 	@GetMapping
 	public List<Administrado> getAllAdministrados(){
-		return this.administradoRepository.findAll();
+		List<Administrado> administrados = this.administradoRepository.findAll();
+		for (int i = 0; i < administrados.size(); i++) {
+			administrados.set(i, cleanAdministrado(administrados.get(i)));
+		}
+		
+		return administrados;
 	}
 	
 	@GetMapping("/getId")
@@ -49,26 +54,7 @@ public class AdministradoController {
 		} else {
 			Administrado administrado = administradoRepository.findById(seleccionado)
 					.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ id_user));
-			List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
-			for (int i = 0; i < administradoUnidades.size(); i++) {
-				AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
-				administradoUnidad.setAdministrado(null);
-				
-				Unidad unidad = administradoUnidad.getUnidad();
-				
-				Edificio edificio = unidad.getEdificio();
-				edificio.setEspaciosComunes(null);
-				edificio.setUnidades(null);
-				edificio.setInspectoredificio(null);
-				
-				unidad.setEdificio(edificio);
-				unidad.setAdministradoUnidades(null);
-				administradoUnidad.setUnidad(unidad);
-				
-				administradoUnidades.set(i, administradoUnidad);
-			}
-			administrado.setAdministradoUnidades(administradoUnidades);
-			return administrado;
+			return cleanAdministrado(administrado);
 		}
 	}
 	
@@ -77,6 +63,17 @@ public class AdministradoController {
 	public Administrado getAdministradoId(@PathVariable (value = "id") long administradoId) {
 		Administrado administrado = administradoRepository.findById(administradoId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ administradoId));
+		return cleanAdministrado(administrado);
+	}
+	
+	//create user
+	@PostMapping
+	public Administrado createUser(@RequestBody Administrado administrado) {
+		return this.administradoRepository.save(administrado);
+	}
+	
+	
+	private Administrado cleanAdministrado(Administrado administrado) {
 		List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
 		for (int i = 0; i < administradoUnidades.size(); i++) {
 			AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
@@ -88,6 +85,7 @@ public class AdministradoController {
 			edificio.setEspaciosComunes(null);
 			edificio.setUnidades(null);
 			edificio.setInspectoredificio(null);
+			edificio.setInspectorespecalidad(null);
 			
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
@@ -97,12 +95,6 @@ public class AdministradoController {
 		}
 		administrado.setAdministradoUnidades(administradoUnidades);
 		return administrado;
-	}
-	
-	//create user
-	@PostMapping
-	public Administrado createUser(@RequestBody Administrado administrado) {
-		return this.administradoRepository.save(administrado);
 	}
 	
 }

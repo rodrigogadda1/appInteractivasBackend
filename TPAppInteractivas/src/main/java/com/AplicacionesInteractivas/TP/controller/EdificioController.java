@@ -43,53 +43,30 @@ public class EdificioController {
 		public List<Edificio> getAllEdificio(){
 			List<Edificio> edificios =  this.edificioRepository.findAll();
 			for (int i = 0; i < edificios.size(); i++) {
-				Edificio edificio = edificios.get(i);
-				List<Unidad> unidades = edificio.getUnidades();
-				for (int j = 0; j < unidades.size(); j++) {
-					Unidad unidad = unidades.get(j);
-					unidad.setEdificio(null);
-					unidades.set(j, unidad);
-				}
-				edificio.setUnidades(unidades);
-				List<EspacioComun> espacios = edificio.getEspaciosComunes();
-				for (int j = 0; j < espacios.size(); j++) {
-					EspacioComun espacio = espacios.get(j);
-					espacio.setEdificio(null);
-					espacios.set(j, espacio);
-				}
-				edificio.setEspaciosComunes(espacios);
-				
-				List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
-				for (int j = 0; j < inspectoredificios.size(); j++) {
-					InspectorEdificio inspectoredificio=inspectoredificios.get(j);
-					inspectoredificio.setEdificio(null);
-					Inspector inspector=inspectoredificio.getInspector();
-					inspector.setInspectoredificio(null);
-					inspectoredificio.setInspector(inspector);
-					inspectoredificios.set(j, inspectoredificio);
-				}
-				
-				edificio.setInspectoredificio(inspectoredificios);
-				edificios.set(i, edificio);
-				
-			
-				
+				edificios.set(i, cleanEdificio(edificios.get(i)));
 			}
 			return edificios;
 		}	
-		
-//		@GetMapping("/{id}")
-//		public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
-//			
-//			return this.edificioRepository.findById(edificioId)
-//					.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
-//		}
 	
 	@GetMapping("/{id}")
 	public Edificio getEdificioById(@PathVariable (value="id") long edificioId) {
 		Edificio edificio =
 		 this.edificioRepository.findById(edificioId)
 				.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
+		return cleanEdificio(edificio);
+		}
+	
+	
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Edificio>  deleteEdificioById(@PathVariable (value="id") long edificioId) {
+		Edificio edifExisting = this.edificioRepository.findById(edificioId)
+				.orElseThrow(()-> new ResourceNotFoundException("No existe Edificio para eliminar" +edificioId));
+		this.edificioRepository.delete(edifExisting);
+		return ResponseEntity.ok().build();
+	}
+	
+	private Edificio cleanEdificio(Edificio edificio) {
 		List<EspacioComun> espacios = edificio.getEspaciosComunes();
 		for (int i = 0; i < espacios.size(); i++) {
 			EspacioComun espacio = espacios.get(i);
@@ -103,6 +80,7 @@ public class EdificioController {
 			unidad.setEdificio(null);
 			unidades.set(i, unidad);
 		}
+		edificio.setUnidades(unidades);
 		
 		List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
 		for (int j = 0; j < inspectoredificios.size(); j++) {
@@ -116,18 +94,7 @@ public class EdificioController {
 		
 		edificio.setInspectoredificio(inspectoredificios);
 		
-		edificio.setUnidades(unidades);
 		return edificio;
-		}
-	
-	
-	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Edificio>  deleteEdificioById(@PathVariable (value="id") long edificioId) {
-		Edificio edifExisting = this.edificioRepository.findById(edificioId)
-				.orElseThrow(()-> new ResourceNotFoundException("No existe Edificio para eliminar" +edificioId));
-		this.edificioRepository.delete(edifExisting);
-		return ResponseEntity.ok().build();
 	}
 	
 	

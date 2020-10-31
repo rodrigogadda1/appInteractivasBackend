@@ -35,12 +35,8 @@ public class UnidadController {
 	public List<Unidad> getAllUnidades(){
 		List<Unidad> unidades = this.unidadRepository.findAll();
 		for (int i = 0; i < unidades.size(); i++) {
-			Unidad unidad = unidades.get(i);
-			Edificio edificio = unidad.getEdificio();
-			edificio.setUnidades(null);
-			edificio.setEspaciosComunes(null);
-			unidad.setEdificio(edificio);
-			unidades.set(i, unidad);
+			Unidad unidad = unidades.get(i);	
+			unidades.set(i, cleanUnidad(unidad));
 		}
 		return unidades;
 	}
@@ -49,11 +45,7 @@ public class UnidadController {
 	public Unidad getUnidadById(@PathVariable (value="id") long unidadId) {
 		Unidad unidad = this.unidadRepository.findById(unidadId)
 				.orElseThrow(() -> new ResourceNotFoundException("Unidad not fount whth ID" + unidadId));
-		Edificio edificio = unidad.getEdificio();
-		edificio.setUnidades(null);
-		edificio.setEspaciosComunes(null);
-		unidad.setEdificio(edificio);
-		return unidad;
+		return cleanUnidad(unidad);
 	}
 	
 	//delete unidad by ID
@@ -65,5 +57,12 @@ public class UnidadController {
 		return ResponseEntity.ok().build();
 	}
 	
+	private Unidad cleanUnidad (Unidad unidad) {
+		Edificio edificio = unidad.getEdificio();
+		edificio.setUnidades(null);
+		edificio.setEspaciosComunes(null);
+		unidad.setEdificio(edificio);	
+		return unidad;
+	}
 
 }

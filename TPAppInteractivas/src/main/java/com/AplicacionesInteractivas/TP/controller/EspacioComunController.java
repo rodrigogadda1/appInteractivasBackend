@@ -35,12 +35,7 @@ public class EspacioComunController {
 	public List<EspacioComun> getAllEspacioComun(){
 		List<EspacioComun> espacios = this.espaciocomunRepository.findAll();
 		for (int i = 0; i < espacios.size(); i++) {
-			EspacioComun espaciocomun = espacios.get(i);
-			Edificio edificio = espaciocomun.getEdificio();
-			edificio.setUnidades(null);
-			edificio.setEspaciosComunes(null);
-			espaciocomun.setEdificio(edificio);
-			espacios.set(i, espaciocomun);
+			espacios.set(i, cleanEspacioComun(espacios.get(i)));
 		}
 		return espacios;
 	}
@@ -48,14 +43,9 @@ public class EspacioComunController {
 	//get EspacioComun by id
 	@GetMapping("/{id}")
 	public EspacioComun getEspacioComunById(@PathVariable (value="id") long espaciocomunId) {
-		
 		EspacioComun espaciocomun = this.espaciocomunRepository.findById(espaciocomunId)
 				.orElseThrow(() -> new ResourceNotFoundException("Especialiad not fount whth ID" + espaciocomunId));
-		Edificio edificio = espaciocomun.getEdificio();
-		edificio.setUnidades(null);
-		edificio.setEspaciosComunes(null);
-		espaciocomun.setEdificio(edificio);
-		return espaciocomun;
+		return cleanEspacioComun(espaciocomun);
 	}
 	//delete EspacioComun by id
 	@DeleteMapping("/{id}")
@@ -65,4 +55,15 @@ public class EspacioComunController {
 		this.espaciocomunRepository.delete(espExisting);
 		return ResponseEntity.ok().build();
 	}
+	
+	
+	private EspacioComun cleanEspacioComun (EspacioComun espaciocomun) {
+		Edificio edificio = espaciocomun.getEdificio();
+		edificio.setUnidades(null);
+		edificio.setEspaciosComunes(null);
+		espaciocomun.setEdificio(edificio);
+		
+		return espaciocomun;
+	}
+	
 }

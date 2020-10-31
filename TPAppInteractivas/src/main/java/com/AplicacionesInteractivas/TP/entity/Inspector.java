@@ -24,26 +24,30 @@ public class Inspector {
 	@OneToMany
 	@JoinColumn(name="id_inspectoredificio")
 	private List<InspectorEdificio> inspectoredificio;	
+	
+	@OneToMany
+	@JoinColumn(name="id_inspectorespecialidad")
+	private List<InspectorEspecialidad> inspectorespecialidad;	
 
 	public Inspector() {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Inspector [id_inspector=" + id_inspector + ", id_user=" + id_user + ", inspectoredificio="
-				+ inspectoredificio + "]";
-	}
-
-
-
-	public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio) {
+	
+	public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio,
+			List<InspectorEspecialidad> inspectorespecialidad) {
 		super();
 		this.id_inspector = id_inspector;
 		this.id_user = id_user;
 		this.inspectoredificio = inspectoredificio;
+		this.inspectorespecialidad = inspectorespecialidad;
 	}
 
+	@Override
+	public String toString() {
+		return "Inspector [id_inspector=" + id_inspector + ", id_user=" + id_user + ", inspectoredificio="
+				+ inspectoredificio + ", inspectorespecialidad=" + inspectorespecialidad + "]";
+	}
 
 
 	public long getId_inspector() {
@@ -72,5 +76,17 @@ public class Inspector {
 	public void setId_user(long id_user) {
 		this.id_user = id_user;
 	}
+
+
+	public List<InspectorEspecialidad> getInspectorespecialidad() {
+		return inspectorespecialidad;
+	}
+
+
+	public void setInspectorespecialidad(List<InspectorEspecialidad> inspectorespecialidad) {
+		this.inspectorespecialidad = inspectorespecialidad;
+	}
+	
+	
 
 }

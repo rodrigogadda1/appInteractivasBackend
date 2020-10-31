@@ -5,24 +5,35 @@
 `tpdatabase`.`unidades`, `tpdatabase`.`users`;*/
  
  /*INSERTAR USUARIOS*/
- INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`)
- VALUES (1, "celular1" , "mail1", "nombre1", "true", "apellido1", "identificacion1", "password1", "pregunta1", "respuesta1", "masculino", "DNI", "Administrado", "user1");
  INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
- `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`)
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`,`recibir_notificaciones`,`datos_moviles`)
+ VALUES (1, "celular1" , "mail1", "nombre1", "true", "apellido1", "identificacion1", "password1",
+ "pregunta1", "respuesta1", "masculino", "DNI", "Administrado", "user1", true, false);
+ INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`,`recibir_notificaciones`,`datos_moviles`)
  VALUES (2, "celular2" , "mail2", "nombre2", "false", "apellido2", "identificacion2", "password2",
- "pregunta2", "respuesta2", "masculino", "DNI", "Administrado", "user2");
+ "pregunta2", "respuesta2", "masculino", "DNI", "Administrado", "user2", true, false);
  INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
- `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`)
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`,`recibir_notificaciones`,`datos_moviles`)
  VALUES (3, "celular3" , "mail3", "nombre3", "false", "apellido3", "identificacion3", "password3",
- "pregunta3", "respuesta3", "masculino", "DNI", "Administrado", "user3");
- select * from tpdatabase.users;
+ "pregunta3", "respuesta3", "masculino", "DNI", "Administrado", "user3",  true, false); 
+ INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`,`recibir_notificaciones`,`datos_moviles`)
+ VALUES (4, "celular4" , "mail4", "nombre4", "false", "apellido4", "identificacion4", "password4",
+ "pregunta4", "respuesta4", "masculino", "DNI", "Inspector", "user4",  true, false);
+  INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`,`recibir_notificaciones`,`datos_moviles`)
+ VALUES (5, "celular5" , "mail5", "nombre5", "false", "apellido5", "identificacion5", "password5",
+ "pregunta5", "respuesta5", "masculino", "DNI", "Inspector", "user5",  true, false);
+  INSERT INTO tpdatabase.users (`id`, `celular`, `email`, `first_name`, `first_time`, `last_name`, `numero_identificacion`, `password`, 
+ `pregunta_seguridad`, `respuesta_seguridad`, `sexo`, `tipo_identificacion`, `tipo_user`, `username`,`recibir_notificaciones`,`datos_moviles`)
+ VALUES (6, "celular6" , "mail6", "nombre6", "false", "apellido6", "identificacion6", "password6",
+ "pregunta6", "respuesta6", "masculino", "DNI", "Inspector", "user6",  true, false);
+ select id, username, password, tipo_user,pregunta_seguridad, respuesta_seguridad,first_name, last_name, email, celular 
+ ,sexo,tipo_identificacion,numero_identificacion,first_time,datos_moviles, recibir_notificaciones from tpdatabase.users;
  
- /*INSERTAR CONFIGURACIONES*/
-INSERT INTO tpdatabase.configuraciones (id_configuracion, datos_moviles, recibir_notificaciones) VALUES (1,1,1);
-INSERT INTO tpdatabase.configuraciones (id_configuracion, datos_moviles, recibir_notificaciones) VALUES (2,0,1);
-INSERT INTO tpdatabase.configuraciones (id_configuracion, datos_moviles, recibir_notificaciones) VALUES (3,1,0);
-INSERT INTO tpdatabase.configuraciones (id_configuracion, datos_moviles, recibir_notificaciones) VALUES (5,0,0);
-select * from tpdatabase.configuraciones;
+
+
 /*INSERTAR EDIFICIOS*/
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (1,40,"savedra 10","savedra 10", "2131342");
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (2,30,"catate 29","catate building", "23215412");
@@ -35,10 +46,9 @@ INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre) VAL
 INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre) VALUES (4,"trabajos de Plomeria","Plomeria");
 select * from tpdatabase.especialidades;
 /*INSERTAR INSPECTORES*/
-INSERT INTO tpdatabase.inspectores(id_inspector,apellido,nombre)VALUES(1,"Tissera","Rodrigo");
-INSERT INTO tpdatabase.inspectores(id_inspector,apellido,nombre)VALUES(2,"Gadda","Rodrigo");
-INSERT INTO tpdatabase.inspectores(id_inspector,apellido,nombre)VALUES(3,"Gonzalez","Alejandro");
-INSERT INTO tpdatabase.inspectores(id_inspector,apellido,nombre)VALUES(4,"Prueba","Prueba");
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user)VALUES(1,4);
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user)VALUES(2,5);
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user)VALUES(3,6);
 select * from tpdatabase.inspectores;
 
 /*INSERTAR INSPECTOR-ESPECIALIDAD*/

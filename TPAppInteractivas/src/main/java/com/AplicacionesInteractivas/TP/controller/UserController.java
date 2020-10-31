@@ -130,6 +130,9 @@ public class UserController {
 	    if(user.getTipoUser() != null) {
 	    	existing.setTipoUser(user.getTipoUser());
 	    }
+
+	    existing.setDatos_moviles(user.isDatos_moviles());
+	    existing.setRecibir_notificaciones(user.isRecibir_notificaciones());
 		return this.userRepository.save(existing);
 	}
 	

@@ -43,26 +43,8 @@ public class InspectorController {
 	public List<Inspector> getAllInspectores(){
 		List<Inspector> inspectores = this.inspectorRepository.findAll();
 		for (int i = 0; i < inspectores.size(); i++) {
-			Inspector inspector= inspectores.get(i);
-			List<InspectorEdificio> inspectoresEdificios= inspector.getInspectoredificio();
-			for (int j = 0; j < inspectoresEdificios.size(); j++) {
-				InspectorEdificio inspectorEdificio=inspectoresEdificios.get(j);
-				inspectorEdificio.setInspector(null);
-				
-				Edificio edificio = inspectorEdificio.getEdificio();
-				edificio.setUnidades(null);
-				edificio.setInspectoredificio(null);
-				edificio.setEspaciosComunes(null);
-				edificio.setInspectorespecalidad(null);
-				inspectorEdificio.setEdificio(edificio);
-				
-				inspectoresEdificios.set(j, inspectorEdificio);
-			}
-			
-		
-			inspector.setInspectoredificio(inspectoresEdificios);
-		}
-		
+			inspectores.set(i, cleanInspector(inspectores.get(i)));
+		}	
 		return inspectores;
 	}
 
@@ -79,21 +61,7 @@ public class InspectorController {
 			}
 		}
 		if (seleccionado != null) {
-			List<InspectorEdificio> inspectoredificios =  seleccionado.getInspectoredificio();
-			for (int i = 0; i < inspectoredificios.size(); i++) {
-				InspectorEdificio inspectorEdificio = inspectoredificios.get(i);
-				
-				inspectorEdificio.setInspector(null);
-				
-				Edificio edificio = inspectorEdificio.getEdificio();
-				edificio.setEspaciosComunes(null);
-				edificio.setUnidades(null);
-				edificio.setInspectoredificio(null);
-				inspectorEdificio.setEdificio(edificio);
-				
-				inspectoredificios.set(i, inspectorEdificio);
-			}
-			seleccionado.setInspectoredificio(inspectoredificios);
+			seleccionado = cleanInspector(seleccionado);
 		}
 		
 		return seleccionado;
@@ -104,7 +72,7 @@ public class InspectorController {
 	public Inspector getInspectorById(@PathVariable (value="id") long inspectorID) {
 		Inspector inspector = this.inspectorRepository.findById(inspectorID)
 				.orElseThrow(() -> new ResourceNotFoundException("Inspector not fount whth ID" + inspectorID));
-		return inspector;
+		return cleanInspector(inspector);
 	}
 	
 	//delete Inspector by id
@@ -114,5 +82,26 @@ public class InspectorController {
 				.orElseThrow(()-> new ResourceNotFoundException("No existe Inspector para eliminar" +inspectorID));
 		this.inspectorRepository.delete(inspExisting);
 		return ResponseEntity.ok().build();
+	}
+	
+	private Inspector cleanInspector(Inspector inspector) {
+		List<InspectorEdificio> inspectoredificios =  inspector.getInspectoredificio();
+		for (int i = 0; i < inspectoredificios.size(); i++) {
+			InspectorEdificio inspectorEdificio = inspectoredificios.get(i);
+			
+			inspectorEdificio.setInspector(null);
+			
+			Edificio edificio = inspectorEdificio.getEdificio();
+			edificio.setEspaciosComunes(null);
+			edificio.setUnidades(null);
+			edificio.setInspectoredificio(null);
+			edificio.setInspectorespecalidad(null);
+			inspectorEdificio.setEdificio(edificio);
+			
+			inspectoredificios.set(i, inspectorEdificio);
+		}
+		inspector.setInspectoredificio(inspectoredificios);
+		
+		return inspector;
 	}
 }
