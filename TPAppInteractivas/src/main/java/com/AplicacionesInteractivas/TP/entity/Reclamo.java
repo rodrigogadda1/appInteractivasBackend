@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //creacion de JPA entity Reclamos
@@ -32,8 +34,9 @@ public class Reclamo {
 		@Column(name="fecha")
 		private Date fecha;
 		
-		@Column(name="id_estado")
-		private long idEstado;
+		@OneToOne
+		@JoinColumn(name="id_estado")
+		private Estado estado;
 		
 		@Column(name="id_agrupador")
 		private long idAgrupador;
@@ -45,11 +48,32 @@ public class Reclamo {
 			super();
 		}
 
-		public long getIdReclamo() {
+		public Reclamo(long id_reclamo, String nombre, String username, long idEdificio, long idEspecialidad,
+				Date fecha, Estado estado, long idAgrupador, String descripcion) {
+			super();
+			this.id_reclamo = id_reclamo;
+			Nombre = nombre;
+			this.username = username;
+			this.idEdificio = idEdificio;
+			this.idEspecialidad = idEspecialidad;
+			this.fecha = fecha;
+			this.estado = estado;
+			this.idAgrupador = idAgrupador;
+			this.descripcion = descripcion;
+		}
+
+		@Override
+		public String toString() {
+			return "Reclamo [id_reclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username
+					+ ", idEdificio=" + idEdificio + ", idEspecialidad=" + idEspecialidad + ", fecha=" + fecha
+					+ ", estado=" + estado + ", idAgrupador=" + idAgrupador + ", descripcion=" + descripcion + "]";
+		}
+
+		public long getId_reclamo() {
 			return id_reclamo;
 		}
 
-		public void setIdReclamo(long id_reclamo) {
+		public void setId_reclamo(long id_reclamo) {
 			this.id_reclamo = id_reclamo;
 		}
 
@@ -93,12 +117,12 @@ public class Reclamo {
 			this.fecha = fecha;
 		}
 
-		public long getIdEstado() {
-			return idEstado;
+		public Estado getEstado() {
+			return estado;
 		}
 
-		public void setIdEstado(long idEstado) {
-			this.idEstado = idEstado;
+		public void setEstado(Estado estado) {
+			this.estado = estado;
 		}
 
 		public long getIdAgrupador() {
@@ -116,27 +140,5 @@ public class Reclamo {
 		public void setDescripcion(String descripcion) {
 			this.descripcion = descripcion;
 		}
-
-		public Reclamo(long id_reclamo, String nombre, String username, long idEdificio, long idEspecialidad, Date fecha,
-				long idEstado, long idAgrupador, String descripcion) {
-			super();
-			this.id_reclamo = id_reclamo;
-			Nombre = nombre;
-			this.username = username;
-			this.idEdificio = idEdificio;
-			this.idEspecialidad = idEspecialidad;
-			this.fecha = fecha;
-			this.idEstado = idEstado;
-			this.idAgrupador = idAgrupador;
-			this.descripcion = descripcion;
-		}
-
-		@Override
-		public String toString() {
-			return "Reclamo [idReclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username + ", idEdificio="
-					+ idEdificio + ", idEspecialidad=" + idEspecialidad + ", fecha=" + fecha + ", idEstado=" + idEstado
-					+ ", idAgrupador=" + idAgrupador + ", descripcion=" + descripcion + "]";
-		}
-		
 		
 }

@@ -97,3 +97,29 @@ INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`i
 INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`,`id_unidad`)VALUES(2,"Inquilino",2,5);
 INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`,`id_unidad`)VALUES(3,"Dueño/Vividor",3,8);
 select * from tpdatabase.administrad_unidad;
+
+/*INSERTAR ESTADO*/
+/*Abierto: Reclamo recien abierto sin tratar
+Cerrado: Reclamo cerrado con solucion encontrada - Problema arreglado
+Inspeccionando: en Bandeja del inspector X esperando por inspeccion
+En Reparacion: reclamo en proceso de reparacion
+Cancelado: Reclamo suspendido - Pedido Cancelado */
+INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(1,"Abierto");
+INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(2,"Cerrado");
+INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(3,"Inspeccionando");
+INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(4,"En Reparacion");
+INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(5,"Cancelado");
+select * from tpdatabase.estados;
+
+/*INSERTAR RECLAMOS*/
+INSERT INTO tpdatabase.reclamos(`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,`id_especialidad`,`id_estado`,`username`)
+VALUES(1,"Problema en Escalera","en la escalera se encientra la baranda suelta",20201101,null,1,2,1,
+"user1");
+INSERT INTO tpdatabase.reclamos(`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,`id_especialidad`,`id_estado`,`username`)
+VALUES(2,"Problema Energia","Problemas de corte de luz en depto",20201102,null,2,1,2,
+"user2");
+
+INSERT INTO tpdatabase.reclamos(`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,`id_especialidad`,`id_estado`,`username`)
+VALUES(3,"Problema de Pintura","se despinto la pared interna de depto",20201103,null,3,3,4,
+"user4");
+select * from tpdatabase.reclamos;
