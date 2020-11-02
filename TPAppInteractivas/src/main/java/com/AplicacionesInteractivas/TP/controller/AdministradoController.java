@@ -43,7 +43,7 @@ public class AdministradoController {
 		long seleccionado = -1;
 		while ((seleccionado == -1) && (temp < administrados.size())) {
 			Administrado administrado = administrados.get(temp);
-			if (administrado.getIdUser() == id_user) {
+			if (administrado.getId_user() == id_user) {
 				seleccionado = administrado.getId_administrado();
 			}else {
 				temp++;

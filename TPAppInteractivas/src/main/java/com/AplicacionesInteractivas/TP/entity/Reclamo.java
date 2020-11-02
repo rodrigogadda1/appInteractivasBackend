@@ -1,6 +1,7 @@
 package com.AplicacionesInteractivas.TP.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,10 +29,10 @@ public class Reclamo {
 		private String username;
 		
 		@Column(name="id_edificio")
-		private long idEdificio;
+		private long id_edificio;
 		
 		@Column(name="id_especialidad")
-		private long idEspecialidad;
+		private long id_especialidad;
 		
 		@Column(name="fecha")
 		private Date fecha;
@@ -39,34 +42,51 @@ public class Reclamo {
 		private Estado estado;
 		
 		@Column(name="id_agrupador")
-		private long idAgrupador;
+		private long id_agrupador;
 		
 		@Column(name="descripcion")
 		private String descripcion;
+		
+		@ManyToOne
+		@JoinColumn(name="id_administrado")
+		private Administrado administrado;
+		
+		@ManyToOne
+		@JoinColumn(name="id_unidad")
+		private Unidad unidad;
+		
+		@OneToMany
+		@JoinColumn(name="id_reclamo")
+		private List<Foto> fotos;
 		
 		public Reclamo() {
 			super();
 		}
 
-		public Reclamo(long id_reclamo, String nombre, String username, long idEdificio, long idEspecialidad,
-				Date fecha, Estado estado, long idAgrupador, String descripcion) {
+		public Reclamo(long id_reclamo, String nombre, String username, long id_edificio, long id_especialidad,
+				Date fecha, Estado estado, long id_agrupador, String descripcion, Administrado administrado,
+				Unidad unidad, List<Foto> fotos) {
 			super();
 			this.id_reclamo = id_reclamo;
 			Nombre = nombre;
 			this.username = username;
-			this.idEdificio = idEdificio;
-			this.idEspecialidad = idEspecialidad;
+			this.id_edificio = id_edificio;
+			this.id_especialidad = id_especialidad;
 			this.fecha = fecha;
 			this.estado = estado;
-			this.idAgrupador = idAgrupador;
+			this.id_agrupador = id_agrupador;
 			this.descripcion = descripcion;
+			this.administrado = administrado;
+			this.unidad = unidad;
+			this.fotos = fotos;
 		}
 
 		@Override
 		public String toString() {
 			return "Reclamo [id_reclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username
-					+ ", idEdificio=" + idEdificio + ", idEspecialidad=" + idEspecialidad + ", fecha=" + fecha
-					+ ", estado=" + estado + ", idAgrupador=" + idAgrupador + ", descripcion=" + descripcion + "]";
+					+ ", id_edificio=" + id_edificio + ", id_especialidad=" + id_especialidad + ", fecha=" + fecha
+					+ ", estado=" + estado + ", id_agrupador=" + id_agrupador + ", descripcion=" + descripcion
+					+ ", administrado=" + administrado + ", unidad=" + unidad + ", fotos=" + fotos + "]";
 		}
 
 		public long getId_reclamo() {
@@ -93,20 +113,20 @@ public class Reclamo {
 			this.username = username;
 		}
 
-		public long getIdEdificio() {
-			return idEdificio;
+		public long getId_edificio() {
+			return id_edificio;
 		}
 
-		public void setIdEdificio(long idEdificio) {
-			this.idEdificio = idEdificio;
+		public void setId_edificio(long id_edificio) {
+			this.id_edificio = id_edificio;
 		}
 
-		public long getIdEspecialidad() {
-			return idEspecialidad;
+		public long getId_especialidad() {
+			return id_especialidad;
 		}
 
-		public void setIdEspecialidad(long idEspecialidad) {
-			this.idEspecialidad = idEspecialidad;
+		public void setId_especialidad(long id_especialidad) {
+			this.id_especialidad = id_especialidad;
 		}
 
 		public Date getFecha() {
@@ -125,12 +145,12 @@ public class Reclamo {
 			this.estado = estado;
 		}
 
-		public long getIdAgrupador() {
-			return idAgrupador;
+		public long getId_agrupador() {
+			return id_agrupador;
 		}
 
-		public void setIdAgrupador(long idAgrupador) {
-			this.idAgrupador = idAgrupador;
+		public void setId_agrupador(long id_agrupador) {
+			this.id_agrupador = id_agrupador;
 		}
 
 		public String getDescripcion() {
@@ -140,5 +160,30 @@ public class Reclamo {
 		public void setDescripcion(String descripcion) {
 			this.descripcion = descripcion;
 		}
-		
+
+		public Administrado getAdministrado() {
+			return administrado;
+		}
+
+		public void setAdministrado(Administrado administrado) {
+			this.administrado = administrado;
+		}
+
+		public Unidad getUnidad() {
+			return unidad;
+		}
+
+		public void setUnidad(Unidad unidad) {
+			this.unidad = unidad;
+		}
+
+		public List<Foto> getFotos() {
+			return fotos;
+		}
+
+		public void setFotos(List<Foto> fotos) {
+			this.fotos = fotos;
+		}
+
+
 }

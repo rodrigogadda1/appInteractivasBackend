@@ -32,8 +32,6 @@
  select id, username, password, tipo_user,pregunta_seguridad, respuesta_seguridad,first_name, last_name, email, celular 
  ,sexo,tipo_identificacion,numero_identificacion,first_time,datos_moviles, recibir_notificaciones from tpdatabase.users;
  
-
-
 /*INSERTAR EDIFICIOS*/
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (1,40,"savedra 10","savedra 10", "2131342");
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (2,30,"catate 29","catate building", "23215412");
@@ -85,7 +83,7 @@ INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, i
 INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, id_edificio) VALUES (5,"pileta","pileta",2);
 INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, id_edificio) VALUES (6,"ascensor","ascensor",3);
 select * from tpdatabase.espacios_comunes;
- 
+
 /*INSERTAR ADMINISTRADO*/
 INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (1, 1);
 INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (2, 2);
@@ -112,14 +110,31 @@ INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(5,"Cancelado");
 select * from tpdatabase.estados;
 
 /*INSERTAR RECLAMOS*/
-INSERT INTO tpdatabase.reclamos(`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,`id_especialidad`,`id_estado`,`username`)
-VALUES(1,"Problema en Escalera","en la escalera se encientra la baranda suelta",20201101,null,1,2,1,
-"user1");
-INSERT INTO tpdatabase.reclamos(`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,`id_especialidad`,`id_estado`,`username`)
-VALUES(2,"Problema Energia","Problemas de corte de luz en depto",20201102,null,2,1,2,
-"user2");
+INSERT INTO tpdatabase.reclamos (`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,
+`id_especialidad`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
+VALUES
+(1,"Problema en Escalera","en la escalera se encientra la baranda suelta",20201101,0,1,2,"user1",1,1,1);
 
-INSERT INTO tpdatabase.reclamos(`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,`id_especialidad`,`id_estado`,`username`)
-VALUES(3,"Problema de Pintura","se despinto la pared interna de depto",20201103,null,3,3,4,
-"user4");
+INSERT INTO tpdatabase.reclamos (`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,
+`id_especialidad`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
+VALUES(2,"Problema Energia","Problemas de corte de luz en depto",20201102,0,2,1,"user2",2,1,3);
+
+INSERT INTO tpdatabase.reclamos (`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,
+`id_especialidad`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
+VALUES(3,"Problema de Pintura","se despinto la pared interna de depto",20201103,0,3,4,"user4",3,4,2);
+
 select * from tpdatabase.reclamos;
+
+/*INSERTAR FOTOS DE RECLAMOS*/
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(1,"hithb.com",1);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(2,"githb.com",1);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(3,"githb.com",1);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(4,"githb.com",1);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(5,"githb.com",2);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(6,"githb.com",2);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(7,"githb.com",2);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(8,"githb.com",2);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(9,"githb.com",3);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(10,"githb.com",3);
+INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(11,"githb.com",3);
+select * from tpdatabase.fotos;

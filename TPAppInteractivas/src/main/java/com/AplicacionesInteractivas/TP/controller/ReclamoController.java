@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AplicacionesInteractivas.TP.entity.Administrado;
+import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
+import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.repository.ReclamoRepository;
 
 @RestController 
@@ -29,9 +32,22 @@ public class ReclamoController {
 	//get all Reclamos
 	@GetMapping
 	public List<Reclamo> getAllReclamos(){
+		List<Reclamo> reclamos = this.reclamoRepository.findAll();
+		for (int i = 0; i < reclamos.size(); i++) {
+			Reclamo reclamo = reclamos.get(i);	
+			reclamos.set(i, cleanReclamo(reclamo));
+		}
 		return this.reclamoRepository.findAll();
 	}
 	//get Reclamo by Id
 	//update Reclamo
-
+	
+	//Clean Reclamo
+	private Reclamo cleanReclamo (Reclamo reclamo) {
+		Administrado administrado = reclamo.getAdministrado();
+		administrado.setAdministradoUnidades(null);
+		administrado.setReclamo(null);
+		reclamo.setAdministrado(administrado);	
+		return reclamo;
+	}
 }
