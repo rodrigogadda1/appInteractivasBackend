@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
+import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
@@ -45,9 +46,17 @@ public class ReclamoController {
 	//Clean Reclamo
 	private Reclamo cleanReclamo (Reclamo reclamo) {
 		Administrado administrado = reclamo.getAdministrado();
+		
 		administrado.setAdministradoUnidades(null);
 		administrado.setReclamo(null);
-		reclamo.setAdministrado(administrado);	
+		reclamo.setAdministrado(administrado);
+		
+		Unidad unidad = reclamo.getUnidad();
+		unidad.setEdificio(null);
+		unidad.setAdministradoUnidades(null);
+		unidad.setReclamos(null);
+		
+		reclamo.setUnidad(unidad);
 		return reclamo;
 	}
 }
