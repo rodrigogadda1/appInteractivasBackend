@@ -16,6 +16,7 @@ import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
+import com.AplicacionesInteractivas.TP.entity.InspectorEspecialidad;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EdificioRepository;
@@ -69,10 +70,13 @@ public class EdificioController {
 			espacios.set(i, espacio);
 		}
 		edificio.setEspaciosComunes(espacios);
+		
 		List<Unidad> unidades = edificio.getUnidades();
 		for (int i = 0; i < unidades.size(); i++) {
 			Unidad unidad = unidades.get(i);
 			unidad.setEdificio(null);
+			unidad.setAdministradoUnidades(null);
+			unidad.setReclamos(null);
 			unidades.set(i, unidad);
 		}
 		edificio.setUnidades(unidades);
@@ -81,11 +85,39 @@ public class EdificioController {
 		for (int j = 0; j < inspectoredificios.size(); j++) {
 			InspectorEdificio inspectoredificio=inspectoredificios.get(j);
 			inspectoredificio.setEdificio(null);
+			
 			Inspector inspector=inspectoredificio.getInspector();
 			inspector.setInspectoredificio(null);
+			inspector.setInspectorespecialidad(null);
 			inspectoredificio.setInspector(inspector);
+			
 			inspectoredificios.set(j, inspectoredificio);
 		}
+		
+		List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
+		for (int i = 0; i < inspectorEspecialidades.size(); i++) {
+			InspectorEspecialidad inspectorEspecialidad = inspectorEspecialidades.get(i);
+			
+			Inspector inspector = inspectorEspecialidad.getInspector();
+			inspector.setInspectoredificio(null);
+			
+			List<InspectorEspecialidad> inspectorEspecialidades2 = inspector.getInspectorespecialidad();
+			for (int j = 0; j < inspectorEspecialidades2.size(); j++) {
+				InspectorEspecialidad inspectorEspecialidad2 = inspectorEspecialidades2.get(j);
+				
+				inspectorEspecialidad2.setInspector(null);
+				
+				inspectorEspecialidades2.set(j, inspectorEspecialidad2);
+			}
+			inspector.setInspectorespecialidad(inspectorEspecialidades2);
+			
+			inspectorEspecialidad.setInspector(inspector);
+			
+			
+			
+			inspectorEspecialidades.set(i, inspectorEspecialidad);
+		}
+		edificio.setInspectorespecalidad(inspectorEspecialidades);
 		
 		edificio.setInspectoredificio(inspectoredificios);
 		
