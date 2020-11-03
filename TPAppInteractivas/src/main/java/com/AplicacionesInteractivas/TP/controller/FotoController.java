@@ -33,9 +33,6 @@ public class FotoController {
 	@GetMapping
 	public List<Foto> getAllFoto(){
 		List<Foto> fotos = this.fotoRepository.findAll();
-//		for (int i = 0; i < fotos.size(); i++) {
-//			fotos.set(i, cleanFotos(fotos.get(i)));
-//		}
 		return fotos;
 	}
 	//get foto by id
@@ -59,15 +56,10 @@ public class FotoController {
 	public Foto updateFotoById(@RequestBody Foto foto, @PathVariable (value="id") long fotoId) {
 		Foto fotoActual = this.fotoRepository.findById(fotoId)
 				.orElseThrow(() -> new ResourceNotFoundException("Foto not fount whth ID" + fotoId));
-		fotoActual.setUri_foto(foto.getUri_foto()); 
+		if (foto.getUri_foto() != null) {
+			fotoActual.setUri_foto(foto.getUri_foto());
+		}
+		 		
 		return this.fotoRepository.save(fotoActual);
 	}
-//	private Foto cleanEstado (Foto foto) {
-////Edificio edificio = espaciocomun.getEdificio();
-////edificio.setUnidades(null);
-////edificio.setEspaciosComunes(null);
-////espaciocomun.setEdificio(edificio);
-//
-//return foto;
-//}
 }

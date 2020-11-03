@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
-import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
-import com.AplicacionesInteractivas.TP.entity.Edificio;
-import com.AplicacionesInteractivas.TP.entity.Foto;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -69,17 +66,46 @@ public class ReclamoController {
 			reclamoActual.setAdministrado(reclamo.getAdministrado());
 		}
 		
-		
+		if (reclamo.getDescripcion() != null) {
 		reclamoActual.setDescripcion(reclamo.getDescripcion());
-		reclamoActual.setEstado(reclamo.getEstado());
-		reclamoActual.setFecha(reclamo.getFecha());
-		reclamoActual.setFotos(reclamo.getFotos());
-		reclamoActual.setId_agrupador(reclamo.getId_agrupador());
-		reclamoActual.setId_edificio(reclamo.getId_edificio());
-		reclamoActual.setId_especialidad(reclamo.getId_especialidad());
-		reclamoActual.setNombre(reclamo.getNombre());
-		reclamoActual.setUnidad(reclamo.getUnidad());
-		reclamoActual.setUsername(reclamo.getUsername());
+		}
+		
+		if (reclamo.getEstado() != null) {
+			reclamoActual.setEstado(reclamo.getEstado());
+		}
+		
+		if(reclamo.getFecha() != null) {
+			reclamoActual.setFecha(reclamo.getFecha());
+		}
+		
+		if (reclamo.getFotos() != null) {
+			reclamoActual.setFotos(reclamo.getFotos());
+		}
+		
+		if (reclamo.getId_agrupador() != 0) {
+			reclamoActual.setId_agrupador(reclamo.getId_agrupador());
+		}
+		
+		if (reclamo.getId_edificio() != 0) {
+			reclamoActual.setId_edificio(reclamo.getId_edificio());
+		}
+		
+		if (reclamo.getId_especialidad() != 0) {
+			reclamoActual.setId_especialidad(reclamo.getId_especialidad());
+		}
+		
+		if (reclamo.getNombre() != null) {
+			reclamoActual.setNombre(reclamo.getNombre());
+		}
+		
+		if (reclamo.getUnidad() != null) {
+			reclamoActual.setUnidad(reclamo.getUnidad());
+		}
+		
+		if (reclamo.getUsername() != null) {
+			reclamoActual.setUsername(reclamo.getUsername());
+		}
+		
 		
 		return this.reclamoRepository.save(reclamoActual);
 	}
