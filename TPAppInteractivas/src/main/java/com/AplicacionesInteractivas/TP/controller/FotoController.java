@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.AplicacionesInteractivas.TP.entity.Estado;
 import com.AplicacionesInteractivas.TP.entity.Foto;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.FotoRepository;
@@ -52,6 +52,15 @@ public class FotoController {
 				.orElseThrow(()-> new ResourceNotFoundException("No existe Foto para eliminar" +fotoId));
 		this.fotoRepository.delete(fotoExisting);
 		return ResponseEntity.ok().build();
+	}
+	
+	//update Foto by ID
+	@PutMapping("/{id}")
+	public Foto updateFotoById(@RequestBody Foto foto, @PathVariable (value="id") long fotoId) {
+		Foto fotoActual = this.fotoRepository.findById(fotoId)
+				.orElseThrow(() -> new ResourceNotFoundException("Foto not fount whth ID" + fotoId));
+		fotoActual.setUri_foto(foto.getUri_foto()); 
+		return this.fotoRepository.save(fotoActual);
 	}
 //	private Foto cleanEstado (Foto foto) {
 ////Edificio edificio = espaciocomun.getEdificio();

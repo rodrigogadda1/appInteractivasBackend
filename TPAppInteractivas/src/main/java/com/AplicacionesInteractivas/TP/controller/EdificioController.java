@@ -34,18 +34,13 @@ public class EdificioController {
 		return this.edificioRepository.save(edificio);
 	}
 	
-	//get all Edificios
-	/*
-	 * @GetMapping public List<Edificio> getAllEdificio(){ return
-	 * this.edificioRepository.findAll(); }
-	 */
-		@GetMapping
-		public List<Edificio> getAllEdificio(){
-			List<Edificio> edificios =  this.edificioRepository.findAll();
-			for (int i = 0; i < edificios.size(); i++) {
-				edificios.set(i, cleanEdificio(edificios.get(i)));
-			}
-			return edificios;
+	@GetMapping
+	public List<Edificio> getAllEdificio(){
+		List<Edificio> edificios =  this.edificioRepository.findAll();
+		for (int i = 0; i < edificios.size(); i++) {
+			edificios.set(i, cleanEdificio(edificios.get(i)));
+		}
+		return edificios;
 		}	
 	
 	@GetMapping("/{id}")
