@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Especialidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EspecialidadRepository;
@@ -52,5 +54,21 @@ public class EspecialidadController {
 		return ResponseEntity.ok().build();
 	}
 	
-	//update especialidad -> Falta realizar, es necesaria?
+	//update Especialidad by ID
+	@PutMapping("/{id}")
+	public Especialidad updateEspcialidadById(@RequestBody Especialidad especialidad, @PathVariable (value="id") long especialidadId) {
+		Especialidad espActual = this.especialidadRepository.findById(especialidadId)
+				.orElseThrow(() -> new ResourceNotFoundException("Reclamo not fount whth ID" + especialidadId));
+		
+		if (especialidad.getNombre() != null) {
+			espActual.setNombre(especialidad.getNombre());
+		}
+			
+		if (especialidad.getDescripcion() != null) {
+			espActual.setDescripcion(especialidad.getDescripcion());
+		}
+		
+		return this.especialidadRepository.save(espActual);
+	}
+	
 }
