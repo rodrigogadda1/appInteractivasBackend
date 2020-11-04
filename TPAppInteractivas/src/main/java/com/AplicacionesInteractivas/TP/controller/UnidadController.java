@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
+import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -37,7 +38,7 @@ public class UnidadController {
 		for (int i = 0; i < unidades.size(); i++) {
 			Unidad unidad = unidades.get(i);	
 			unidades.set(i, cleanUnidad(unidad));
-		}
+	}
 		return unidades;
 	}
 	//get unidad By ID
@@ -61,7 +62,12 @@ public class UnidadController {
 		Edificio edificio = unidad.getEdificio();
 		edificio.setUnidades(null);
 		edificio.setEspaciosComunes(null);
+		edificio.setInspectoredificio(null);
+		edificio.setInspectorespecalidad(null);
+		
 		unidad.setEdificio(edificio);	
+		
+
 		return unidad;
 	}
 

@@ -89,6 +89,7 @@ public class AdministradoController {
 			
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
+			
 			administradoUnidad.setUnidad(unidad);
 			
 			administradoUnidades.set(i, administradoUnidad);
