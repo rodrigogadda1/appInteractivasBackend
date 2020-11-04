@@ -30,9 +30,43 @@ Create ->  OK
 Update -> OK
 Delete ->  OK
 
+Especialidades
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK
 
 
+Estados
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK
 
+Fotos
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK
 
+Fotos
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK
 
-
+Inspector
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK

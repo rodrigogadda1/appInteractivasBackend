@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Estado;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
 import com.AplicacionesInteractivas.TP.entity.InspectorEspecialidad;
@@ -82,6 +84,19 @@ public class InspectorController {
 				.orElseThrow(()-> new ResourceNotFoundException("No existe Inspector para eliminar" +inspectorID));
 		this.inspectorRepository.delete(inspExisting);
 		return ResponseEntity.ok().build();
+	}
+	
+	//update inspector by ID
+	@PutMapping("/{id}")
+	public Inspector updateInspectorById(@RequestBody Inspector inspector, @PathVariable (value="id") long inspectorID) {
+		Inspector inspActual = this.inspectorRepository.findById(inspectorID)
+				.orElseThrow(() -> new ResourceNotFoundException("Especialidad not fount whth ID" + inspectorID));
+		
+		if (inspector.getId_user() != 0) {
+			inspActual.setId_user(inspector.getId_user());
+		}
+					
+		return this.inspectorRepository.save(inspActual);
 	}
 	
 	private Inspector cleanInspector(Inspector inspector) {
