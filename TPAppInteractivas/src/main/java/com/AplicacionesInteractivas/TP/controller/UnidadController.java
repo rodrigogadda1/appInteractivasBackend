@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Foto;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -59,17 +61,34 @@ public class UnidadController {
 		return ResponseEntity.ok().build();
 	}
 	
+	//update Foto by ID
+	@PutMapping("/{id}")
+	public Unidad updateUnidadById(@RequestBody Unidad unidad, @PathVariable (value="id") long unidadId) {
+		Unidad unidadActual = this.unidadRepository.findById(unidadId)
+				.orElseThrow(() -> new ResourceNotFoundException("Unidad not fount whth ID" + unidadId));
+		if (unidad.getPiso() != null) {
+			unidadActual.setPiso(unidad.getPiso());
+		}
+		
+		if (unidad.getUnidad() != null) {
+			unidadActual.setUnidad(unidad.getUnidad());
+		}
+		 		
+		return cleanUnidad(this.unidadRepository.save(unidadActual));
+	}
+	
 	private Unidad cleanUnidad (Unidad unidad) {
-		Edificio edificio = unidad.getEdificio();
-		
-		edificio.setUnidades(null);
-		edificio.setEspaciosComunes(null);
-
-		edificio.setInspectoredificio(null);
-		edificio.setInspectorespecalidad(null);
-		
-		unidad.setEdificio(edificio);	
-		
+		if(unidad.getEdificio() != null) {
+			Edificio edificio = unidad.getEdificio();
+			
+			edificio.setUnidades(null);
+			edificio.setEspaciosComunes(null);
+	
+			edificio.setInspectoredificio(null);
+			edificio.setInspectorespecalidad(null);
+			
+			unidad.setEdificio(edificio);	
+		}
 
 //		List<InspectorEdificio> inspectorEdificios = edificio.getInspectoredificio();
 //		for (int i = 0; i < inspectorEdificios.size(); i++) {

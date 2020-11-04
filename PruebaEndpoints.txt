@@ -70,3 +70,27 @@ Get ByID -> OK
 Create ->  OK
 Update -> OK
 Delete ->  OK
+
+Reclamo
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  PROBLEMAS DE PK
+Update -> OK
+Delete ->  NO PROBADO, PROBAMOS BORRANDO EL ALTA
+
+Unidades
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete -> OK
+
+Users
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete -> OK

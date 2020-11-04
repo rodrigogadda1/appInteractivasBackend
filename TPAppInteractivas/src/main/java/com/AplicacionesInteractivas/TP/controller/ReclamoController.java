@@ -107,7 +107,7 @@ public class ReclamoController {
 		}
 		
 		
-		return this.reclamoRepository.save(reclamoActual);
+		return cleanReclamo(this.reclamoRepository.save(reclamoActual));
 	}
 	
 	//Clean Reclamo
