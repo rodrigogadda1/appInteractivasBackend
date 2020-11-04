@@ -121,7 +121,6 @@ public class ReclamoController {
 		Unidad unidad = reclamo.getUnidad();
 		unidad.setEdificio(null);
 		unidad.setAdministradoUnidades(null);
-		unidad.setReclamos(null);
 		
 		reclamo.setUnidad(unidad);
 		return reclamo;

@@ -89,7 +89,6 @@ public class AdministradoUnidadController {
 		
 		Unidad unidad = administradoUnidad.getUnidad();
 		unidad.setAdministradoUnidades(null);
-		unidad.setReclamos(null);//
 		
 		Edificio edificio = unidad.getEdificio();
 		edificio.setUnidades(null);

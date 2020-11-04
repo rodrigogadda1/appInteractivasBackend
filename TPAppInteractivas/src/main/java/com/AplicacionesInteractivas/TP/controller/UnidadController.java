@@ -112,18 +112,6 @@ public class UnidadController {
 		}
 		unidad.setAdministradoUnidades(administradoUnidades);
 		
-		List<Reclamo> reclamos = unidad.getReclamos();
-		for (int i = 0; i < reclamos.size(); i++) {
-			Reclamo reclamo = reclamos.get(i);
-			
-			reclamo.setAdministrado(null);
-			reclamo.setFotos(null);
-			reclamo.setUnidad(null);
-			
-			reclamos.set(i, reclamo);
-		}
-		unidad.setReclamos(reclamos);
-		
 		return unidad;
 	}
 

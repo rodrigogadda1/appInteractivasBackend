@@ -114,7 +114,6 @@ public class AdministradoController {
 			
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
-			unidad.setReclamos(null);
 			
 			administrado.setReclamo(null);
 			

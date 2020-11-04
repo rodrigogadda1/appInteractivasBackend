@@ -101,7 +101,6 @@ public class EdificioController {
 			Unidad unidad = unidades.get(i);
 			unidad.setEdificio(null);
 			unidad.setAdministradoUnidades(null);
-			unidad.setReclamos(null);
 			unidades.set(i, unidad);
 		}
 		edificio.setUnidades(unidades);

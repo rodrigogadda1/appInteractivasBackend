@@ -51,12 +51,12 @@ public class Reclamo {
 		@JoinColumn(name="id_administrado")
 		private Administrado administrado;
 		
-		@ManyToOne
+		@OneToOne
 		@JoinColumn(name="id_unidad")
 		private Unidad unidad;
 		
 		@OneToMany
-		@JoinColumn(name="id_reclamo")
+		@JoinColumn(name="id_unidad")
 		private List<Foto> fotos;
 		
 		public Reclamo() {
