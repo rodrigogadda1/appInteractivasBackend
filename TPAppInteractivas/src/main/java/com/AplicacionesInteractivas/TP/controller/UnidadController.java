@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Inspector;
+import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
+import com.AplicacionesInteractivas.TP.entity.InspectorEspecialidad;
+import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.UnidadRepository;
@@ -60,14 +64,72 @@ public class UnidadController {
 	
 	private Unidad cleanUnidad (Unidad unidad) {
 		Edificio edificio = unidad.getEdificio();
+		
 		edificio.setUnidades(null);
 		edificio.setEspaciosComunes(null);
+<<<<<<< HEAD
 		edificio.setInspectoredificio(null);
 		edificio.setInspectorespecalidad(null);
 		
 		unidad.setEdificio(edificio);	
 		
 
+=======
+		
+		List<InspectorEdificio> inspectorEdificios = edificio.getInspectoredificio();
+		for (int i = 0; i < inspectorEdificios.size(); i++) {
+			InspectorEdificio inspectorEdificio = inspectorEdificios.get(i);
+			
+			inspectorEdificio.setInspector(null);
+			inspectorEdificio.setEdificio(null);
+			
+			inspectorEdificios.set(i, inspectorEdificio);
+		}
+		edificio.setInspectoredificio(inspectorEdificios);
+		
+		List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
+		for (int i = 0; i < inspectorEspecialidades.size(); i++) {
+			InspectorEspecialidad inspectorEspecialidad = inspectorEspecialidades.get(i);
+			
+			Inspector inspector = inspectorEspecialidad.getInspector();
+			inspector.setInspectoredificio(null);
+			inspector.setInspectorespecialidad(null);
+			inspectorEspecialidad.setInspector(inspector);
+			
+			inspectorEspecialidades.set(i, inspectorEspecialidad);
+		}
+		unidad.setEdificio(edificio);	
+		
+		List<AdministradoUnidad> administradoUnidades = unidad.getAdministradoUnidades();
+		
+		for (int i = 0; i < administradoUnidades.size(); i++) {
+			AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
+			
+			Administrado administrado = administradoUnidad.getAdministrado();
+			administrado.setReclamo(null);
+			administrado.setAdministradoUnidades(null);
+			
+			administradoUnidad.setAdministrado(administrado);
+			
+			administradoUnidad.setUnidad(null);
+			
+			administradoUnidades.set(i, administradoUnidad);
+		}
+		unidad.setAdministradoUnidades(administradoUnidades);
+		
+		List<Reclamo> reclamos = unidad.getReclamos();
+		for (int i = 0; i < reclamos.size(); i++) {
+			Reclamo reclamo = reclamos.get(i);
+			
+			reclamo.setAdministrado(null);
+			reclamo.setFotos(null);
+			reclamo.setUnidad(null);
+			
+			reclamos.set(i, reclamo);
+		}
+		unidad.setReclamos(reclamos);
+		
+>>>>>>> daf2bd727e6ec0654b808f196546c8ab152da5c4
 		return unidad;
 	}
 
