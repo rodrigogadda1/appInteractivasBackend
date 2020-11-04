@@ -64,7 +64,7 @@ public class AdministradoController {
 	
 ////get administrado by id
 	@GetMapping("/{id}")
-	public Administrado getAdministradoId(@PathVariable (value = "id") long administradoId) {
+	public Administrado getAdministradoById(@PathVariable (value = "id") long administradoId) {
 		Administrado administrado = administradoRepository.findById(administradoId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ administradoId));
 		return cleanAdministrado(administrado);

@@ -73,7 +73,7 @@ INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (5
 INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (6,10,"F",3);
 INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (7,9,"A",1);
 INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (8,2,"B",2);
-select * from tpdatabase.unidades order by id_edificio;
+select * from tpdatabase.unidades;
  
  /*INSERTAR ESPACIOS COMUNES*/
 INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, id_edificio) VALUES (1,"pileta","pileta",1);

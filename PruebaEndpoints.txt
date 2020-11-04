@@ -1,0 +1,27 @@
+Administrado
+========================
+Get ALL -> OK
+GET ByID -> OK
+Create ->OK
+Update->OK
+Delete->OK
+
+AdministradoUnidad
+=================
+Get ALL-> OK
+Get ByID -> OK
+Create -> NO ANDA POR PK
+Update -> Solo actualiza la relacion
+Delete -> OK
+
+Edificio
+===============
+Get ALL-> 
+Get ByID -> 
+Create -> 
+Update -> 
+Delete -> 
+
+
+
+
