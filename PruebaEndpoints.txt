@@ -22,6 +22,15 @@ Create ->  OK
 Update -> OK
 Delete ->  OK
 
+EspacioComun
+==============
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK
+
+
 
 
 
