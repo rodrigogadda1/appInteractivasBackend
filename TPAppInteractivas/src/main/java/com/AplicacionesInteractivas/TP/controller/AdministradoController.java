@@ -3,9 +3,12 @@ package com.AplicacionesInteractivas.TP.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Foto;
+import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.AdministradoRepository;
@@ -32,7 +37,6 @@ public class AdministradoController {
 		for (int i = 0; i < administrados.size(); i++) {
 			administrados.set(i, cleanAdministrado(administrados.get(i)));
 		}
-		
 		return administrados;
 	}
 	
@@ -58,7 +62,7 @@ public class AdministradoController {
 		}
 	}
 	
-////get user by id
+////get administrado by id
 	@GetMapping("/{id}")
 	public Administrado getAdministradoId(@PathVariable (value = "id") long administradoId) {
 		Administrado administrado = administradoRepository.findById(administradoId)
@@ -68,10 +72,31 @@ public class AdministradoController {
 	
 	//create administrado
 	@PostMapping
-	public Administrado createUser(@RequestBody Administrado administrado) {
+	public Administrado createAdministrado(@RequestBody Administrado administrado) {
 		return this.administradoRepository.save(administrado);
 	}
 	
+	//update Adminsitrado by ID
+	@PutMapping("/{id}")
+	public Administrado updateAdmninistradoById(@RequestBody Administrado administrado, @PathVariable (value="id") long administradoId) {
+		Administrado adminiActual = this.administradoRepository.findById(administradoId)
+				.orElseThrow(() -> new ResourceNotFoundException("Reclamo not fount whth ID" + administradoId));
+		
+		if (administrado.getId_user() != 0) {
+			adminiActual.setId_user(administrado.getId_user());
+		}
+			
+		return this.administradoRepository.save(adminiActual);
+	}
+	
+	//delete Foto by id
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Administrado>  deleteAdministradoById(@PathVariable (value="id") long administradoId) {
+		Administrado adminExisting = this.administradoRepository.findById(administradoId)
+				.orElseThrow(()-> new ResourceNotFoundException("No existe Foto para eliminar" +administradoId));
+		this.administradoRepository.delete(adminExisting);
+		return ResponseEntity.ok().build();
+	}
 	
 	private Administrado cleanAdministrado(Administrado administrado) {
 		List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
