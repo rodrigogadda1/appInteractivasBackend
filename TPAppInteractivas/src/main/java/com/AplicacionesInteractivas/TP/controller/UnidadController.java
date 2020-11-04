@@ -67,38 +67,36 @@ public class UnidadController {
 		
 		edificio.setUnidades(null);
 		edificio.setEspaciosComunes(null);
-<<<<<<< HEAD
+
 		edificio.setInspectoredificio(null);
 		edificio.setInspectorespecalidad(null);
 		
 		unidad.setEdificio(edificio);	
 		
 
-=======
+//		List<InspectorEdificio> inspectorEdificios = edificio.getInspectoredificio();
+//		for (int i = 0; i < inspectorEdificios.size(); i++) {
+//			InspectorEdificio inspectorEdificio = inspectorEdificios.get(i);
+//			
+//			inspectorEdificio.setInspector(null);
+//			inspectorEdificio.setEdificio(null);
+//			
+//			inspectorEdificios.set(i, inspectorEdificio);
+//		}
+//		edificio.setInspectoredificio(inspectorEdificios);
 		
-		List<InspectorEdificio> inspectorEdificios = edificio.getInspectoredificio();
-		for (int i = 0; i < inspectorEdificios.size(); i++) {
-			InspectorEdificio inspectorEdificio = inspectorEdificios.get(i);
-			
-			inspectorEdificio.setInspector(null);
-			inspectorEdificio.setEdificio(null);
-			
-			inspectorEdificios.set(i, inspectorEdificio);
-		}
-		edificio.setInspectoredificio(inspectorEdificios);
-		
-		List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
-		for (int i = 0; i < inspectorEspecialidades.size(); i++) {
-			InspectorEspecialidad inspectorEspecialidad = inspectorEspecialidades.get(i);
-			
-			Inspector inspector = inspectorEspecialidad.getInspector();
-			inspector.setInspectoredificio(null);
-			inspector.setInspectorespecialidad(null);
-			inspectorEspecialidad.setInspector(inspector);
-			
-			inspectorEspecialidades.set(i, inspectorEspecialidad);
-		}
-		unidad.setEdificio(edificio);	
+//		List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
+//		for (int i = 0; i < inspectorEspecialidades.size(); i++) {
+//			InspectorEspecialidad inspectorEspecialidad = inspectorEspecialidades.get(i);
+//			
+//			Inspector inspector = inspectorEspecialidad.getInspector();
+//			inspector.setInspectoredificio(null);
+//			inspector.setInspectorespecialidad(null);
+//			inspectorEspecialidad.setInspector(inspector);
+//			
+//			inspectorEspecialidades.set(i, inspectorEspecialidad);
+//		}
+		//unidad.setEdificio(edificio);	
 		
 		List<AdministradoUnidad> administradoUnidades = unidad.getAdministradoUnidades();
 		
@@ -129,7 +127,6 @@ public class UnidadController {
 		}
 		unidad.setReclamos(reclamos);
 		
->>>>>>> daf2bd727e6ec0654b808f196546c8ab152da5c4
 		return unidad;
 	}
 

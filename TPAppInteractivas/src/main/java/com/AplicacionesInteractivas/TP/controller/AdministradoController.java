@@ -66,7 +66,7 @@ public class AdministradoController {
 		return cleanAdministrado(administrado);
 	}
 	
-	//create user
+	//create administrado
 	@PostMapping
 	public Administrado createUser(@RequestBody Administrado administrado) {
 		return this.administradoRepository.save(administrado);
@@ -89,8 +89,13 @@ public class AdministradoController {
 			
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
+			unidad.setReclamos(null);
+			
+			administrado.setReclamo(null);
+			
 			
 			administradoUnidad.setUnidad(unidad);
+			
 			
 			administradoUnidades.set(i, administradoUnidad);
 		}
