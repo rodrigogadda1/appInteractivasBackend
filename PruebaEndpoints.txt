@@ -10,17 +10,19 @@ AdministradoUnidad
 =================
 Get ALL-> OK
 Get ByID -> OK
-Create -> NO ANDA POR PK
-Update -> Solo actualiza la relacion
+Create -> NO ANDA POR PK ***entiendo que es por la relacion de la entity
+Update -> Solo actualiza la relacion ***entiendo que es por la relacion de la entity
 Delete -> OK
 
 Edificio
 ===============
-Get ALL-> 
-Get ByID -> 
-Create -> 
-Update -> 
-Delete -> 
+Get ALL-> OK
+Get ByID -> OK
+Create ->  OK
+Update -> OK
+Delete ->  OK
+
+
 
 
 

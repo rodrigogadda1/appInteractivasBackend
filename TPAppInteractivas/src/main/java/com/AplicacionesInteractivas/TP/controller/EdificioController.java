@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
@@ -62,6 +64,29 @@ public class EdificioController {
 		return ResponseEntity.ok().build();
 	}
 	
+	@PutMapping("/{id}")
+	public Edificio updateEdificioById(@RequestBody Edificio edificio, @PathVariable (value="id") long edificioId) {
+		Edificio adificioActual = this.edificioRepository.findById(edificioId)
+				.orElseThrow(() -> new ResourceNotFoundException("Edificio not fount whth ID" + edificioId));
+		
+		if (edificio.getCantUnidades() != 0) {
+			adificioActual.setCantUnidades(edificio.getCantUnidades());
+		}
+			
+		if (edificio.getDireccion() != null) {
+			adificioActual.setDireccion(edificio.getDireccion());
+		}
+		
+		if (edificio.getNombre() != null) {
+			adificioActual.setNombre(edificio.getNombre());
+		}
+		
+		if (edificio.getTelefono() != null) {
+			adificioActual.setTelefono(edificio.getTelefono());
+		}
+		return cleanEdificio(this.edificioRepository.save(adificioActual));
+	}
+	
 	private Edificio cleanEdificio(Edificio edificio) {
 		List<EspacioComun> espacios = edificio.getEspaciosComunes();
 		for (int i = 0; i < espacios.size(); i++) {
@@ -102,15 +127,16 @@ public class EdificioController {
 			inspector.setInspectoredificio(null);
 			
 			List<InspectorEspecialidad> inspectorEspecialidades2 = inspector.getInspectorespecialidad();
-			for (int j = 0; j < inspectorEspecialidades2.size(); j++) {
-				InspectorEspecialidad inspectorEspecialidad2 = inspectorEspecialidades2.get(j);
-				
-				inspectorEspecialidad2.setInspector(null);
-				
-				inspectorEspecialidades2.set(j, inspectorEspecialidad2);
+			if (inspectorEspecialidades2 != null) {
+				for (int j = 0; j < inspectorEspecialidades2.size(); j++) {
+					InspectorEspecialidad inspectorEspecialidad2 = inspectorEspecialidades2.get(j);
+					
+					inspectorEspecialidad2.setInspector(null);
+					
+					inspectorEspecialidades2.set(j, inspectorEspecialidad2);
+				}
+				inspector.setInspectorespecialidad(inspectorEspecialidades2);
 			}
-			inspector.setInspectorespecialidad(inspectorEspecialidades2);
-			
 			inspectorEspecialidad.setInspector(inspector);
 			
 			
