@@ -56,7 +56,7 @@ public class Reclamo {
 		private Unidad unidad;
 		
 		@OneToMany
-		@JoinColumn(name="id_unidad")
+		@JoinColumn(name="id_reclamo")
 		private List<Foto> fotos;
 		
 		public Reclamo() {
