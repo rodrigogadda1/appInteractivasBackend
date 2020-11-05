@@ -114,16 +114,41 @@ public class AdministradoController {
 			
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
-			
-			administrado.setReclamo(null);
-			
+	
 			
 			administradoUnidad.setUnidad(unidad);
 			
-			
 			administradoUnidades.set(i, administradoUnidad);
+			
+
 		}
+		
 		administrado.setAdministradoUnidades(administradoUnidades);
+		
+		List<Reclamo> reclamos= administrado.getReclamo();
+		for (int j = 0; j < reclamos.size(); j++) {
+			Reclamo reclamo = reclamos.get(j);
+			reclamo.setAdministrado(null);
+			
+			Unidad unidad = reclamo.getUnidad();
+			
+			Edificio edificio = unidad.getEdificio();
+			edificio.setEspaciosComunes(null);
+			edificio.setUnidades(null);
+			edificio.setInspectoredificio(null);
+			edificio.setInspectorespecalidad(null);
+			
+			unidad.setEdificio(edificio);
+			unidad.setAdministradoUnidades(null);
+	
+			
+			reclamo.setUnidad(unidad);
+			
+			
+			reclamos.set(j, reclamo);
+		}
+		administrado.setReclamo(reclamos);
+		
 		return administrado;
 	}
 	

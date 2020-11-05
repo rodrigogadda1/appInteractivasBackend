@@ -1,0 +1,1814 @@
+{
+	"info": {
+		"_postman_id": "1d771cc4-6ba4-49e7-84e5-40b914a64101",
+		"name": "tpo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Foto",
+			"item": [
+				{
+					"name": "GET ALL Fotos ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fotos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fotos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Fotos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fotos/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fotos",
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Fotos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Prueba endpoint\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fotos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fotos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Fotos ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fotos/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fotos",
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Fotos ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uri_foto\": \"Prueba endpoint actualizado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fotos/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fotos",
+								"28"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Administrados",
+			"item": [
+				{
+					"name": "GET ALL Administrados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Administrados",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n  {\r\n       \"id_user\": 7\r\n  }\r\n   \r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Administrados",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n\r\n  {\r\n    \"id_user\": 100\r\n  }\r\n   \r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Administrados ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELTE Administrados ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "AdminstradoUnidad",
+			"item": [
+				{
+					"name": "GET ALL AdministradoUnidad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/unidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET AdministradoUnidad ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/unidades/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"unidades",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE AdministradoUnidad ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/unidades/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"unidades",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST AdministradoUnidad",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"administrado\": {\r\n        \"id_administrado\": 3,\r\n        \"id_user\": 3,\r\n        \"administradoUnidades\": null,\r\n        \"reclamo\": null\r\n    },\r\n    \"unidad\": {\r\n        \"id_unidad\": 8,\r\n        \"piso\": \"2\",\r\n        \"unidad\": \"B\",\r\n        \"edificio\": {\r\n            \"id_edificio\": 2,\r\n            \"nombre\": \"catate building\",\r\n            \"direccion\": \"catate 29\",\r\n            \"telefono\": \"23215412\",\r\n            \"cantUnidades\": 30,\r\n            \"unidades\": null,\r\n            \"espaciosComunes\": null,\r\n            \"inspectoredificio\": null,\r\n            \"inspectorespecalidad\": null\r\n        },\r\n        \"administradoUnidades\": null\r\n    },\r\n    \"relacion\": \"BORRAR\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/unidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT AdministradoUnidad",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_administrado\": 2,\r\n    \"id_unidad\": 2,\r\n    \"relacion\": \"Prueba2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrados/unidades/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrados",
+								"unidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Unidades",
+			"item": [
+				{
+					"name": "GET ALL Unidades",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/unidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Unidades ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/unidades/51",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"unidades",
+								"51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Unidades ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/unidades/51",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"unidades",
+								"51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Unidades",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"piso\": \"5\",\r\n    \"unidad\": \"Piso\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/unidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Unidades ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"piso\": \"4\",\r\n    \"unidad\": \"aaaaa\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/unidades/51",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"unidades",
+								"51"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Edificios",
+			"item": [
+				{
+					"name": "GET ALL Edificios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/edificios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"edificios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Edificios ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/edificios/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"edificios",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Edificios ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/edificios/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"edificios",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Edificios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Prueba Endponit\",\r\n    \"direccion\": \"Prueba Endponit 323\",\r\n    \"telefono\": \"000000000\",\r\n    \"cantUnidades\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/edificios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"edificios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Edificios ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Prueba Endponit Actualizado\",\r\n    \"direccion\": \"Prueba Endponit 323 actualizado\",\r\n    \"telefono\": \"000000000\",\r\n    \"cantUnidades\": 0,\r\n    \"unidades\": [],\r\n    \"espaciosComunes\": [],\r\n    \"inspectoredificio\": [],\r\n    \"inspectorespecalidad\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/edificios/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"edificios",
+								"23"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "EspaciosComunes",
+			"item": [
+				{
+					"name": "GET ALL EspaciosComunes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/espacioscomunes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"espacioscomunes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET EspaciosComunes ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/espacioscomunes/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"espacioscomunes",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE EspaciosComunes ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/espacioscomunes/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"espacioscomunes",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST EspaciosComunes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Prueba\",\r\n    \"descripcion\": \"Prueba\"\r\n}\r\n    \r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/espacioscomunes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"espacioscomunes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT EspaciosComunes ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"PruebaActualizada\",\r\n    \"descripcion\": \"PruebaActualizada\"\r\n}\r\n    \r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/espacioscomunes/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"espacioscomunes",
+								"24"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "GET ALL Especialidades",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/especialidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Especialidades ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/especialidades/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"especialidades",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Especialidades ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/especialidades/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"especialidades",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Especialidades",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\": \"Prueba\",\r\n    \"descripcion\": \"Prueba de Endpoints\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/especialidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Especialidades",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\": \"Prueba Edicion\",\r\n    \"descripcion\": \"Prueba de Endpoints Edicion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/especialidades/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"especialidades",
+								"26"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Estados",
+			"item": [
+				{
+					"name": "GET ALL Estados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Estados",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Prueba ENdpoint\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Estados ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Prueba ENdpoint actualizado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estados/27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estados",
+								"27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Estados ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Prueba ENdpoint actualizado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estados/27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estados",
+								"27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Estados ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estados/27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estados",
+								"27"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Inspectores",
+			"item": [
+				{
+					"name": "GET ALL Inspectores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/inspectores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inspectores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Inspectores ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/inspectores/29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inspectores",
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Inspectores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/inspectores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inspectores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Inspectores ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/inspectores/29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inspectores",
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Inspectores ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_user\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/inspectores/29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inspectores",
+								"29"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reclamo",
+			"item": [
+				{
+					"name": "DELETE Reclamo byID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reclamos/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reclamos",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Reclamo By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"uri_foto\": \"Pruebas11\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reclamos/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reclamos",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Reclamo ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"userXXX\",\r\n    \"id_edificio\": 3,\r\n    \"id_especialidad\": 4,\r\n    \"fecha\": \"2020-11-03T00:00:00.000+00:00\",\r\n    \"id_estado\": 4,\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"se despinto la pared interna de depto\",\r\n    \"id_administrado\": 3,\r\n    \"id_unidad\": 7,\r\n    \"id_foto\": 9,\r\n    \"nombre\": \"Problema de Pintura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reclamos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reclamos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Reclamo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"username\": \"BBBBBBBB\",\r\n    \"id_edificio\": 2,\r\n    \"id_especialidad\": 1,\r\n    \"fecha\": \"2020-11-02T00:00:00.000+00:00\",\r\n    \"estado\": {\r\n        \"id_estado\": 1,\r\n        \"descripcion\": \"Abierto\"\r\n    },\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"BORRAR SOLO PRUEBA\",\r\n    \"administrado\": {\r\n        \"id_administrado\": 2,\r\n        \"id_user\": 2,\r\n        \"administradoUnidades\": null,\r\n        \"reclamo\": null\r\n    },\r\n    \"unidad\": {\r\n        \"id_unidad\": 3,\r\n        \"piso\": \"3\",\r\n        \"unidad\": \"A\",\r\n        \"edificio\": null,\r\n        \"administradoUnidades\": null\r\n    },\r\n    \"fotos\": [\r\n        {\r\n            \"id_foto\": 5,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 6,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 7,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 8,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n                {\r\n            \"id_foto\": 10,\r\n            \"uri_foto\": \"githb.com\"\r\n        }\r\n    ],\r\n    \"nombre\": \"Problema Energia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reclamos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reclamos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Reclamos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_reclamo\": 2,\r\n    \"username\": \"user2\",\r\n    \"id_edificio\": 2,\r\n    \"id_especialidad\": 1,\r\n    \"fecha\": \"2020-11-02T00:00:00.000+00:00\",\r\n    \"estado\": {\r\n        \"id_estado\": 1,\r\n        \"descripcion\": \"Abierto\"\r\n    },\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"Problemas de corte de luz en depto\",\r\n    \"administrado\": {\r\n        \"id_administrado\": 2,\r\n        \"id_user\": 2,\r\n        \"administradoUnidades\": null,\r\n        \"reclamo\": null\r\n    },\r\n    \"unidad\": {\r\n        \"id_unidad\": 3,\r\n        \"piso\": \"3\",\r\n        \"unidad\": \"A\",\r\n        \"edificio\": null,\r\n        \"administradoUnidades\": null,\r\n        \"reclamos\": null\r\n    },\r\n    \"fotos\": [\r\n        {\r\n            \"id_foto\": 5,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 6,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 7,\r\n            \"uri_foto\": \"githb.com\"\r\n        }\r\n    ],\r\n    \"nombre\": \"Problema Energia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reclamos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reclamos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GET ALL Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_reclamo\": 2,\r\n    \"username\": \"user2\",\r\n    \"id_edificio\": 2,\r\n    \"id_especialidad\": 1,\r\n    \"fecha\": \"2020-11-02T00:00:00.000+00:00\",\r\n    \"estado\": {\r\n        \"id_estado\": 1,\r\n        \"descripcion\": \"Abierto\"\r\n    },\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"Problemas de corte de luz en depto\",\r\n    \"administrado\": {\r\n        \"id_administrado\": 2,\r\n        \"id_user\": 2,\r\n        \"administradoUnidades\": null,\r\n        \"reclamo\": null\r\n    },\r\n    \"unidad\": {\r\n        \"id_unidad\": 3,\r\n        \"piso\": \"3\",\r\n        \"unidad\": \"A\",\r\n        \"edificio\": null,\r\n        \"administradoUnidades\": null,\r\n        \"reclamos\": null\r\n    },\r\n    \"fotos\": [\r\n        {\r\n            \"id_foto\": 5,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 6,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 7,\r\n            \"uri_foto\": \"githb.com\"\r\n        }\r\n    ],\r\n    \"nombre\": \"Problema Energia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Users ByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_reclamo\": 2,\r\n    \"username\": \"user2\",\r\n    \"id_edificio\": 2,\r\n    \"id_especialidad\": 1,\r\n    \"fecha\": \"2020-11-02T00:00:00.000+00:00\",\r\n    \"estado\": {\r\n        \"id_estado\": 1,\r\n        \"descripcion\": \"Abierto\"\r\n    },\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"Problemas de corte de luz en depto\",\r\n    \"administrado\": {\r\n        \"id_administrado\": 2,\r\n        \"id_user\": 2,\r\n        \"administradoUnidades\": null,\r\n        \"reclamo\": null\r\n    },\r\n    \"unidad\": {\r\n        \"id_unidad\": 3,\r\n        \"piso\": \"3\",\r\n        \"unidad\": \"A\",\r\n        \"edificio\": null,\r\n        \"administradoUnidades\": null,\r\n        \"reclamos\": null\r\n    },\r\n    \"fotos\": [\r\n        {\r\n            \"id_foto\": 5,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 6,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 7,\r\n            \"uri_foto\": \"githb.com\"\r\n        }\r\n    ],\r\n    \"nombre\": \"Problema Energia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"53"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"userxxx\",\r\n    \"id_edificio\": 3,\r\n    \"id_especialidad\": 4,\r\n    \"fecha\": \"2020-11-03T00:00:00.000+00:00\",\r\n    \"id_estado\": 4,\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"se despinto la pared interna de depto\",\r\n    \"id_administrado\": 3,\r\n    \"id_unidad\": 7,\r\n    \"id_foto\": 9,\r\n    \"nombre\": \"Problema de Pintura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Users ByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 53,\r\n    \"tipoUser\": \"eliminar\",\r\n    \"firstName\": null,\r\n    \"lastName\": null,\r\n    \"email\": null,\r\n    \"username\": \"userxxx\",\r\n    \"password\": null,\r\n    \"firstTime\": null,\r\n    \"preguntaSeguridad\": null,\r\n    \"respuestaSeguridad\": null,\r\n    \"sexo\": null,\r\n    \"tipoIdentificacion\": null,\r\n    \"numeroIdentificacion\": null,\r\n    \"celular\": null,\r\n    \"datos_moviles\": false,\r\n    \"recibir_notificaciones\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"53"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Users ByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 53,\r\n    \"tipoUser\": \"eliminar\",\r\n    \"firstName\": null,\r\n    \"lastName\": null,\r\n    \"email\": null,\r\n    \"username\": \"userxxx\",\r\n    \"password\": null,\r\n    \"firstTime\": null,\r\n    \"preguntaSeguridad\": null,\r\n    \"respuestaSeguridad\": null,\r\n    \"sexo\": null,\r\n    \"tipoIdentificacion\": null,\r\n    \"numeroIdentificacion\": null,\r\n    \"celular\": null,\r\n    \"datos_moviles\": false,\r\n    \"recibir_notificaciones\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"53"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "InspectorEdificios",
+			"item": [
+				{
+					"name": "GET ALL InspectorEdificios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_reclamo\": 2,\r\n    \"username\": \"user2\",\r\n    \"id_edificio\": 2,\r\n    \"id_especialidad\": 1,\r\n    \"fecha\": \"2020-11-02T00:00:00.000+00:00\",\r\n    \"estado\": {\r\n        \"id_estado\": 1,\r\n        \"descripcion\": \"Abierto\"\r\n    },\r\n    \"id_agrupador\": 0,\r\n    \"descripcion\": \"Problemas de corte de luz en depto\",\r\n    \"administrado\": {\r\n        \"id_administrado\": 2,\r\n        \"id_user\": 2,\r\n        \"administradoUnidades\": null,\r\n        \"reclamo\": null\r\n    },\r\n    \"unidad\": {\r\n        \"id_unidad\": 3,\r\n        \"piso\": \"3\",\r\n        \"unidad\": \"A\",\r\n        \"edificio\": null,\r\n        \"administradoUnidades\": null,\r\n        \"reclamos\": null\r\n    },\r\n    \"fotos\": [\r\n        {\r\n            \"id_foto\": 5,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 6,\r\n            \"uri_foto\": \"githb.com\"\r\n        },\r\n        {\r\n            \"id_foto\": 7,\r\n            \"uri_foto\": \"githb.com\"\r\n        }\r\n    ],\r\n    \"nombre\": \"Problema Energia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/inspectoredificios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inspectoredificios"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
