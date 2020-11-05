@@ -112,17 +112,20 @@ public class ReclamoController {
 	
 	//Clean Reclamo
 	private Reclamo cleanReclamo (Reclamo reclamo) {
-		Administrado administrado = reclamo.getAdministrado();
+		if(reclamo.getAdministrado() != null) {
+			Administrado administrado = reclamo.getAdministrado();
+			
+			administrado.setAdministradoUnidades(null);
+			administrado.setReclamo(null);
+			reclamo.setAdministrado(administrado);
+		}	
+			Unidad unidad = reclamo.getUnidad();
+			unidad.setEdificio(null);
+			unidad.setAdministradoUnidades(null);
+			
+			
+			reclamo.setUnidad(unidad);
 		
-		administrado.setAdministradoUnidades(null);
-		administrado.setReclamo(null);
-		reclamo.setAdministrado(administrado);
-		
-		Unidad unidad = reclamo.getUnidad();
-		unidad.setEdificio(null);
-		unidad.setAdministradoUnidades(null);
-		
-		reclamo.setUnidad(unidad);
 		return reclamo;
 	}
 }

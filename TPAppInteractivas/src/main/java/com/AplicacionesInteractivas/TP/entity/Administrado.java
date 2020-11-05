@@ -27,7 +27,7 @@ public class Administrado {
 	private List<AdministradoUnidad> administradoUnidades;
 	
 	@OneToMany
-	@JoinColumn(name="id_reclamo", nullable = true)
+	@JoinColumn(name="id_administrado", nullable = true)
 	private List<Reclamo> reclamo;
 	
 	public Administrado() {

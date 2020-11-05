@@ -47,8 +47,8 @@ public class Reclamo {
 		@Column(name="descripcion")
 		private String descripcion;
 		
-		@ManyToOne
-		@JoinColumn(name="id_administrado")
+		@OneToOne
+		@JoinColumn(name="id_reclamo")
 		private Administrado administrado;
 		
 		@OneToOne
