@@ -123,25 +123,25 @@ public class ReclamoController {
 			Reclamo reclamo = reclamos.get(i);
 			boolean goes = true;
 			
-			if ( (reclamo.getAdministrado() != null) && (user_ids !=  null) ) {
+			if ( (reclamo.getAdministrado() != null) && (user_ids !=  "") ) {
 				if ( !user_ids.contains(String.valueOf(reclamo.getAdministrado().getId_user())) ) {
 					goes = false;
 				}
 			}
 			
-			if ( (goes) && (reclamo.getEstado() != null)  && (status_ids != null)) {
+			if ( (goes) && (reclamo.getEstado() != null)  && (status_ids != "")) {
 				if ( !status_ids.contains(String.valueOf(reclamo.getEstado().getId_estado())) ) {
 					goes = false;
 				}
 			}
 			
-			if ( (goes) && (reclamo.getId_edificio() != 0)  && (edificios_ids != null)) {
+			if ( (goes) && (reclamo.getId_edificio() != 0)  && (edificios_ids != "")) {
 				if ( !edificios_ids.contains(String.valueOf(reclamo.getId_edificio())) ) {
 					goes = false;
 				}
 			}
 			
-			if ( (goes) && (reclamo.getId_especialidad() != 0)  && (especialidades_ids != null)) {
+			if ( (goes) && (reclamo.getId_especialidad() != 0)  && (especialidades_ids != "")) {
 				if ( !especialidades_ids.contains(String.valueOf(reclamo.getId_especialidad())) ) {
 					goes = false;
 				}
