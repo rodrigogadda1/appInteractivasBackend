@@ -1,5 +1,6 @@
 package com.AplicacionesInteractivas.TP.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
@@ -108,6 +110,37 @@ public class ReclamoController {
 		
 		
 		return cleanReclamo(this.reclamoRepository.save(reclamoActual));
+	}
+	
+	//get ReclamosByUserId en caso de administrado
+	@GetMapping("/byUserId")
+	public List<Reclamo> getReclamoFilteredByUserId(@RequestParam("users_ids") String user_ids, @RequestParam("status_ids") String status_ids){
+		List<Reclamo> reclamos = this.reclamoRepository.findAll();
+		List<Reclamo> responseReclamos = new ArrayList<>();
+		
+		for (int i = 0; i < reclamos.size(); i++) {
+			Reclamo reclamo = reclamos.get(i);
+			boolean goes = true;
+			
+			if ( (reclamo.getAdministrado() != null) && (user_ids !=  null) ) {
+				if ( !user_ids.contains(String.valueOf(reclamo.getAdministrado().getId_user())) ) {
+					goes = false;
+				}
+			}
+			
+			if ( (goes) && (reclamo.getEstado() != null)  && (status_ids != null)) {
+				if ( !status_ids.contains(String.valueOf(reclamo.getEstado().getId_estado())) ) {
+					goes = false;
+				}
+			}
+			
+			if ( goes) {
+				responseReclamos.add(cleanReclamo(reclamo));
+			}
+			
+		}
+		
+		return responseReclamos;
 	}
 	
 	//Clean Reclamo

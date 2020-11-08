@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="reclamos")
 public class Reclamo {
-		@Id
+		@Id 
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private long id_reclamo;
 		
@@ -47,8 +47,7 @@ public class Reclamo {
 		@Column(name="descripcion")
 		private String descripcion;
 		
-		@OneToOne
-		@JoinColumn(name="id_reclamo")
+		@ManyToOne
 		private Administrado administrado;
 		
 		@OneToOne
