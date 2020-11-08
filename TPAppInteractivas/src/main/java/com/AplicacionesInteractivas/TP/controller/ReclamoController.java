@@ -114,7 +114,8 @@ public class ReclamoController {
 	
 	//get ReclamosByUserId en caso de administrado
 	@GetMapping("/byUserId")
-	public List<Reclamo> getReclamoFilteredByUserId(@RequestParam("users_ids") String user_ids, @RequestParam("status_ids") String status_ids){
+	public List<Reclamo> getReclamoFilteredByUserId(@RequestParam("users_ids") String user_ids, @RequestParam("status_ids") String status_ids
+				, @RequestParam("edificios_ids") String edificios_ids , @RequestParam("especialidades_ids") String especialidades_ids){
 		List<Reclamo> reclamos = this.reclamoRepository.findAll();
 		List<Reclamo> responseReclamos = new ArrayList<>();
 		
@@ -130,6 +131,18 @@ public class ReclamoController {
 			
 			if ( (goes) && (reclamo.getEstado() != null)  && (status_ids != null)) {
 				if ( !status_ids.contains(String.valueOf(reclamo.getEstado().getId_estado())) ) {
+					goes = false;
+				}
+			}
+			
+			if ( (goes) && (reclamo.getId_edificio() != 0)  && (edificios_ids != null)) {
+				if ( !edificios_ids.contains(String.valueOf(reclamo.getId_edificio())) ) {
+					goes = false;
+				}
+			}
+			
+			if ( (goes) && (reclamo.getId_especialidad() != 0)  && (especialidades_ids != null)) {
+				if ( !especialidades_ids.contains(String.valueOf(reclamo.getId_especialidad())) ) {
 					goes = false;
 				}
 			}
