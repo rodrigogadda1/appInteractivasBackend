@@ -114,12 +114,19 @@ public class ReclamoController {
 	}
 	
 	//get ReclamosByUserId en caso de administrado
-	@GetMapping("/byUserId")
-	public List<Reclamo> getReclamoFilteredByUserId(@RequestParam("users_ids") String user_ids, @RequestParam("status_ids") String status_ids
-				, @RequestParam("edificios_ids") String edificios_ids , @RequestParam("especialidades_ids") String especialidades_ids){
+	@GetMapping("/{byUserId}")
+	public List<Reclamo> getReclamoFilteredByUserId(
+			@RequestParam("users_ids") String user_ids
+			, @RequestParam("status_ids") String status_ids
+			, @RequestParam("edificios_ids") String edificios_ids 
+			, @RequestParam("especialidades_ids") String especialidades_ids
+			){
+
+		
 		List<Reclamo> reclamos = this.reclamoRepository.findAll();
 		List<Reclamo> responseReclamos = new ArrayList<>();
 		
+
 		for (int i = 0; i < reclamos.size(); i++) {
 			Reclamo reclamo = reclamos.get(i);
 			boolean goes = true;
