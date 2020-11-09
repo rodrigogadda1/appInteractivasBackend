@@ -28,11 +28,11 @@ public class Reclamo {
 		@Column(name="username")
 		private String username;
 		
-		@Column(name="id_edificio")
-		private long id_edificio;
+		@ManyToOne
+		private Edificio edificio;
 		
-		@Column(name="id_especialidad")
-		private long id_especialidad;
+		@ManyToOne
+		private Especialidad especialidad;
 		
 		@Column(name="fecha")
 		private Date fecha;
@@ -62,15 +62,15 @@ public class Reclamo {
 			super();
 		}
 
-		public Reclamo(long id_reclamo, String nombre, String username, long id_edificio, long id_especialidad,
+		public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad,
 				Date fecha, Estado estado, long id_agrupador, String descripcion, Administrado administrado,
 				Unidad unidad, List<Foto> fotos) {
 			super();
 			this.id_reclamo = id_reclamo;
 			Nombre = nombre;
 			this.username = username;
-			this.id_edificio = id_edificio;
-			this.id_especialidad = id_especialidad;
+			this.edificio = edificio;
+			this.especialidad = especialidad;
 			this.fecha = fecha;
 			this.estado = estado;
 			this.id_agrupador = id_agrupador;
@@ -82,11 +82,13 @@ public class Reclamo {
 
 		@Override
 		public String toString() {
-			return "Reclamo [id_reclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username
-					+ ", id_edificio=" + id_edificio + ", id_especialidad=" + id_especialidad + ", fecha=" + fecha
-					+ ", estado=" + estado + ", id_agrupador=" + id_agrupador + ", descripcion=" + descripcion
-					+ ", administrado=" + administrado + ", unidad=" + unidad + ", fotos=" + fotos + "]";
+			return "Reclamo [id_reclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username + ", edificio="
+					+ edificio + ", especialidad=" + especialidad + ", fecha=" + fecha + ", estado=" + estado
+					+ ", id_agrupador=" + id_agrupador + ", descripcion=" + descripcion + ", administrado="
+					+ administrado + ", unidad=" + unidad + ", fotos=" + fotos + "]";
 		}
+
+
 
 		public long getId_reclamo() {
 			return id_reclamo;
@@ -112,20 +114,20 @@ public class Reclamo {
 			this.username = username;
 		}
 
-		public long getId_edificio() {
-			return id_edificio;
+		public Edificio getEdificio() {
+			return edificio;
 		}
 
-		public void setId_edificio(long id_edificio) {
-			this.id_edificio = id_edificio;
+		public void setEdificio(Edificio edificio) {
+			this.edificio = edificio;
 		}
 
-		public long getId_especialidad() {
-			return id_especialidad;
+		public Especialidad getEspecialidad() {
+			return especialidad;
 		}
 
-		public void setId_especialidad(long id_especialidad) {
-			this.id_especialidad = id_especialidad;
+		public void setEspecialidad(Especialidad especialidad) {
+			this.especialidad = especialidad;
 		}
 
 		public Date getFecha() {

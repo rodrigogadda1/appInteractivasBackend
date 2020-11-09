@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
+import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -88,12 +89,12 @@ public class ReclamoController {
 			reclamoActual.setId_agrupador(reclamo.getId_agrupador());
 		}
 		
-		if (reclamo.getId_edificio() != 0) {
-			reclamoActual.setId_edificio(reclamo.getId_edificio());
+		if (reclamo.getEdificio() != null) {
+			reclamoActual.setEdificio(reclamo.getEdificio());
 		}
 		
-		if (reclamo.getId_especialidad() != 0) {
-			reclamoActual.setId_especialidad(reclamo.getId_especialidad());
+		if (reclamo.getEspecialidad() != null) {
+			reclamoActual.setEspecialidad(reclamo.getEspecialidad());
 		}
 		
 		if (reclamo.getNombre() != null) {
@@ -135,14 +136,14 @@ public class ReclamoController {
 				}
 			}
 			
-			if ( (goes) && (reclamo.getId_edificio() != 0)  && (edificios_ids != "")) {
-				if ( !edificios_ids.contains(String.valueOf(reclamo.getId_edificio())) ) {
+			if ( (goes) && (reclamo.getEdificio().getId_edificio() != 0)  && (edificios_ids != "")) {
+				if ( !edificios_ids.contains(String.valueOf(reclamo.getEdificio().getId_edificio())) ) {
 					goes = false;
 				}
 			}
 			
-			if ( (goes) && (reclamo.getId_especialidad() != 0)  && (especialidades_ids != "")) {
-				if ( !especialidades_ids.contains(String.valueOf(reclamo.getId_especialidad())) ) {
+			if ( (goes) && (reclamo.getEspecialidad().getId() != 0)  && (especialidades_ids != "")) {
+				if ( !especialidades_ids.contains(String.valueOf(reclamo.getEspecialidad().getId())) ) {
 					goes = false;
 				}
 			}
@@ -169,9 +170,15 @@ public class ReclamoController {
 			unidad.setEdificio(null);
 			unidad.setAdministradoUnidades(null);
 			
-			
 			reclamo.setUnidad(unidad);
 		
+			Edificio edificio = reclamo.getEdificio();
+			edificio.setEspaciosComunes(null);
+			edificio.setInspectoredificio(null);
+			edificio.setInspectorespecalidad(null);
+			edificio.setUnidades(null);
+			reclamo.setEdificio(edificio);
+			
 		return reclamo;
 	}
 }
