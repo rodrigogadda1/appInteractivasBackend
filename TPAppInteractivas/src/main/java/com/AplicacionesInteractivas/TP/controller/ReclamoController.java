@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -159,18 +160,28 @@ public class ReclamoController {
 	
 	//Clean Reclamo
 	private Reclamo cleanReclamo (Reclamo reclamo) {
-		if(reclamo.getAdministrado() != null) {
-			Administrado administrado = reclamo.getAdministrado();
+			if(reclamo.getAdministrado() != null) {
+				Administrado administrado = reclamo.getAdministrado();
+				
+				administrado.setAdministradoUnidades(null);
+				administrado.setReclamo(null);
+				reclamo.setAdministrado(administrado);
+			}
 			
-			administrado.setAdministradoUnidades(null);
-			administrado.setReclamo(null);
-			reclamo.setAdministrado(administrado);
-		}	
-			Unidad unidad = reclamo.getUnidad();
-			unidad.setEdificio(null);
-			unidad.setAdministradoUnidades(null);
+			if (reclamo.getUnidad() != null) {
+				Unidad unidad = reclamo.getUnidad();
+				unidad.setEdificio(null);
+				unidad.setAdministradoUnidades(null);
+				reclamo.setUnidad(unidad);
+			}
 			
-			reclamo.setUnidad(unidad);
+			if (reclamo.getEspacioComun() != null) {
+				EspacioComun espacioComun = reclamo.getEspacioComun();
+				espacioComun.setEdificio(null);
+				reclamo.setEspacioComun(espacioComun);
+			}
+			
+			
 		
 			Edificio edificio = reclamo.getEdificio();
 			edificio.setEspaciosComunes(null);
@@ -178,6 +189,8 @@ public class ReclamoController {
 			edificio.setInspectorespecalidad(null);
 			edificio.setUnidades(null);
 			reclamo.setEdificio(edificio);
+			
+			
 			
 		return reclamo;
 	}
