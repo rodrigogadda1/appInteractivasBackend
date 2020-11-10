@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.sun.istack.Nullable;
+
 //creacion de JPA entity Reclamos
 @Entity
 @Table(name="reclamos")
@@ -51,8 +53,14 @@ public class Reclamo {
 		private Administrado administrado;
 		
 		@OneToOne
+		@Nullable
 		@JoinColumn(name="id_unidad")
 		private Unidad unidad;
+		
+		@OneToOne
+		@Nullable
+		@JoinColumn(name="id_espaciocomun")
+		private EspacioComun espacioComun;
 		
 		@OneToMany
 		@JoinColumn(name="id_reclamo")
@@ -64,7 +72,7 @@ public class Reclamo {
 
 		public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad,
 				Date fecha, Estado estado, long id_agrupador, String descripcion, Administrado administrado,
-				Unidad unidad, List<Foto> fotos) {
+				Unidad unidad, EspacioComun espacioComun, List<Foto> fotos) {
 			super();
 			this.id_reclamo = id_reclamo;
 			Nombre = nombre;
@@ -77,6 +85,7 @@ public class Reclamo {
 			this.descripcion = descripcion;
 			this.administrado = administrado;
 			this.unidad = unidad;
+			this.espacioComun = espacioComun;
 			this.fotos = fotos;
 		}
 
@@ -85,10 +94,16 @@ public class Reclamo {
 			return "Reclamo [id_reclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username + ", edificio="
 					+ edificio + ", especialidad=" + especialidad + ", fecha=" + fecha + ", estado=" + estado
 					+ ", id_agrupador=" + id_agrupador + ", descripcion=" + descripcion + ", administrado="
-					+ administrado + ", unidad=" + unidad + ", fotos=" + fotos + "]";
+					+ administrado + ", unidad=" + unidad + ", espacioComun=" + espacioComun + ", fotos=" + fotos + "]";
 		}
 
+		public EspacioComun getEspacioComun() {
+			return espacioComun;
+		}
 
+		public void setEspacioComun(EspacioComun espacioComun) {
+			this.espacioComun = espacioComun;
+		}
 
 		public long getId_reclamo() {
 			return id_reclamo;

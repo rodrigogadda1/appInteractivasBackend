@@ -115,7 +115,7 @@ public class ReclamoController {
 	}
 	
 	//get ReclamosByUserId en caso de administrado
-	@GetMapping("/{byUserId}")
+	@GetMapping("/byUserId")
 	public List<Reclamo> getReclamoFilteredByUserId(
 			@RequestParam("users_ids") String user_ids
 			, @RequestParam("status_ids") String status_ids
