@@ -141,8 +141,19 @@ public class AdministradoController {
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
 	
-			
 			reclamo.setUnidad(unidad);
+			
+			
+			
+			Edificio edificio2 = reclamo.getEdificio();
+			
+			edificio2.setUnidades(null);
+			edificio2.setEspaciosComunes(null);
+			edificio2.setInspectoredificio(null);
+			edificio2.setInspectorespecalidad(null);
+			
+			reclamo.setEdificio(edificio2);
+			
 			
 			
 			reclamos.set(j, reclamo);
