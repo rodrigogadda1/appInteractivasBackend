@@ -189,14 +189,14 @@ public class ReclamoController {
 			}
 			
 			
-		
-			Edificio edificio = reclamo.getEdificio();
-			edificio.setEspaciosComunes(null);
-			edificio.setInspectoredificio(null);
-			edificio.setInspectorespecalidad(null);
-			edificio.setUnidades(null);
-			reclamo.setEdificio(edificio);
-			
+			if (reclamo.getEdificio() != null) {
+				Edificio edificio = reclamo.getEdificio();
+				edificio.setEspaciosComunes(null);
+				edificio.setInspectoredificio(null);
+				edificio.setInspectorespecalidad(null);
+				edificio.setUnidades(null);
+				reclamo.setEdificio(edificio);
+			}
 			
 			
 		return reclamo;
