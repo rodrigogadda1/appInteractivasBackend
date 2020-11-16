@@ -13,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.sun.istack.Nullable;
 
@@ -36,6 +40,8 @@ public class Reclamo {
 		@ManyToOne
 		private Especialidad especialidad;
 		
+		@CreationTimestamp
+		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name="fecha")
 		private Date fecha;
 		
