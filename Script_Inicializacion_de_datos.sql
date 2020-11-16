@@ -38,10 +38,11 @@ INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre,
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (3,24,"suipaya 2332","sapayis", "7764565465");
 select * from tpdatabase.edificios;
 /*INSERTAR ESPECIALIDADES*/
-INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre) VALUES (1,"TRabajos de electricidad general","Electricidad");
-INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre) VALUES (2,"TRabajos de Albañileria","Albañileria");
-INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre) VALUES (3,"Trabajos de Pintura","Pintura");
-INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre) VALUES (4,"trabajos de Plomeria","Plomeria");
+INSERT INTO tpdatabase.especialidades (id, descripcion, nombre) VALUES (1,"TRabajos de electricidad general","Electricidad");
+INSERT INTO tpdatabase.especialidades (id, descripcion, nombre) VALUES (2,"TRabajos de Albañileria","Albañileria");
+INSERT INTO tpdatabase.especialidades (id, descripcion, nombre) VALUES (3,"Trabajos de Pintura","Pintura");
+INSERT INTO tpdatabase.especialidades (id, descripcion, nombre) VALUES (4,"trabajos de Plomeria","Plomeria");
+INSERT INTO tpdatabase.especialidades (id, descripcion, nombre) VALUES (5,"Cuando no sabes que poner","Otros");
 select * from tpdatabase.especialidades;
 /*INSERTAR INSPECTORES*/
 INSERT INTO tpdatabase.inspectores(id_inspector,id_user)VALUES(1,4);
@@ -50,12 +51,12 @@ INSERT INTO tpdatabase.inspectores(id_inspector,id_user)VALUES(3,6);
 select * from tpdatabase.inspectores;
 
 /*INSERTAR INSPECTOR-ESPECIALIDAD*/
-INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id_especialidad,id_inspector) values(1,1,1);
-INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id_especialidad,id_inspector) values(2,2,1);
-INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id_especialidad,id_inspector) values(3,3,1);
-INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id_especialidad,id_inspector) values(4,4,1);
-INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id_especialidad,id_inspector) values(5,1,2);
-INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id_especialidad,id_inspector) values(6,1,3);
+INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id,id_inspector) values(1,1,1);
+INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id,id_inspector) values(2,2,1);
+INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id,id_inspector) values(3,3,1);
+INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id,id_inspector) values(4,4,1);
+INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id,id_inspector) values(5,1,2);
+INSERT INTO tpdatabase.inspector_especialidad(id_inspectorespecialidad,id,id_inspector) values(6,1,3);
 select * from tpdatabase.inspector_especialidad;
 /*INSERTAR RELACION EDIFICIOS-INSPECTORES*/
 INSERT INTO tpdatabase.inspector_edificio(id_inspectoredificio,id_edificio,id_inspector) values(1,1,1);
@@ -111,16 +112,16 @@ select * from tpdatabase.estados;
 
 /*INSERTAR RECLAMOS*/
 INSERT INTO tpdatabase.reclamos (`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,
-`id_especialidad`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
+`id`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
 VALUES
 (1,"Problema en Escalera","en la escalera se encientra la baranda suelta",20201101,0,1,2,"user1",1,1,1);
 
 INSERT INTO tpdatabase.reclamos (`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,
-`id_especialidad`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
+`id`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
 VALUES(2,"Problema Energia","Problemas de corte de luz en depto",20201102,0,2,1,"user2",2,1,3);
 
 INSERT INTO tpdatabase.reclamos (`id_reclamo`,`nombre`,`descripcion`,`fecha`,`id_agrupador`,`id_edificio`,
-`id_especialidad`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
+`id`,`username`,`id_administrado`,`id_estado`,`id_unidad`)
 VALUES(3,"Problema de Pintura","se despinto la pared interna de depto",20201103,0,3,4,"user4",3,4,2);
 
 select * from tpdatabase.reclamos;

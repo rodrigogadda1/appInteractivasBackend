@@ -20,7 +20,7 @@ public class InspectorEspecialidad {
 	private Inspector inspector;
 	
 	@ManyToOne
-	@JoinColumn(name="id_especialidad")
+	@JoinColumn(name="id")
 	private Especialidad especialidad;
 
 	@Override
