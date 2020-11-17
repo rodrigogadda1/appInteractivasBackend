@@ -130,7 +130,7 @@ public class AdministradoController {
 			Reclamo reclamo = reclamos.get(j);
 			reclamo.setAdministrado(null);
 			
-			Unidad unidad = reclamo.getUnidad();
+			/*Unidad unidad = reclamo.getUnidad();
 			
 			Edificio edificio = unidad.getEdificio();
 			edificio.setEspaciosComunes(null);
@@ -141,8 +141,7 @@ public class AdministradoController {
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
 	
-			reclamo.setUnidad(unidad);
-			
+			reclamo.setUnidad(unidad);*/
 			
 			
 			Edificio edificio2 = reclamo.getEdificio();
