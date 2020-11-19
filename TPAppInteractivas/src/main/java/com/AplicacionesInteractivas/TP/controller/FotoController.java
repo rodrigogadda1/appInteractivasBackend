@@ -56,8 +56,8 @@ public class FotoController {
 	public Foto updateFotoById(@RequestBody Foto foto, @PathVariable (value="id") long fotoId) {
 		Foto fotoActual = this.fotoRepository.findById(fotoId)
 				.orElseThrow(() -> new ResourceNotFoundException("Foto not fount whth ID" + fotoId));
-		if (foto.getUri_foto() != null) {
-			fotoActual.setUri_foto(foto.getUri_foto());
+		if (foto.getFoto() != null) {
+			fotoActual.setFoto(foto.getFoto());;
 		}
 		 		
 		return this.fotoRepository.save(fotoActual);

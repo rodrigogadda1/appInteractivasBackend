@@ -1,10 +1,13 @@
 package com.AplicacionesInteractivas.TP.entity;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -14,22 +17,23 @@ public class Foto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_foto;
 	
-	@Column(name = "uri")
-	private String uri_foto;
+	@Lob
+	@Column (name = "foto")
+	private Byte[] foto;
 
 	public Foto() {
 		super();
 	}
 
-	public Foto(long id_foto, String uri_foto) {
+	public Foto(long id_foto, Byte[] foto) {
 		super();
 		this.id_foto = id_foto;
-		this.uri_foto = uri_foto;
+		this.foto = foto;
 	}
 
 	@Override
 	public String toString() {
-		return "Foto [id_foto=" + id_foto + ", uri_foto=" + uri_foto + "]";
+		return "Foto [id_foto=" + id_foto + ", foto=" + Arrays.toString(foto) + "]";
 	}
 
 	public long getId_foto() {
@@ -40,11 +44,13 @@ public class Foto {
 		this.id_foto = id_foto;
 	}
 
-	public String getUri_foto() {
-		return uri_foto;
+	public Byte[] getFoto() {
+		return foto;
 	}
 
-	public void setUri_foto(String uri_foto) {
-		this.uri_foto = uri_foto;
+	public void setFoto(Byte[] foto) {
+		this.foto = foto;
 	}
+
+
 }
