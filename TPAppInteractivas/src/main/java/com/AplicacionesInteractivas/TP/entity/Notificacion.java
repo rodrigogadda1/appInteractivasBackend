@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,13 +14,15 @@ public class Notificacion {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_notificacion;
 	
-	@OneToOne
-	@JoinColumn(name="id_idnotificacion")
-	private Administrado administrado;
+	//@OneToOne
+	//@JoinColumn(name="id_idnotificacion")
+	@Column(name="id_administrado")
+	private int id_administrdo;
 	
-	@OneToOne
-	@JoinColumn(name="id_reclamo")
-	private Reclamo reclamo;
+	//@OneToOne
+	//@JoinColumn(name="id_reclamo")
+	@Column(name="id_reclamo")
+	private int id_reclamo;
 	
 	@Column(name="descripcion")
 	private String descripcion;
@@ -35,20 +35,19 @@ public class Notificacion {
 		super();
 	}
 
-	public Notificacion(long id_notificacion, Administrado administrado, Reclamo reclamo, String descripcion,
-			boolean leido) {
+	public Notificacion(long id_notificacion, int id_administrdo, int id_reclamo, String descripcion, boolean leido) {
 		super();
 		this.id_notificacion = id_notificacion;
-		this.administrado = administrado;
-		this.reclamo = reclamo;
+		this.id_administrdo = id_administrdo;
+		this.id_reclamo = id_reclamo;
 		this.descripcion = descripcion;
 		this.leido = leido;
 	}
 
 	@Override
 	public String toString() {
-		return "Notificacion [id_notificacion=" + id_notificacion + ", administrado=" + administrado + ", reclamo="
-				+ reclamo + ", descripcion=" + descripcion + ", leido=" + leido + "]";
+		return "Notificacion [id_notificacion=" + id_notificacion + ", id_administrdo=" + id_administrdo
+				+ ", id_reclamo=" + id_reclamo + ", descripcion=" + descripcion + ", leido=" + leido + "]";
 	}
 
 	public long getId_notificacion() {
@@ -59,20 +58,20 @@ public class Notificacion {
 		this.id_notificacion = id_notificacion;
 	}
 
-	public Administrado getAdministrado() {
-		return administrado;
+	public int getId_administrdo() {
+		return id_administrdo;
 	}
 
-	public void setAdministrado(Administrado administrado) {
-		this.administrado = administrado;
+	public void setId_administrdo(int id_administrdo) {
+		this.id_administrdo = id_administrdo;
 	}
 
-	public Reclamo getReclamo() {
-		return reclamo;
+	public int getId_reclamo() {
+		return id_reclamo;
 	}
 
-	public void setReclamo(Reclamo reclamo) {
-		this.reclamo = reclamo;
+	public void setId_reclamo(int id_reclamo) {
+		this.id_reclamo = id_reclamo;
 	}
 
 	public String getDescripcion() {
@@ -90,6 +89,7 @@ public class Notificacion {
 	public void setLeido(boolean leido) {
 		this.leido = leido;
 	}
-	
+
+
 	
 }

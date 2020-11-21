@@ -139,3 +139,12 @@ INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(9,"githb.com",
 INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(10,"githb.com",3);
 INSERT INTO tpdatabase.fotos (`id_foto`,`uri`,`id_reclamo`)VALUES(11,"githb.com",3);
 select * from tpdatabase.fotos;
+
+/*INSERTAR NOTIFICACIONES*/
+INSERT INTO tpdatabase.notificaciones(`id_notificacion`,`descripcion`,`id_administrado`,`id_reclamo`,`leido`)VALUES(1,'reclamo Abierto',1,1,0);
+INSERT INTO tpdatabase.notificaciones(`id_notificacion`,`descripcion`,`id_administrado`,`id_reclamo`,`leido`)VALUES(2,'Reclamo deribado a inspector',1,1,1);
+INSERT INTO tpdatabase.notificaciones(`id_notificacion`,`descripcion`,`id_administrado`,`id_reclamo`,`leido`)VALUES(3,'Reclamo Solucionado',1,1,1);
+INSERT INTO tpdatabase.notificaciones(`id_notificacion`,`descripcion`,`id_administrado`,`id_reclamo`,`leido`)VALUES(4,'Reclamo Abierto',2,2,0);
+INSERT INTO tpdatabase.notificaciones(`id_notificacion`,`descripcion`,`id_administrado`,`id_reclamo`,`leido`)VALUES(5,'Reclamo solucionado',2,2,1);
+select * from tpdatabase.notificaciones;
+
