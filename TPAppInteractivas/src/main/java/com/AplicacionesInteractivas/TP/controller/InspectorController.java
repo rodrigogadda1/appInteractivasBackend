@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Estado;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
-import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
-import com.AplicacionesInteractivas.TP.entity.InspectorEspecialidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.InspectorRepository;
 
@@ -100,23 +98,23 @@ public class InspectorController {
 	}
 	
 	private Inspector cleanInspector(Inspector inspector) {
-		List<InspectorEdificio> inspectoredificios =  inspector.getInspectoredificio();
-		for (int i = 0; i < inspectoredificios.size(); i++) {
-			InspectorEdificio inspectorEdificio = inspectoredificios.get(i);
+		List<Edificio> edificios =  inspector.getEdificios();
+		for (int i = 0; i < edificios.size(); i++) {
+			Edificio edificio = inspector.getEdificios().get(i);
 			
-			inspectorEdificio.setInspector(null);
-			Edificio edificio = inspectorEdificio.getEdificio();
+			//inspectorEdificio.setInspector(null);
+			//Edificio edificio = inspectorEdificio.getEdificio();
 			edificio.setEspaciosComunes(null);
 			edificio.setUnidades(null);
-			edificio.setInspectoredificio(null);
-			edificio.setInspectorespecalidad(null);
-			inspectorEdificio.setEdificio(edificio);
+			//edificio.setInspectoredificio(null);
+			//edificio.setInspectorespecalidad(null);
+			//inspectorEdificio.setEdificio(edificio);
 			
-			inspectoredificios.set(i, inspectorEdificio);
+			edificios.set(i, edificio);
 		}
-		inspector.setInspectoredificio(inspectoredificios);
+		inspector.setEdificios(edificios);;
 		
-		List<InspectorEspecialidad> inspectorespecialidades =  inspector.getInspectorespecialidad();
+		/*List<InspectorEspecialidad> inspectorespecialidades =  inspector.getInspectorespecialidad();
 		for (int i = 0; i < inspectorespecialidades.size(); i++) {
 			InspectorEspecialidad inspectorEspecialidad = inspectorespecialidades.get(i);
 			
@@ -125,7 +123,7 @@ public class InspectorController {
 			inspectorespecialidades.set(i, inspectorEspecialidad);
 		}
 		inspector.setInspectorespecialidad(inspectorespecialidades);
-		
+		*/
 		return inspector;
 	}
 }

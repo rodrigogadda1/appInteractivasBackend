@@ -17,8 +17,6 @@ import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
-import com.AplicacionesInteractivas.TP.entity.InspectorEdificio;
-import com.AplicacionesInteractivas.TP.entity.InspectorEspecialidad;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EdificioRepository;
@@ -105,7 +103,7 @@ public class EdificioController {
 		}
 		edificio.setUnidades(unidades);
 		
-		List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
+		/*List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
 		for (int j = 0; j < inspectoredificios.size(); j++) {
 			InspectorEdificio inspectoredificio=inspectoredificios.get(j);
 			inspectoredificio.setEdificio(null);
@@ -117,8 +115,8 @@ public class EdificioController {
 			
 			inspectoredificios.set(j, inspectoredificio);
 		}
-		
-		List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
+		*/
+		/*List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
 		for (int i = 0; i < inspectorEspecialidades.size(); i++) {
 			InspectorEspecialidad inspectorEspecialidad = inspectorEspecialidades.get(i);
 			
@@ -142,9 +140,10 @@ public class EdificioController {
 			
 			inspectorEspecialidades.set(i, inspectorEspecialidad);
 		}
-		edificio.setInspectorespecalidad(inspectorEspecialidades);
+		*/
+		//edificio.setInspectorespecalidad(inspectorEspecialidades);
 		
-		edificio.setInspectoredificio(inspectoredificios);
+		//edificio.setInspectoredificio(inspectoredificios);
 		
 		return edificio;
 	}

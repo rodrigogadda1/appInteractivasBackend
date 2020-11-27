@@ -1,5 +1,6 @@
 package com.AplicacionesInteractivas.TP.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.repository.AdministradoUnidadRepository;
@@ -80,6 +82,25 @@ public class AdministradoUnidadController {
 		this.administradoUnidadRepository.delete(adminExisting);
 		return ResponseEntity.ok().build();
 	}
+	//get all Unidades By id_administrado
+	@GetMapping("/getByAdministradoId")
+	public List<Unidad> getAllUnidadesByAdministradoID(@RequestParam("id") long adminstradoId){
+		List<AdministradoUnidad> AllAdministradosUnidades = this.administradoUnidadRepository.findAll(); //todos los adminstradosunidades
+		List<Unidad> unidadesResult = new ArrayList<Unidad>(); //lista de unidades resultantes que tienen el id administrado
+		AdministradoUnidad administradounidad=null;
+		
+		if (AllAdministradosUnidades.size() > 0){
+			for (int i = 0; i < AllAdministradosUnidades.size(); i++) {
+				administradounidad=AllAdministradosUnidades.get(i);
+				if(administradounidad.getId()==adminstradoId) {
+					
+					unidadesResult.add(administradounidad.getUnidad());
+				}
+			}
+		}
+				
+		return unidadesResult;
+	}
 	
 	private AdministradoUnidad cleanAdministradoUnidad(AdministradoUnidad administradoUnidad) {
 		Administrado admin = administradoUnidad.getAdministrado();
@@ -93,8 +114,8 @@ public class AdministradoUnidadController {
 		Edificio edificio = unidad.getEdificio();
 		edificio.setUnidades(null);
 		edificio.setEspaciosComunes(null);
-		edificio.setInspectoredificio(null);
-		edificio.setInspectorespecalidad(null);
+		edificio.setInspectores(null);
+		
 
 		
 		unidad.setEdificio(edificio);

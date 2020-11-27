@@ -79,8 +79,8 @@ public class EspacioComunController {
 			Edificio edificio = espaciocomun.getEdificio();
 			edificio.setUnidades(null);
 			edificio.setEspaciosComunes(null);
-			edificio.setInspectoredificio(null);
-			edificio.setInspectorespecalidad(null);
+			edificio.setInspectores(null);
+			
 			espaciocomun.setEdificio(edificio);
 		}
 		return espaciocomun;

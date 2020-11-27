@@ -84,8 +84,8 @@ public class UnidadController {
 			edificio.setUnidades(null);
 			edificio.setEspaciosComunes(null);
 	
-			edificio.setInspectoredificio(null);
-			edificio.setInspectorespecalidad(null);
+			edificio.setInspectores(null);
+			
 			
 			unidad.setEdificio(edificio);	
 		}

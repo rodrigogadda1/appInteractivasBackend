@@ -22,51 +22,37 @@ public class Inspector {
 	private long id_user;
 	
 	@OneToMany
-	@JoinColumn(name="id_inspectoredificio")
-	private List<InspectorEdificio> inspectoredificio;	
+	@JoinColumn(name="id_inspector", nullable = true)
+	private List<Edificio> edificios;	
 	
 	@OneToMany
-	@JoinColumn(name="id_inspectorespecialidad")
-	private List<InspectorEspecialidad> inspectorespecialidad;	
+	@JoinColumn(name="id_inspector", nullable = true)
+	private List<Especialidad> especialidades;	
 
 	public Inspector() {
 		super();
 	}
 
-	
-	public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio,
-			List<InspectorEspecialidad> inspectorespecialidad) {
+	public Inspector(long id_inspector, long id_user, List<Edificio> edificios, List<Especialidad> especialidades) {
 		super();
 		this.id_inspector = id_inspector;
 		this.id_user = id_user;
-		this.inspectoredificio = inspectoredificio;
-		this.inspectorespecialidad = inspectorespecialidad;
+		this.edificios = edificios;
+		this.especialidades = especialidades;
 	}
 
 	@Override
 	public String toString() {
-		return "Inspector [id_inspector=" + id_inspector + ", id_user=" + id_user + ", inspectoredificio="
-				+ inspectoredificio + ", inspectorespecialidad=" + inspectorespecialidad + "]";
+		return "Inspector [id_inspector=" + id_inspector + ", id_user=" + id_user + ", edificios=" + edificios
+				+ ", especialidades=" + especialidades + "]";
 	}
-
 
 	public long getId_inspector() {
 		return id_inspector;
 	}
 
-
 	public void setId_inspector(long id_inspector) {
 		this.id_inspector = id_inspector;
-	}
-
-
-	public List<InspectorEdificio> getInspectoredificio() {
-		return inspectoredificio;
-	}
-
-
-	public void setInspectoredificio(List<InspectorEdificio> inspectoredificio) {
-		this.inspectoredificio = inspectoredificio;
 	}
 
 	public long getId_user() {
@@ -77,16 +63,19 @@ public class Inspector {
 		this.id_user = id_user;
 	}
 
-
-	public List<InspectorEspecialidad> getInspectorespecialidad() {
-		return inspectorespecialidad;
+	public List<Edificio> getEdificios() {
+		return edificios;
 	}
 
-
-	public void setInspectorespecialidad(List<InspectorEspecialidad> inspectorespecialidad) {
-		this.inspectorespecialidad = inspectorespecialidad;
+	public void setEdificios(List<Edificio> edificios) {
+		this.edificios = edificios;
 	}
-	
-	
 
+	public List<Especialidad> getEspecialidades() {
+		return especialidades;
+	}
+
+	public void setEspecialidades(List<Especialidad> especialidades) {
+		this.especialidades = especialidades;
+	}
 }

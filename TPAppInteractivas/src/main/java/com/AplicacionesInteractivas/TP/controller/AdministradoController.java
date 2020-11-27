@@ -1,6 +1,7 @@
 package com.AplicacionesInteractivas.TP.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.AdministradoUnidad;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.Foto;
+import com.AplicacionesInteractivas.TP.entity.Notificacion;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -98,6 +100,8 @@ public class AdministradoController {
 		return ResponseEntity.ok().build();
 	}
 	
+
+	
 	private Administrado cleanAdministrado(Administrado administrado) {
 		List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
 		for (int i = 0; i < administradoUnidades.size(); i++) {
@@ -109,8 +113,8 @@ public class AdministradoController {
 			Edificio edificio = unidad.getEdificio();
 			edificio.setEspaciosComunes(null);
 			edificio.setUnidades(null);
-			edificio.setInspectoredificio(null);
-			edificio.setInspectorespecalidad(null);
+			edificio.setInspectores(null);
+
 			
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
@@ -148,8 +152,8 @@ public class AdministradoController {
 			
 			edificio2.setUnidades(null);
 			edificio2.setEspaciosComunes(null);
-			edificio2.setInspectoredificio(null);
-			edificio2.setInspectorespecalidad(null);
+			edificio2.setInspectores(null);
+			
 			
 			reclamo.setEdificio(edificio2);
 			

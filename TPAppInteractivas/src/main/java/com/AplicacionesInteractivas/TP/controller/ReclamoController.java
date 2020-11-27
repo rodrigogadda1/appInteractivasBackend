@@ -150,8 +150,8 @@ public class ReclamoController {
 				}
 			}
 			
-			if ( (goes) && (reclamo.getEspecialidad().getId() != 0)  && (especialidades_ids != "")) {
-				if ( !especialidades_ids.contains(String.valueOf(reclamo.getEspecialidad().getId())) ) {
+			if ( (goes) && (reclamo.getEspecialidad().getId_especialidad() != 0)  && (especialidades_ids != "")) {
+				if ( !especialidades_ids.contains(String.valueOf(reclamo.getEspecialidad().getId_especialidad())) ) {
 					goes = false;
 				}
 			}
@@ -192,8 +192,8 @@ public class ReclamoController {
 			if (reclamo.getEdificio() != null) {
 				Edificio edificio = reclamo.getEdificio();
 				edificio.setEspaciosComunes(null);
-				edificio.setInspectoredificio(null);
-				edificio.setInspectorespecalidad(null);
+				edificio.setInspectores(null);
+				
 				edificio.setUnidades(null);
 				reclamo.setEdificio(edificio);
 			}
