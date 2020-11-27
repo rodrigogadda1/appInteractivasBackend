@@ -88,7 +88,7 @@ public class AdministradoController {
 			adminiActual.setId_user(administrado.getId_user());
 		}
 			
-		return this.administradoRepository.save(adminiActual);
+		return cleanAdministrado(this.administradoRepository.save(adminiActual));
 	}
 	
 	//delete Foto by id
@@ -103,31 +103,26 @@ public class AdministradoController {
 
 	
 	private Administrado cleanAdministrado(Administrado administrado) {
-		List<AdministradoUnidad> administradoUnidades = administrado.getAdministradoUnidades();
-		for (int i = 0; i < administradoUnidades.size(); i++) {
-			AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
-			administradoUnidad.setAdministrado(null);
+		
+		List <AdministradoUnidad> adminUnidades = administrado.getAdministradoUnidades();
+		
+		for (int i = 0; i < adminUnidades.size(); i++) {
+			AdministradoUnidad adminUnidad = adminUnidades.get(i);
 			
-			Unidad unidad = administradoUnidad.getUnidad();
+			Unidad unidad =  adminUnidad.getUnidad();
 			
 			Edificio edificio = unidad.getEdificio();
 			edificio.setEspaciosComunes(null);
-			edificio.setUnidades(null);
 			edificio.setInspectores(null);
-
-			
+			edificio.setUnidades(null);
 			unidad.setEdificio(edificio);
-			unidad.setAdministradoUnidades(null);
-	
 			
-			administradoUnidad.setUnidad(unidad);
+			adminUnidad.setUnidad(unidad);
 			
-			administradoUnidades.set(i, administradoUnidad);
-			
-
+			adminUnidades.set(i, adminUnidad);
 		}
 		
-		administrado.setAdministradoUnidades(administradoUnidades);
+		administrado.setAdministradoUnidades(adminUnidades);
 		
 		List<Reclamo> reclamos= administrado.getReclamo();
 		for (int j = 0; j < reclamos.size(); j++) {

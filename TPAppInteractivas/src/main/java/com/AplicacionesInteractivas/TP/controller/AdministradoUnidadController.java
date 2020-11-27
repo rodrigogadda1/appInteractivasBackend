@@ -64,9 +64,9 @@ public class AdministradoUnidadController {
 			adminiActual.setRelacion(administradoUnidad.getRelacion());
 		}
 		
-		if (administradoUnidad.getAdministrado() != null) {
-			adminiActual.setAdministrado(administradoUnidad.getAdministrado());
-		}
+		//if (administradoUnidad.getAdministrado() != null) {
+			//adminiActual.setAdministrado(administradoUnidad.getAdministrado());
+		//}
 		
 		if (administradoUnidad.getUnidad() != null) {
 			adminiActual.setUnidad(administradoUnidad.getUnidad());
@@ -103,13 +103,14 @@ public class AdministradoUnidadController {
 	}
 	
 	private AdministradoUnidad cleanAdministradoUnidad(AdministradoUnidad administradoUnidad) {
-		Administrado admin = administradoUnidad.getAdministrado();
-		admin.setAdministradoUnidades(null);
-		admin.setReclamo(null);
+		Administrado admin = null; 
+				//administradoUnidad.getAdministrado();
+		//admin.setAdministradoUnidades(null);
+		/*admin.setReclamo(null);
 		administradoUnidad.setAdministrado(admin);
 		
 		Unidad unidad = administradoUnidad.getUnidad();
-		unidad.setAdministradoUnidades(null);
+		//unidad.setAdministradoUnidades(null);
 		
 		Edificio edificio = unidad.getEdificio();
 		edificio.setUnidades(null);
@@ -120,7 +121,7 @@ public class AdministradoUnidadController {
 		
 		unidad.setEdificio(edificio);
 		
-		administradoUnidad.setUnidad(unidad);
+		administradoUnidad.setUnidad(unidad);*/
 		
 		return administradoUnidad;
 	}

@@ -18,10 +18,6 @@ public class AdministradoUnidad {
 	private long id_administradounidad;
 	
 	@ManyToOne
-	@JoinColumn(name="id_administrado")
-	private Administrado administrado;
-	
-	@ManyToOne
 	@JoinColumn(name="id_unidad")
 	private Unidad unidad;
 	
@@ -32,17 +28,16 @@ public class AdministradoUnidad {
 		super();
 	}
 
-	public AdministradoUnidad(long id_administradounidad, Administrado administrado, Unidad unidad, String relacion) {
+	public AdministradoUnidad(long id_administradounidad, Unidad unidad, String relacion) {
 		super();
 		this.id_administradounidad = id_administradounidad;
-		this.administrado = administrado;
 		this.unidad = unidad;
 		this.relacion = relacion;
 	}
 
 	@Override
 	public String toString() {
-		return "AdministradoUnidad [id=" + id_administradounidad + ", administrado=" + administrado + ", unidad=" + unidad + ", relacion="
+		return "AdministradoUnidad [id=" + id_administradounidad + ", unidad=" + unidad + ", relacion="
 				+ relacion + "]";
 	}
 
@@ -52,14 +47,6 @@ public class AdministradoUnidad {
 
 	public void setId(long id_administradounidad) {
 		this.id_administradounidad = id_administradounidad;
-	}
-
-	public Administrado getAdministrado() {
-		return administrado;
-	}
-
-	public void setAdministrado(Administrado administrado) {
-		this.administrado = administrado;
 	}
 
 	public Unidad getUnidad() {

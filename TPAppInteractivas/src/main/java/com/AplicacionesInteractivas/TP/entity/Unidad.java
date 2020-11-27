@@ -30,29 +30,28 @@ public class Unidad {
 	@JoinColumn(name="id_edificio", nullable = true)
 	private Edificio edificio;
 	
-	@OneToMany
-	@JoinColumn(name="id_administradounidad")
-	private List<AdministradoUnidad> administradoUnidades;
+	//@OneToMany
+	//@JoinColumn(name="id_administradounidad")
+	//private List<AdministradoUnidad> administradoUnidades;
 	
 	
 	public Unidad() {
 		super();
 	}
 
-	public Unidad(long id_unidad, String piso, String unidad, Edificio edificio,
-			List<AdministradoUnidad> administradoUnidades) {
+	public Unidad(long id_unidad, String piso, String unidad, Edificio edificio) { //List<AdministradoUnidad> administradoUnidades
 		super();
 		this.id_unidad = id_unidad;
 		this.piso = piso;
 		this.unidad = unidad;
 		this.edificio = edificio;
-		this.administradoUnidades = administradoUnidades;
+		//this.administradoUnidades = administradoUnidades;
 	}
 
 	@Override
 	public String toString() {
 		return "Unidad [id_unidad=" + id_unidad + ", piso=" + piso + ", unidad=" + unidad + ", edificio=" + edificio
-				+ ", administradoUnidades=" + administradoUnidades + ", reclamos=" + "]";
+				+ ", reclamos=" + "]";
 	}
 
 	public long getId_unidad() {
@@ -87,12 +86,12 @@ public class Unidad {
 		this.edificio = edificio;
 	}
 
-	public List<AdministradoUnidad> getAdministradoUnidades() {
+	/*public List<AdministradoUnidad> getAdministradoUnidades() {
 		return administradoUnidades;
 	}
 
 	public void setAdministradoUnidades(List<AdministradoUnidad> administradoUnidades) {
 		this.administradoUnidades = administradoUnidades;
-	}
+	}*/
 
 }

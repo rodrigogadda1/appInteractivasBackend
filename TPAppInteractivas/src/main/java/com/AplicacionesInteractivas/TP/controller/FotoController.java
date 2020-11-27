@@ -1,5 +1,6 @@
 package com.AplicacionesInteractivas.TP.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,18 @@ public class FotoController {
 	
 	//get all Fotos
 	@GetMapping
-	public List<Foto> getAllFoto(){
+	public List<FotoFront> getAllFoto(){
 		List<Foto> fotos = this.fotoRepository.findAll();
-		return fotos;
+		List<FotoFront> fotosSalida = new ArrayList<FotoFront>();
+		
+		for (int i = 0; i < fotos.size(); i++) {
+			FotoFront fotoFront = new FotoFront();
+			fotoFront.setId_foto(fotos.get(i).getId_foto());
+			fotoFront.setFoto(new String(fotos.get(i).getFoto()));
+			fotosSalida.add(fotoFront);
+		}
+		
+		return fotosSalida;
 	}
 	//get foto by id
 	@GetMapping("/{id}")
@@ -56,6 +66,7 @@ public class FotoController {
 		
 		return fotoFront;
 	}
+	
 	//delete Foto by id
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Foto>  deleteFotoById(@PathVariable (value="id") long fotoId) {

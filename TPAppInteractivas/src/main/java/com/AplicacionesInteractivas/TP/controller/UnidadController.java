@@ -114,13 +114,14 @@ public class UnidadController {
 //		}
 		//unidad.setEdificio(edificio);	
 		
-		List<AdministradoUnidad> administradoUnidades = unidad.getAdministradoUnidades();
+		/*List<AdministradoUnidad> administradoUnidades = unidad.getAdministradoUnidades();
 		
 		for (int i = 0; i < administradoUnidades.size(); i++) {
 			AdministradoUnidad administradoUnidad = administradoUnidades.get(i);
 			
 			Administrado administrado = administradoUnidad.getAdministrado();
 			administrado.setReclamo(null);
+			
 			administrado.setAdministradoUnidades(null);
 			
 			administradoUnidad.setAdministrado(administrado);
@@ -129,7 +130,7 @@ public class UnidadController {
 			
 			administradoUnidades.set(i, administradoUnidad);
 		}
-		unidad.setAdministradoUnidades(administradoUnidades);
+		unidad.setAdministradoUnidades(administradoUnidades);*/
 		
 		return unidad;
 	}

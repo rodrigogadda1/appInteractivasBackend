@@ -169,7 +169,6 @@ public class ReclamoController {
 	private Reclamo cleanReclamo (Reclamo reclamo) {
 			if(reclamo.getAdministrado() != null) {
 				Administrado administrado = reclamo.getAdministrado();
-				
 				administrado.setAdministradoUnidades(null);
 				administrado.setReclamo(null);
 				reclamo.setAdministrado(administrado);
@@ -178,7 +177,6 @@ public class ReclamoController {
 			if (reclamo.getUnidad() != null) {
 				Unidad unidad = reclamo.getUnidad();
 				unidad.setEdificio(null);
-				unidad.setAdministradoUnidades(null);
 				reclamo.setUnidad(unidad);
 			}
 			

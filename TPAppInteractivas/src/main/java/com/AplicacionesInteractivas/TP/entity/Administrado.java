@@ -25,8 +25,10 @@ public class Administrado {
 	@Column(name = "id_user")
 	private long id_user;
 	
-	@OneToMany
-	@JoinColumn(name="id_administradounidad")
+	@OneToMany(cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	    )
+	@JoinColumn(name="id_administrado")
 	private List<AdministradoUnidad> administradoUnidades;
 	
 	@OneToMany(
