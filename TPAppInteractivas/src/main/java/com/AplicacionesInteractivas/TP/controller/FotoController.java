@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Foto;
+import com.AplicacionesInteractivas.TP.entity.FotoFront;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.FotoRepository;
 
@@ -25,7 +26,13 @@ public class FotoController {
 	
 	//create Foto
 	@PostMapping
-	public Foto createFoto(@RequestBody Foto foto) {
+	public Foto createFoto(@RequestBody FotoFront fotoFront) {
+		Foto foto = new Foto();
+		foto.setId_foto(fotoFront.getId_foto());
+		
+		byte[] bytes = fotoFront.getFoto().getBytes();
+		foto.setFoto(bytes);
+		
 		return this.fotoRepository.save(foto);
 	}
 	
@@ -37,10 +44,17 @@ public class FotoController {
 	}
 	//get foto by id
 	@GetMapping("/{id}")
-	public Foto getFotoById(@PathVariable (value="id") long fotoId) {
+	public FotoFront getFotoById(@PathVariable (value="id") long fotoId) {
 		Foto foto = this.fotoRepository.findById(fotoId)
 				.orElseThrow(() -> new ResourceNotFoundException("Foto not fount whth ID" + fotoId));
-		return foto;
+		
+		FotoFront fotoFront = new FotoFront();
+		fotoFront.setId_foto(foto.getId_foto());
+		
+		
+		fotoFront.setFoto(new String(foto.getFoto()));
+		
+		return fotoFront;
 	}
 	//delete Foto by id
 	@DeleteMapping("/{id}")

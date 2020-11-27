@@ -1,5 +1,6 @@
 package com.AplicacionesInteractivas.TP.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Foto;
@@ -75,21 +77,18 @@ public class NotificacionController {
 	}
 	
 	//get all Notificaciones By id_administrado
-	//@GetMapping
-	public List<Notificacion> getAllNotificacionesByAdministradoID(@PathVariable (value="id") long adminstradoId){
+	@GetMapping("/getByAdministradoId")
+	public List<Notificacion> getAllNotificacionesByAdministradoID(@RequestParam("id") long adminstradoId){
 		List<Notificacion> Allnotificaciones = this.notificacionRepository.findAll(); //todas las noticaciones
-		List<Notificacion> notificaResult = null; //notificaciones que tienen el ID de administrado buscado
+		List<Notificacion> notificaResult = new ArrayList<Notificacion>(); //notificaciones que tienen el ID de administrado buscado
 		Notificacion notificacion=null;
-		int j=0;
-		if (Allnotificaciones.size() != 0){
+		if (Allnotificaciones.size() > 0){
 			for (int i = 0; i < Allnotificaciones.size(); i++) {
 				notificacion=Allnotificaciones.get(i);
 				if(notificacion.getId_administrdo()==adminstradoId) {
-					notificaResult.set(j, notificacion);
-					j++;
+					notificaResult.add(notificacion);
 				}
 			}
-				
 		}
 				
 		return notificaResult;
