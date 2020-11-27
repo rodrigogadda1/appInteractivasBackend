@@ -68,6 +68,7 @@ public class FotoController {
 	//update Foto by ID
 	@PutMapping("/{id}")
 	public Foto updateFotoById(@RequestBody FotoFront fotoFront, @PathVariable (value="id") long fotoId) {
+		
 		Foto foto = new Foto();
 		
 		if (fotoFront.getFoto() != null) {
