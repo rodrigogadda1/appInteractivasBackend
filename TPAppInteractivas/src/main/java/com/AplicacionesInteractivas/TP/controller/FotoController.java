@@ -67,13 +67,19 @@ public class FotoController {
 	
 	//update Foto by ID
 	@PutMapping("/{id}")
-	public Foto updateFotoById(@RequestBody Foto foto, @PathVariable (value="id") long fotoId) {
-		Foto fotoActual = this.fotoRepository.findById(fotoId)
-				.orElseThrow(() -> new ResourceNotFoundException("Foto not fount whth ID" + fotoId));
-		if (foto.getFoto() != null) {
-			fotoActual.setFoto(foto.getFoto());;
+	public Foto updateFotoById(@RequestBody FotoFront fotoFront, @PathVariable (value="id") long fotoId) {
+		Foto foto = new Foto();
+		
+		if (fotoFront.getFoto() != null) {
+			Foto fotoActual = this.fotoRepository.findById(fotoId)
+					.orElseThrow(() -> new ResourceNotFoundException("Foto not fount whth ID" + fotoId));
+			
+			foto.setId_foto(fotoActual.getId_foto());
+			
+			byte[] bytes= fotoFront.getFoto().getBytes();  
+			foto.setFoto(bytes);
 		}
-		 		
-		return this.fotoRepository.save(fotoActual);
+						
+		return this.fotoRepository.save(foto);
 	}
 }
