@@ -78,18 +78,19 @@ public class UnidadController {
 	}
 	
 	private Unidad cleanUnidad (Unidad unidad) {
+		Edificio edificio = unidad.getEdificio();
 		if(unidad.getEdificio() != null) {
-			Edificio edificio = unidad.getEdificio();
+		
 			
 			edificio.setUnidades(null);
 			edificio.setEspaciosComunes(null);
-	
+			
 			edificio.setInspectores(null);
 			
 			
 			unidad.setEdificio(edificio);	
 		}
-
+		
 //		List<InspectorEdificio> inspectorEdificios = edificio.getInspectoredificio();
 //		for (int i = 0; i < inspectorEdificios.size(); i++) {
 //			InspectorEdificio inspectorEdificio = inspectorEdificios.get(i);

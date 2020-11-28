@@ -100,65 +100,69 @@ public class AdministradoController {
 		return ResponseEntity.ok().build();
 	}
 	
-
-	
 	private Administrado cleanAdministrado(Administrado administrado) {
 		
-		List <AdministradoUnidad> adminUnidades = administrado.getAdministradoUnidades();
 		
-		for (int i = 0; i < adminUnidades.size(); i++) {
-			AdministradoUnidad adminUnidad = adminUnidades.get(i);
+			List <AdministradoUnidad> adminUnidades = administrado.getAdministradoUnidades();
 			
-			Unidad unidad =  adminUnidad.getUnidad();
+			for (int i = 0; i < adminUnidades.size(); i++) {
+				AdministradoUnidad adminUnidad = adminUnidades.get(i);
+				
+				List<Unidad> unidades =  adminUnidad.getUnidades();
+				for (int j = 0; j < unidades.size(); j++) {
+					Edificio edificio = unidades.get(j).getEdificio();
+					edificio.setEspaciosComunes(null);
+					edificio.setInspectores(null);
+					edificio.setUnidades(null);
+					unidades.get(i).setEdificio(edificio);
+				}
+				
+				
+				
+				//adminUnidad.setUnidad(unidad);
+				
+				adminUnidades.set(i, adminUnidad);
+			}
 			
-			Edificio edificio = unidad.getEdificio();
-			edificio.setEspaciosComunes(null);
-			edificio.setInspectores(null);
-			edificio.setUnidades(null);
-			unidad.setEdificio(edificio);
+			/*administrado.setAdministradoUnidades(adminUnidades);
 			
-			adminUnidad.setUnidad(unidad);
+			List<Reclamo> reclamos= administrado.getReclamo();
+			for (int j = 0; j < reclamos.size(); j++) {
+				Reclamo reclamo = reclamos.get(j);
+				reclamo.setAdministrado(null);
+				
+				/*Unidad unidad = reclamo.getUnidad();
+				
+				Edificio edificio = unidad.getEdificio();
+				edificio.setEspaciosComunes(null);
+				edificio.setUnidades(null);
+				edificio.setInspectoredificio(null);
+				edificio.setInspectorespecalidad(null);
+				
+				unidad.setEdificio(edificio);
+				unidad.setAdministradoUnidades(null);
+		
+				reclamo.setUnidad(unidad);*/
+				
+				
+		/*		Edificio edificio2 = reclamo.getEdificio();
+				
+				edificio2.setUnidades(null);
+				edificio2.setEspaciosComunes(null);
+				edificio2.setInspectores(null);
+				
+				
+				reclamo.setEdificio(edificio2);
+				
+				
+				
+				reclamos.set(j, reclamo);
+			}*/
+			//administrado.setReclamo(reclamos);
 			
-			adminUnidades.set(i, adminUnidad);
+			
+			
+			return administrado;
 		}
-		
-		administrado.setAdministradoUnidades(adminUnidades);
-		
-		List<Reclamo> reclamos= administrado.getReclamo();
-		for (int j = 0; j < reclamos.size(); j++) {
-			Reclamo reclamo = reclamos.get(j);
-			reclamo.setAdministrado(null);
-			
-			/*Unidad unidad = reclamo.getUnidad();
-			
-			Edificio edificio = unidad.getEdificio();
-			edificio.setEspaciosComunes(null);
-			edificio.setUnidades(null);
-			edificio.setInspectoredificio(null);
-			edificio.setInspectorespecalidad(null);
-			
-			unidad.setEdificio(edificio);
-			unidad.setAdministradoUnidades(null);
-	
-			reclamo.setUnidad(unidad);*/
-			
-			
-			Edificio edificio2 = reclamo.getEdificio();
-			
-			edificio2.setUnidades(null);
-			edificio2.setEspaciosComunes(null);
-			edificio2.setInspectores(null);
-			
-			
-			reclamo.setEdificio(edificio2);
-			
-			
-			
-			reclamos.set(j, reclamo);
-		}
-		administrado.setReclamo(reclamos);
-		
-		return administrado;
-	}
 	
 }

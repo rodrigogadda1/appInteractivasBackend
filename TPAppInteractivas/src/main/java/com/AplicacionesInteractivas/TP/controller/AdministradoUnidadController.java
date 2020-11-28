@@ -66,11 +66,11 @@ public class AdministradoUnidadController {
 		
 		//if (administradoUnidad.getAdministrado() != null) {
 			//adminiActual.setAdministrado(administradoUnidad.getAdministrado());
-		//}
-		
-		if (administradoUnidad.getUnidad() != null) {
-			adminiActual.setUnidad(administradoUnidad.getUnidad());
-		}
+//		//}
+//		
+//		if (administradoUnidad.getUnidad() != null) {
+//			adminiActual.setUnidad(administradoUnidad.getUnidad());
+//		}
 		return cleanAdministradoUnidad(this.administradoUnidadRepository.save(adminiActual));
 	}
 	
@@ -82,46 +82,39 @@ public class AdministradoUnidadController {
 		this.administradoUnidadRepository.delete(adminExisting);
 		return ResponseEntity.ok().build();
 	}
-	//get all Unidades By id_administrado
-	@GetMapping("/getByAdministradoId")
-	public List<Unidad> getAllUnidadesByAdministradoID(@RequestParam("id") long adminstradoId){
-		List<AdministradoUnidad> AllAdministradosUnidades = this.administradoUnidadRepository.findAll(); //todos los adminstradosunidades
-		List<Unidad> unidadesResult = new ArrayList<Unidad>(); //lista de unidades resultantes que tienen el id administrado
-		AdministradoUnidad administradounidad=null;
-		
-		if (AllAdministradosUnidades.size() > 0){
-			for (int i = 0; i < AllAdministradosUnidades.size(); i++) {
-				administradounidad=AllAdministradosUnidades.get(i);
-				if(administradounidad.getId()==adminstradoId) {
-					
-					unidadesResult.add(administradounidad.getUnidad());
-				}
-			}
-		}
-				
-		return unidadesResult;
-	}
+
+	
 	
 	private AdministradoUnidad cleanAdministradoUnidad(AdministradoUnidad administradoUnidad) {
 		Administrado admin = null; 
-				//administradoUnidad.getAdministrado();
-		//admin.setAdministradoUnidades(null);
-		/*admin.setReclamo(null);
-		administradoUnidad.setAdministrado(admin);
+		/*administradoUnidad.getAdministrado();
+		admin.setAdministradoUnidades(null);
+		admin.setReclamo(null);
+		administradoUnidad.setAdministrado(admin);*/
 		
-		Unidad unidad = administradoUnidad.getUnidad();
+		List<AdministradoUnidad> administradosUnidades  = this.administradoUnidadRepository.findAll();
+		for (int i = 0; i < administradosUnidades.size(); i++) {
+			List<Unidad> unidades = administradosUnidades.get(i).getUnidades();
+			for (int j = 0; j < unidades.size(); j++) {
+				//Unidad unidad = administradoUnidad.getUnidad();
+				Unidad unidadact = unidades.get(j);
+				unidadact.setEdificio(null);
+			}
+			administradosUnidades.set(i, administradoUnidad);
+		}
+		//Unidad unidadact = administradoUnidad.getUnidad();
 		//unidad.setAdministradoUnidades(null);
 		
-		Edificio edificio = unidad.getEdificio();
-		edificio.setUnidades(null);
-		edificio.setEspaciosComunes(null);
-		edificio.setInspectores(null);
+		//Edificio edificio = unidad.getEdificio();
+		//edificio.setUnidades(null);
+		//edificio.setEspaciosComunes(null);
+		//edificio.setInspectores(null);
 		
 
 		
-		unidad.setEdificio(edificio);
+		//unidad.setEdificio(edificio);
 		
-		administradoUnidad.setUnidad(unidad);*/
+		//administradoUnidad.setUnidad(unidad);
 		
 		return administradoUnidad;
 	}
