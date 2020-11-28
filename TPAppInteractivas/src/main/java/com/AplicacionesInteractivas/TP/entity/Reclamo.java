@@ -3,6 +3,7 @@ package com.AplicacionesInteractivas.TP.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -68,7 +69,9 @@ public class Reclamo {
 		@JoinColumn(name="id_espaciocomun")
 		private EspacioComun espacioComun;
 		
-		@OneToMany
+		@OneToMany(cascade = CascadeType.ALL,
+		        orphanRemoval = true
+			    )
 		@JoinColumn(name="id_reclamo")
 		private List<Foto> fotos;
 		

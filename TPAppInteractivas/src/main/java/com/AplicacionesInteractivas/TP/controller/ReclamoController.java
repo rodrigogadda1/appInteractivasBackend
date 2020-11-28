@@ -144,13 +144,13 @@ public class ReclamoController {
 				}
 			}
 			
-			if ( (goes) && (reclamo.getEdificio().getId_edificio() != 0)  && (edificios_ids != "")) {
+			if ( (goes) && (reclamo.getEdificio()  != null) && (reclamo.getEdificio().getId_edificio() != 0)  && (edificios_ids != "")) {
 				if ( !edificios_ids.contains(String.valueOf(reclamo.getEdificio().getId_edificio())) ) {
 					goes = false;
 				}
 			}
 			
-			if ( (goes) && (reclamo.getEspecialidad().getId_especialidad() != 0)  && (especialidades_ids != "")) {
+			if ( (goes) && (reclamo.getEspecialidad() != null) && (reclamo.getEspecialidad().getId_especialidad() != 0)  && (especialidades_ids != "")) {
 				if ( !especialidades_ids.contains(String.valueOf(reclamo.getEspecialidad().getId_especialidad())) ) {
 					goes = false;
 				}
