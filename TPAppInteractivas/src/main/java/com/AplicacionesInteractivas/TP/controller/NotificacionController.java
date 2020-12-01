@@ -72,6 +72,7 @@ public class NotificacionController {
 		if (notificacion.getId_reclamo() != 0) {
 			notificaActual.setId_reclamo(notificacion.getId_reclamo());
 		}	
+		notificaActual.setLeido(notificacion.isLeido());
 
 		return this.notificacionRepository.save(notificaActual);
 	}
