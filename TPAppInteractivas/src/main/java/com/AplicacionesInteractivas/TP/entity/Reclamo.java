@@ -56,6 +56,12 @@ public class Reclamo {
 		@Column(name="descripcion")
 		private String descripcion;
 		
+		@Column(name="respuesta_inspector")
+	    private String respuesta_inspector;
+	    
+		@Column(name="respuesta_administrador")
+	    private String respuesta_administrador;
+		
 		@ManyToOne
 		private Administrado administrado;
 		
@@ -80,8 +86,9 @@ public class Reclamo {
 		}
 
 		public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad,
-				Date fecha, Estado estado, long id_agrupador, String descripcion, Administrado administrado,
-				Unidad unidad, EspacioComun espacioComun, List<Foto> fotos) {
+				Date fecha, Estado estado, long id_agrupador, String descripcion, String respuesta_inspector,
+				String respuesta_administrador, Administrado administrado, Unidad unidad, EspacioComun espacioComun,
+				List<Foto> fotos) {
 			super();
 			this.id_reclamo = id_reclamo;
 			Nombre = nombre;
@@ -92,6 +99,8 @@ public class Reclamo {
 			this.estado = estado;
 			this.id_agrupador = id_agrupador;
 			this.descripcion = descripcion;
+			this.respuesta_inspector = respuesta_inspector;
+			this.respuesta_administrador = respuesta_administrador;
 			this.administrado = administrado;
 			this.unidad = unidad;
 			this.espacioComun = espacioComun;
@@ -102,16 +111,9 @@ public class Reclamo {
 		public String toString() {
 			return "Reclamo [id_reclamo=" + id_reclamo + ", Nombre=" + Nombre + ", username=" + username + ", edificio="
 					+ edificio + ", especialidad=" + especialidad + ", fecha=" + fecha + ", estado=" + estado
-					+ ", id_agrupador=" + id_agrupador + ", descripcion=" + descripcion + ", administrado="
+					+ ", id_agrupador=" + id_agrupador + ", descripcion=" + descripcion + ", respuesta_inspector="
+					+ respuesta_inspector + ", respuesta_administrador=" + respuesta_administrador + ", administrado="
 					+ administrado + ", unidad=" + unidad + ", espacioComun=" + espacioComun + ", fotos=" + fotos + "]";
-		}
-
-		public EspacioComun getEspacioComun() {
-			return espacioComun;
-		}
-
-		public void setEspacioComun(EspacioComun espacioComun) {
-			this.espacioComun = espacioComun;
 		}
 
 		public long getId_reclamo() {
@@ -186,6 +188,22 @@ public class Reclamo {
 			this.descripcion = descripcion;
 		}
 
+		public String getRespuesta_inspector() {
+			return respuesta_inspector;
+		}
+
+		public void setRespuesta_inspector(String respuesta_inspector) {
+			this.respuesta_inspector = respuesta_inspector;
+		}
+
+		public String getRespuesta_administrador() {
+			return respuesta_administrador;
+		}
+
+		public void setRespuesta_administrador(String respuesta_administrador) {
+			this.respuesta_administrador = respuesta_administrador;
+		}
+
 		public Administrado getAdministrado() {
 			return administrado;
 		}
@@ -202,6 +220,14 @@ public class Reclamo {
 			this.unidad = unidad;
 		}
 
+		public EspacioComun getEspacioComun() {
+			return espacioComun;
+		}
+
+		public void setEspacioComun(EspacioComun espacioComun) {
+			this.espacioComun = espacioComun;
+		}
+
 		public List<Foto> getFotos() {
 			return fotos;
 		}
@@ -209,6 +235,5 @@ public class Reclamo {
 		public void setFotos(List<Foto> fotos) {
 			this.fotos = fotos;
 		}
-
 
 }

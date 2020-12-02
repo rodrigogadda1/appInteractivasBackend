@@ -1,5 +1,6 @@
 package com.AplicacionesInteractivas.TP.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ public class AdministradoUnidad {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_administradounidad;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_unidad")
 	private Unidad unidad;
 	

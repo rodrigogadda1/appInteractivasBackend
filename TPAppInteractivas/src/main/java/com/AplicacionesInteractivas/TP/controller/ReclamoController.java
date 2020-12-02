@@ -109,7 +109,12 @@ public class ReclamoController {
 		if (reclamo.getUsername() != null) {
 			reclamoActual.setUsername(reclamo.getUsername());
 		}
-		
+		if (reclamo.getRespuesta_administrador() != null) {
+			reclamoActual.setRespuesta_administrador(reclamo.getRespuesta_administrador());
+		}
+		if (reclamo.getRespuesta_inspector()!=null) {
+			reclamoActual.setRespuesta_inspector(reclamo.getRespuesta_inspector());
+		}
 		
 		return cleanReclamo(this.reclamoRepository.save(reclamoActual));
 	}
