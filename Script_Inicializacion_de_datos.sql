@@ -27,7 +27,6 @@
  
 select * from tpdatabase.users;
 
- 
 /*INSERTAR EDIFICIOS*/
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (1,40,"Savedra 10","Savedra 10", "2131342");
 INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (2,30,"Satate 29","State building", "23215412");
@@ -49,16 +48,34 @@ INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edifi
 INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(2,2,4,4);
 select * from tpdatabase.inspectores;
 
+/*ACTUALIZAR RELACIONES INSPECTOR - ESPECIALIDAD*/
+UPDATE tpdatabase.especialidades SET `id_inspector` = 1 WHERE `id_especialidad` = 1;
+UPDATE tpdatabase.especialidades SET `id_inspector` = 1 WHERE `id_especialidad` = 2;
+UPDATE tpdatabase.especialidades SET `id_inspector` = 1 WHERE `id_especialidad` = 3;
+UPDATE tpdatabase.especialidades SET `id_inspector` = 2 WHERE `id_especialidad` = 4;
+UPDATE tpdatabase.especialidades SET `id_inspector` = 2 WHERE `id_especialidad` = 5;
+UPDATE tpdatabase.especialidades SET `id_inspector` = 2 WHERE `id_especialidad` = 6;
+select * from tpdatabase.especialidades;
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 /*INSERTAR UNIDADES*/
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (1,5,"B",1,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (2,1,"C",2,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (3,3,"A",3,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (4,5,"Piso",1,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (5,7,"D",2,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (6,10,"F",3,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (7,9,"A",1,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (1,5,"B",2,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (2,1,"C",4,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (3,3,"A",2,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (4,5,"PB",2,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (5,7,"D",4,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (6,10,"F",2,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (7,9,"A",4,null);
 INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (8,2,"B",2,null);
+
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (1,5,"B",1,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (2,1,"C",1,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (3,3,"A",1,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (4,5,"PB",1,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (5,7,"D",3,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (6,10,"F",3,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (7,9,"A",3,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (8,2,"B",3,null);
 select * from tpdatabase.unidades;
 
  /*INSERTAR ESPACIOS COMUNES*/
