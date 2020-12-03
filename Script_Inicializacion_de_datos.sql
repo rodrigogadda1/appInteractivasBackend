@@ -91,7 +91,8 @@ INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, i
 select * from tpdatabase.espacios_comunes;
 
 /*INSERTAR ESTADO*/
-/*Abierto: Reclamo recien abierto sin tratar
+/*
+Abierto: Reclamo recien abierto sin tratar
 Cerrado: Reclamo cerrado con solucion encontrada - Problema arreglado
 Inspeccionando: en Bandeja del inspector X esperando por inspeccion
 En Reparacion: reclamo en proceso de reparacion
