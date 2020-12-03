@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
 import com.AplicacionesInteractivas.TP.entity.Especialidad;
+import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
 import com.AplicacionesInteractivas.TP.repository.EspecialidadRepository;
 
@@ -35,15 +36,19 @@ public class EspecialidadController {
 	//get all especialidades
 	@GetMapping
 	public List<Especialidad> getAllEspecialidades(){
-		return this.especialidadRepository.findAll();
+		List<Especialidad> especialidades = this.especialidadRepository.findAll();
+		for (int i = 0; i < especialidades.size(); i++) {
+			especialidades.set(i, cleanEspecialidad(especialidades.get(i)));
+		}
+		return especialidades;
 	}
 	
 	//get especialidad by id
 	@GetMapping("/{id}")
 	public Especialidad getEspecialidadById(@PathVariable (value="id") long especialidadId) {
 		
-		return this.especialidadRepository.findById(especialidadId)
-				.orElseThrow(() -> new ResourceNotFoundException("Especialiad not fount whth ID" + especialidadId));
+		return cleanEspecialidad(this.especialidadRepository.findById(especialidadId)
+				.orElseThrow(() -> new ResourceNotFoundException("Especialiad not fount whth ID" + especialidadId)));
 	}
 	//delete especialidad by id
 	@DeleteMapping("/{id}")
@@ -69,6 +74,19 @@ public class EspecialidadController {
 		}
 		
 		return this.especialidadRepository.save(espActual);
+	}
+	private Especialidad cleanEspecialidad(Especialidad especialidad) {
+		List<Inspector> inspectores = especialidad.getInspectores();
+		for (int i = 0; i < inspectores.size(); i++) {
+			Inspector inspector = especialidad.getInspectores().get(i);
+			inspector.setEspecialidades(null);
+			inspectores.set(i, inspector);
+		}
+		especialidad.setInspectores(inspectores);
+		
+		
+		return especialidad;
+		
 	}
 	
 }

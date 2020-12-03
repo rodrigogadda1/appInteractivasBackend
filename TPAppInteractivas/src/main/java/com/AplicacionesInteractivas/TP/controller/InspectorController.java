@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AplicacionesInteractivas.TP.entity.Edificio;
+import com.AplicacionesInteractivas.TP.entity.Especialidad;
 import com.AplicacionesInteractivas.TP.entity.Estado;
 import com.AplicacionesInteractivas.TP.entity.Inspector;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -101,7 +102,6 @@ public class InspectorController {
 		List<Edificio> edificios =  inspector.getEdificios();
 		for (int i = 0; i < edificios.size(); i++) {
 			Edificio edificio = inspector.getEdificios().get(i);
-			
 			//inspectorEdificio.setInspector(null);
 			//Edificio edificio = inspectorEdificio.getEdificio();
 			edificio.setEspaciosComunes(null);
@@ -109,10 +109,18 @@ public class InspectorController {
 			//edificio.setInspectoredificio(null);
 			//edificio.setInspectorespecalidad(null);
 			//inspectorEdificio.setEdificio(edificio);
-			
 			edificios.set(i, edificio);
+			
 		}
-		inspector.setEdificios(edificios);;
+		inspector.setEdificios(edificios);
+		
+		List<Especialidad> especialidades = inspector.getEspecialidades();
+		for (int i = 0; i < especialidades.size(); i++) {
+			Especialidad especialidad = inspector.getEspecialidades().get(i);
+			especialidad.setInspectores(null);
+			especialidades.set(i, especialidad);
+		}
+		inspector.setEspecialidades(especialidades);
 		
 		/*List<InspectorEspecialidad> inspectorespecialidades =  inspector.getInspectorespecialidad();
 		for (int i = 0; i < inspectorespecialidades.size(); i++) {
