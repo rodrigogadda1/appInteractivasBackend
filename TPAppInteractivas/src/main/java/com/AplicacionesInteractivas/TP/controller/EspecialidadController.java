@@ -80,6 +80,7 @@ public class EspecialidadController {
 		for (int i = 0; i < inspectores.size(); i++) {
 			Inspector inspector = especialidad.getInspectores().get(i);
 			inspector.setEspecialidades(null);
+			inspector.setEdificios(null);
 			inspectores.set(i, inspector);
 		}
 		especialidad.setInspectores(inspectores);
