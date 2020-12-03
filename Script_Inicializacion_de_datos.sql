@@ -44,8 +44,8 @@ INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre, id_
 select * from tpdatabase.especialidades;
 
 /*INSERTAR INSPECTORES*/
-INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(1,1,3,2);
-INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(2,2,4,4);
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(1,3,3,2);
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(2,4,4,4);
 select * from tpdatabase.inspectores;
 
 /*ACTUALIZAR RELACIONES INSPECTOR - ESPECIALIDAD*/
