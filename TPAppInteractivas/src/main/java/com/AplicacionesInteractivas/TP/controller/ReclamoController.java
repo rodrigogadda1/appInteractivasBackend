@@ -75,16 +75,16 @@ public class ReclamoController {
 		reclamoActual.setDescripcion(reclamo.getDescripcion());
 		}
 		
+		if (reclamo.getRespuesta_administrador() != null) {
+			reclamoActual.setRespuesta_administrador(reclamo.getRespuesta_administrador());
+		}
+		
+		if (reclamo.getRespuesta_inspector() != null) {
+			reclamoActual.setRespuesta_inspector(reclamo.getRespuesta_inspector());
+		}
+		
 		if (reclamo.getEstado() != null) {
 			reclamoActual.setEstado(reclamo.getEstado());
-		}
-		
-		if(reclamo.getFecha() != null) {
-			reclamoActual.setFecha(reclamo.getFecha());
-		}
-		
-		if (reclamo.getFotos() != null) {
-			reclamoActual.setFotos(reclamo.getFotos());
 		}
 		
 		if (reclamo.getId_agrupador() != 0) {
