@@ -102,19 +102,20 @@ public class EdificioController {
 		}
 		edificio.setUnidades(unidades);
 		
-		/*List<InspectorEdificio> inspectoredificios = edificio.getInspectoredificio();
-		for (int j = 0; j < inspectoredificios.size(); j++) {
-			InspectorEdificio inspectoredificio=inspectoredificios.get(j);
-			inspectoredificio.setEdificio(null);
+		List<Inspector> inspectores = edificio.getInspectores();
+		for (int j = 0; j < inspectores.size(); j++) {
+			Inspector inspector=inspectores.get(j);
+			inspector.setEspecialidades(null);
 			
-			Inspector inspector=inspectoredificio.getInspector();
-			inspector.setInspectoredificio(null);
-			inspector.setInspectorespecialidad(null);
-			inspectoredificio.setInspector(inspector);
+//			Inspector inspector=inspectoredificio.getInspector();
+//			inspector.setInspectoredificio(null);
+//			inspector.setInspectorespecialidad(null);
+//			inspectoredificio.setInspector(inspector);
 			
-			inspectoredificios.set(j, inspectoredificio);
+			inspectores.set(j, inspector);
 		}
-		*/
+		
+		edificio.setInspectores(inspectores);
 		/*List<InspectorEspecialidad> inspectorEspecialidades = edificio.getInspectorespecalidad();
 		for (int i = 0; i < inspectorEspecialidades.size(); i++) {
 			InspectorEspecialidad inspectorEspecialidad = inspectorEspecialidades.get(i);
