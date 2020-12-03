@@ -106,7 +106,8 @@ public class EdificioController {
 		for (int j = 0; j < inspectores.size(); j++) {
 			Inspector inspector=inspectores.get(j);
 			inspector.setEspecialidades(null);
-			
+			inspector.setEdificios(null);
+			inspector.setEspecialidades(null);
 //			Inspector inspector=inspectoredificio.getInspector();
 //			inspector.setInspectoredificio(null);
 //			inspector.setInspectorespecialidad(null);

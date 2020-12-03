@@ -28,10 +28,10 @@
 select * from tpdatabase.users;
 
 /*INSERTAR EDIFICIOS*/
-INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (1,40,"Savedra 10","Savedra 10", "2131342");
-INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (2,30,"Satate 29","State building", "23215412");
-INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (3,24,"Suipacha 2332","sapayis", "7764565465");
-INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono) VALUES (4,10,"Constitucion 2020","Maral 4", "21857921");
+INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono,id_inspector) VALUES (1,40,"Savedra 10","Savedra 10", "2131342",null);
+INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono,id_inspector) VALUES (2,30,"Satate 29","State building", "23215412",null); 
+INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono,id_inspector) VALUES (3,24,"Suipacha 2332","sapayis", "7764565465",null);
+INSERT INTO tpdatabase.edificios (id_edificio, cant_unidades, direccion, nombre, telefono,id_inspector) VALUES (4,10,"Constitucion 2020","Maral 4", "21857921",null); 
 select * from tpdatabase.edificios;
 
 /*INSERTAR ESPECIALIDADES*/
@@ -44,9 +44,19 @@ INSERT INTO tpdatabase.especialidades (id_especialidad, descripcion, nombre, id_
 select * from tpdatabase.especialidades;
 
 /*INSERTAR INSPECTORES*/
-INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(1,1,3,2);
-INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(2,2,4,4);
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(1,3,3,2);
+INSERT INTO tpdatabase.inspectores(id_inspector,id_user,id_especialidad,id_edificio)VALUES(2,4,4,4);
 select * from tpdatabase.inspectores;
+
+
+/*ACTUALIZAR RELACIONES EDIFICIO - INSPECTOR*/
+UPDATE tpdatabase.edificios SET `id_inspector` = 1 WHERE `id_edificio` = 1;
+UPDATE tpdatabase.edificios SET `id_inspector` = 1 WHERE `id_edificio` = 2;
+UPDATE tpdatabase.edificios SET `id_inspector` = 2 WHERE `id_edificio` = 3;
+UPDATE tpdatabase.edificios SET `id_inspector` = 2 WHERE `id_edificio` = 4;
+SELECT * from tpdatabase.edificios;
+
+
 
 /*ACTUALIZAR RELACIONES INSPECTOR - ESPECIALIDAD*/
 UPDATE tpdatabase.especialidades SET `id_inspector` = 1 WHERE `id_especialidad` = 1;

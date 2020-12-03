@@ -107,6 +107,7 @@ public class InspectorController {
 			//Edificio edificio = inspectorEdificio.getEdificio();
 			edificio.setEspaciosComunes(null);
 			edificio.setUnidades(null);
+			edificio.setInspectores(null);
 			//edificio.setInspectoredificio(null);
 			//edificio.setInspectorespecalidad(null);
 			//inspectorEdificio.setEdificio(edificio);
