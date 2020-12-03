@@ -60,6 +60,7 @@ public class InspectorController {
 			if (inspector.getId_user() == id_user) {
 				seleccionado = inspector;
 			}
+			temp++;
 		}
 		if (seleccionado != null) {
 			seleccionado = cleanInspector(seleccionado);
