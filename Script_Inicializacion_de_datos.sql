@@ -56,27 +56,30 @@ UPDATE tpdatabase.especialidades SET `id_inspector` = 2 WHERE `id_especialidad` 
 UPDATE tpdatabase.especialidades SET `id_inspector` = 2 WHERE `id_especialidad` = 5;
 UPDATE tpdatabase.especialidades SET `id_inspector` = 2 WHERE `id_especialidad` = 6;
 select * from tpdatabase.especialidades;
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*INSERTAR ADMINISTRADO*/
+INSERT INTO tpdatabase.administrado (id_administrado, id_user) VALUES (1, 1);
+INSERT INTO tpdatabase.administrado (id_administrado, id_user) VALUES (2, 2);
+select * from tpdatabase.administrado;
 
 /*INSERTAR UNIDADES*/
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (1,5,"B",2,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (2,1,"C",4,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (3,3,"A",2,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (4,5,"PB",2,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (5,7,"D",4,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (6,10,"F",2,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (7,9,"A",4,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (8,2,"B",2,null);
-
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (1,5,"B",1,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (2,1,"C",1,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (3,3,"A",1,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (4,5,"PB",1,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (5,7,"D",3,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (6,10,"F",3,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (7,9,"A",3,null);
-INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio,id_administradounidad) VALUES (8,2,"B",3,null);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (1,5,"B",2);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (2,1,"C",4);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (3,3,"A",2);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (4,5,"PB",2);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (5,7,"D",4);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (6,10,"F",2);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (7,9,"A",4);
+INSERT INTO tpdatabase.unidades (id_unidad, piso, unidad, id_edificio) VALUES (8,2,"B",2);
 select * from tpdatabase.unidades;
+
+/*INSERTAR ADMINISTRADO UNIDAD*/
+INSERT INTO tpdatabase.administrad_unidad (id_administradounidad,relacion,id_unidad,id_administrado)VALUES(1,"Vividor",1,1);
+INSERT INTO tpdatabase.administrad_unidad (id_administradounidad,relacion,id_unidad,id_administrado)VALUES(2,"Inquilino",4,1);
+INSERT INTO tpdatabase.administrad_unidad (id_administradounidad,relacion,id_unidad,id_administrado)VALUES(3,"Dueño",6,2);
+INSERT INTO tpdatabase.administrad_unidad (id_administradounidad,relacion,id_unidad,id_administrado)VALUES(4,"Dueño/Vividor",8,2);
+select * from tpdatabase.administrad_unidad;
+
 
  /*INSERTAR ESPACIOS COMUNES*/
 INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, id_edificio) VALUES (1,"pileta","pileta",1);
@@ -87,31 +90,17 @@ INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, i
 INSERT INTO tpdatabase.espacios_comunes (id_espaciocomun, descripcion, nombre, id_edificio) VALUES (6,"ascensor","ascensor",3);
 select * from tpdatabase.espacios_comunes;
 
-/*INSERTAR ADMINISTRADO*/
-INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (1, 7);
-INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (2, 8);
-INSERT INTO tpdatabase.administrado (`id_administrado`, `id_user`) VALUES (3, 3);
-select * from tpdatabase.administrado;
-
-/*INSERTAR ADMINISTRADO UNIDAD*/
-INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`)VALUES(1,"Vividor",1);
-INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`)VALUES(2,"Inquilino",2);
-INSERT INTO tpdatabase.administrad_unidad (`id_administradounidad`,`relacion`,`id_administrado`)VALUES(3,"Dueño/Vividor",3);
-select * from tpdatabase.administrad_unidad;
-/*select * from tpdatabase.administrad_unidad; id administrado= 3, id_unidad=1, relacion=inquilino*/
-
-
 /*INSERTAR ESTADO*/
 /*Abierto: Reclamo recien abierto sin tratar
 Cerrado: Reclamo cerrado con solucion encontrada - Problema arreglado
 Inspeccionando: en Bandeja del inspector X esperando por inspeccion
 En Reparacion: reclamo en proceso de reparacion
 Cancelado: Reclamo suspendido - Pedido Cancelado */
-INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(1,"Abierto");
-INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(2,"Cerrado");
-INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(3,"Inspeccionando");
-INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(4,"En Reparacion");
-INSERT INTO tpdatabase.estados(`id_estado`,`descripcion`)VALUES(5,"Cancelado");
+INSERT INTO tpdatabase.estados(id_estado,descripcion)VALUES(1,"Abierto");
+INSERT INTO tpdatabase.estados(id_estado,descripcion)VALUES(2,"Cerrado");
+INSERT INTO tpdatabase.estados(id_estado,descripcion)VALUES(3,"Inspeccionando");
+INSERT INTO tpdatabase.estados(id_estado,descripcion)VALUES(4,"En Reparacion");
+INSERT INTO tpdatabase.estados(id_estado,descripcion)VALUES(5,"Cancelado");
 select * from tpdatabase.estados;
 
 /*FOTOS INSERTAR CON POSTMAN*/
