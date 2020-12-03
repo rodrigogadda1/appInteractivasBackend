@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AplicacionesInteractivas.TP.entity.Administrado;
 import com.AplicacionesInteractivas.TP.entity.Edificio;
 import com.AplicacionesInteractivas.TP.entity.EspacioComun;
+import com.AplicacionesInteractivas.TP.entity.Especialidad;
 import com.AplicacionesInteractivas.TP.entity.Reclamo;
 import com.AplicacionesInteractivas.TP.entity.Unidad;
 import com.AplicacionesInteractivas.TP.exception.ResourceNotFoundException;
@@ -178,6 +179,10 @@ public class ReclamoController {
 				administrado.setReclamo(null);
 				reclamo.setAdministrado(administrado);
 			}
+			
+			Especialidad especialidad = reclamo.getEspecialidad();
+			especialidad.setInspectores(null);
+			reclamo.setEspecialidad(especialidad);
 			
 			if (reclamo.getUnidad() != null) {
 				Unidad unidad = reclamo.getUnidad();
