@@ -124,7 +124,9 @@ public class AdministradoController {
 		
 		administrado.setAdministradoUnidades(adminUnidades);
 		
-		List<Reclamo> reclamos= administrado.getReclamo();
+		administrado.setReclamo(null);
+		
+		/*List<Reclamo> reclamos= administrado.getReclamo();
 		for (int j = 0; j < reclamos.size(); j++) {
 			Reclamo reclamo = reclamos.get(j);
 			reclamo.setAdministrado(null);
@@ -140,7 +142,7 @@ public class AdministradoController {
 			unidad.setEdificio(edificio);
 			unidad.setAdministradoUnidades(null);
 	
-			reclamo.setUnidad(unidad);*/
+			reclamo.setUnidad(unidad);
 			
 			
 			Edificio edificio2 = reclamo.getEdificio();
@@ -156,7 +158,7 @@ public class AdministradoController {
 			
 			reclamos.set(j, reclamo);
 		}
-		administrado.setReclamo(reclamos);
+		administrado.setReclamo(reclamos);*/
 		
 		return administrado;
 	}
